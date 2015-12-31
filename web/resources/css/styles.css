@@ -1,0 +1,455 @@
+/*
+author: Aioanei Alexandru Andrei
+*/
+
+/* 
+PALETTE:
+darkcyan = #1a89b4;
+grey = #e6e6e6;
+*/
+
+*{
+	/* Universal reset: */
+	margin:0;
+	padding:0;
+}
+
+header,footer,
+article,section,
+hgroup,nav,
+figure{
+	/* Giving a display value to the HTML5 rendered elements: */
+	display:block;
+}
+
+body{
+	/* Setting the default text color, size, page background and a font stack: */
+	background: url("../images/gray-squares.png");
+	font-family: Splash !important;
+}
+
+#page{
+
+}
+
+a {
+	color: black; 		
+}
+
+header{
+	height: 36px;
+	width: 100%;
+	background: url("../images/black-linen.png");
+	position: fixed;
+}
+
+#content{
+	height: 100%;
+	width: 100%;
+}
+
+#wrapper{
+	height: 900px;
+	max-width: 1666px;
+	margin: 0 auto;
+}
+
+footer{
+	min-height: 155px;
+	width: 100%;
+	background: url("../images/black-linen.png");
+}
+
+footer p {
+    margin: 0;
+}
+
+nav{
+	text-align:left;
+	font-size: 15px  !important;
+	min-width: 800px;
+}
+
+nav ul{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	float: left;
+}
+
+nav li{
+	color: #e6e6e6;
+	display: inline;
+	float: left;
+	text-align: center;
+}
+
+nav a{
+	display: block;
+	color: #e6e6e6;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+nav a:hover{
+	background-color: black;
+	opacity: 0.8;
+	text-decoration: none  !important;
+}
+
+.short-a{
+	width: 90px;
+}
+
+.right-nav{
+	float: right;
+	width: 177px;
+}
+
+.right-nav a{
+	display: block;
+	text-align: center;
+}
+
+#sec-nav{
+	width: inherit;
+	background-color: #DADADA;
+	height: 22px;
+	top: 36px;
+	position: fixed;
+	list-style: none;
+	margin: 0 auto;
+}
+
+#sec-nav-wrapper{
+	margin: 0 auto;
+	width: 310px;
+	overflow: auto;
+	margin-top: 3px;
+}
+
+#sec-nav ul li{
+	display: inline;
+	text-align: center;
+	width: 60px;
+	margin-top: 20px;
+}
+
+.under-link:hover{
+	text-decoration: underline !important;
+}
+
+#sec-nav ul{
+	width: 310px;
+	font-size: 14px;
+
+}
+
+#sec-nav a{
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 3px;
+	color: black;
+}
+
+#nav-contest-name{
+	color: #1a89b4 !important;
+	text-decoration: none;
+}
+
+.wrapper{
+	min-height: 900px;
+	min-width: 400px;
+	margin-right: 50px;
+	margin-left: 50px;
+}
+
+#footer-wrapper{
+	min-height: 155px;
+	min-width: 1320px;
+	color: #e6e6e6;
+	padding-top: 5px;
+}
+
+#footer-wrapper a{
+	color: #e6e6e6;
+	min-width: 705px;
+}
+
+#footer-wrapper a:hover{
+	color: #e6e6e6;
+	text-decoration: underline;
+}
+
+.col{
+	width: 33.33%;
+	height: 120px;
+	min-width: 120px;
+	text-align: center;
+}
+
+#left-col{ 
+	float:left;
+}
+
+#right-col{
+	float:right;
+}
+
+#center-col{
+	display: inline-block;
+	padding-top: 20px;
+	padding-bottom: 16px;
+	height: 100px;
+	min-width: 400px;
+}
+
+.footer-title{
+	padding-top: 10px;
+	font-size: 18px;
+}
+
+#footer-social{
+	height: 70px;
+	width: 100%;
+	text-align: center;
+}
+
+.social{
+	height: 70px;
+	width: 70px;
+	display: inline-block; 
+	margin-top: 10px;
+}
+
+#logoG{
+	background: url("../images/photocon-sprites.png") -10px -2px no-repeat;
+}
+#logoF{
+	background: url("../images/photocon-sprites.png") -100px -2px no-repeat;
+}
+
+#logoY{
+	background: url("../images/photocon-sprites.png") -190px -2px no-repeat;
+}
+
+#logoI{
+	background: url("../images/photocon-sprites.png") -280px -2px no-repeat;
+}
+
+#logoT{
+	background: url("../images/photocon-sprites.png") -370px -2px no-repeat;
+}
+
+#rights{
+	padding-top: 24px;
+	text-align: center;
+	font-size: 13px;
+}
+
+/* CONTENT */
+
+#content{
+	padding-top: 70px;
+	padding-bottom: 20px;
+}
+
+#content-wrapper{
+	  /* Prevent vertical gaps */
+    line-height: 0;
+   
+    -webkit-column-count: 5;
+    -webkit-column-gap: 2px;
+    -moz-column-count: 5;
+    -moz-column-gap: 2px;
+    column-count: 5;
+    column-gap: 2px;  
+}
+
+#content .image-itself{
+	width: 100% !important;
+  	height: auto !important;
+}
+
+.image-cell{
+	margin-bottom: 2px;
+}
+
+/* HOVER */
+.image-options{
+	width: 100%;
+	height: 30px;
+	background-color: black;
+	position: relative;
+	z-index: 1000;
+	margin-top: -30px;
+	opacity: 0.5;
+}
+
+.image-options h4{
+	color: white;
+	padding-top: 17px;
+	padding-left: 5px;
+	float: left;
+}
+
+.image-name{
+	width: 100%;
+	height: 30px;
+	background-color: black;
+	position: relative;
+	margin-bottom: -30px;
+	opacity: 0.5;
+	text-align: center;
+	color: black
+}
+
+.like{
+	width: 25px;
+	height: 22px;
+	float: right;
+	margin-right: 10px;
+	margin-top: 3.5px;
+}
+
+/* Hyperlink Styles: */
+/* Headings: */
+/* The clearfix hack to clear the floats: */
+/* The navigation styling: */
+/* Footer styling: */
+
+/* Login Form */
+
+#loginModal{
+	visibility:hidden;
+   	display:none;
+   	margin-top: 100px;
+}
+
+.modal-footer {   
+	border-top: 0px;
+}
+
+
+/* Contest page */
+
+.contest-wrapper {
+	width: 100%;
+	height: 160px;
+	position: relative;
+	display: inline-block;
+}
+
+.contest-wrapper:hover {
+	background-color: rgba(26, 137, 180, 0.4);
+}
+
+.contest-wrapper div {
+	text-align: center;
+	margin-top: 40px;
+	font-size: 50px;
+}
+
+.contest-wrapper div a:hover{
+	text-decoration: none;
+	color: #1a89b4;
+}
+
+/* Photographers */
+
+.photographer-wrapper {
+	width: 100%;
+	min-height: 170px;
+	padding-left: 200px;
+	padding-right: 200px;
+	background-color: rgba(26, 137, 180, 0.1);
+	display: inline-block;
+	margin-bottom: 20px;
+}
+
+.photographer-wrapper a:hover{
+	text-decoration: none;
+}
+
+.photographer-name-left {
+	float: left;
+	font-size: 50px;
+	margin-top: 36px;
+}
+
+.photographer-image-right {
+	float: right;
+	margin-top: 7px;
+}
+
+.photographer-name-right {
+	float: right;
+	font-size: 50px;
+	margin-top: 36px;
+}
+
+.photographer-image-left {
+	float: left;
+	margin-top: 7px;
+}
+
+.profile-photo {
+	width: 200px;
+	height: 160px;
+}
+
+#content-wrapper-signup {
+	margin-top: 50px;	
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#contactForm {
+	background-color:rgba(36, 137, 180, 0.3);
+	padding-bottom: 30px;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+}
+
+@media (max-width: 600px) {
+	.photographer-wrapper {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+@media (min-width: 1100px) {
+	.photographer-wrapper {
+		padding-left: 300px;
+		padding-right: 300px;
+	}
+}
+
+@media (max-width: 1000px) {
+  #content-wrapper {
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
+}
+
+@media (max-width: 800px) {
+  #content-wrapper {
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
+  }
+}
+
+@media (max-width: 500px) {
+  #content-wrapper {
+  -moz-column-count:    1;
+  -webkit-column-count: 1;
+  column-count:         1;
+  }
+}

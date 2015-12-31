@@ -1,0 +1,15 @@
+com\photocontest\dao\FileDAO.class
+com\photocontest\dao\UserDAO.class
+com\photocontest\dao\impl\FileDAOImpl.class
+com\photocontest\dao\ContestDAO.class
+com\photocontest\model\File.class
+com\photocontest\dao\impl\GenericDAOImpl.class
+com\photocontest\model\Admin.class
+com\photocontest\dao\impl\UserDAOImpl.class
+com\photocontest\model\User.class
+com\photocontest\dao\impl\ContestDAOImpl.class
+com\photocontest\model\Contest.class
+com\photocontest\controller\HomeController.class
+com\photocontest\dao\GenericDAO.class
+com\photocontest\dao\impl\AdminDAOImpl.class
+com\photocontest\dao\AdminDAO.class

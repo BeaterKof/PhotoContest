@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="DataSource" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="26498c5b-4c6e-4b36-8bb7-b3c0d6302b31">
+    <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+    <jdbc-url>jdbc://</jdbc-url>
+    <default-dialect>Oracle</default-dialect>
+    <libraries>
+      <library>
+        <url>jar://$MAVEN_REPOSITORY$/com/oracle/ojdbc14/10.2.0.4.0/ojdbc14-10.2.0.4.0.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+</component>
