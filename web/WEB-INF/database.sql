@@ -3,7 +3,7 @@ create table admins (
   name varchar2(30),
   type number,
   password varchar2(30),
-  email varchar2(30)
+  email varchar2(50)
 );
 
 create table users (
@@ -11,7 +11,7 @@ create table users (
   password varchar2(30),
   firstname varchar2(30),
   lastname varchar2(30),
-  email varchar2(30),
+  email varchar2(50),
   website varchar2(50),
   description varchar2(100)
 );

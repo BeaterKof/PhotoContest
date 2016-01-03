@@ -20,17 +20,17 @@
 
     <jsp:attribute name="content_area">
         <div id="content-wrapper-signup" class="wrapper" >
-            <form id="contactForm" class="form-horizontal"  onsubmit="return validateForm()">
+            <form id="contactForm" action="/submitSignUpForm" method="post" class="form-horizontal"  onsubmit="return validateForm()">
                 <div class="form-group">
                     <div class="page-header">
                         <h1 style="text-align:center;">Sign-Up</h1>
                     </div>
                     <label class="col-xs-3 control-label">Full name</label>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                        <input type="text" class="form-control" name="first_name" placeholder="First name" />
                     </div>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                        <input type="text" class="form-control" name="last_name" placeholder="Last name" />
                     </div>
                 </div>
 

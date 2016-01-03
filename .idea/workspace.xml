@@ -1,30 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c54c346-3682-490f-b528-e0923964bec2" name="Default" comment="" />
+    <list default="true" id="8c54c346-3682-490f-b528-e0923964bec2" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\Andrei\IdeaProjects\PhotoContest\web\resources\js\form-script.js" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Andrei\IdeaProjects\PhotoContest\src\main\java\com\photocontest\controller\GuestController.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/controller/LinkNavigation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/model/Admin.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/model/Admin.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/generic/GenericDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/generic/GenericDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhotoContest.iml" afterPath="$PROJECT_DIR$/PhotoContest.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/PhotoContest_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/PhotoContest_war_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/model/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/services/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/database.sql" afterPath="$PROJECT_DIR$/web/WEB-INF/database.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/guest/signUp.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/guest/signUp.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/spring-dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/spring-dispatcher-servlet.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="PhotoContest.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/pom.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451334928547" ignored="false" />
+    <file path="/pom.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451819305055" ignored="false" />
     <file path="/web.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450128145170" ignored="false" />
-    <file path="/spring-dispatcher-servlet.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451316975377" ignored="false" />
+    <file path="/spring-dispatcher-servlet.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451803333010" ignored="false" />
     <file path="/index.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450126218889" ignored="false" />
     <file path="/WelcomeController.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450128290656" ignored="false" />
-    <file path="/home.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451396083470" ignored="false" />
+    <file path="/home.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451822841350" ignored="false" />
     <file path="/general-layout.tag" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451516247142" ignored="false" />
     <file path="/styles.css" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450229025335" ignored="false" />
-    <file path="/Dummy.txt" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451520639480" ignored="false" />
+    <file path="/Dummy.txt" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451746411068" ignored="false" />
     <file path="/AdminDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450627811654" ignored="false" />
     <file path="/AdminDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450628069343" ignored="false" />
     <file path="/ContestDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450628084698" ignored="false" />
     <file path="/FileDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450628091435" ignored="false" />
     <file path="/persistence.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450761711907" ignored="false" />
-    <file path="/Admin.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450772382235" ignored="false" />
+    <file path="/Admin.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451829879825" ignored="false" />
     <file path="/datasource-config.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450762670980" ignored="false" />
     <file path="/UserDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451316920055" ignored="false" />
     <file path="/UserDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451306120876" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450731038314" ignored="false" />
-    <file path="/fragment.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450734733888" ignored="false" />
-    <file path="/User.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450735143755" ignored="false" />
+    <file path="/fragment.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451828853829" ignored="false" />
+    <file path="/User.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451829547327" ignored="false" />
     <file path="/database.sql" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450763862509" ignored="false" />
     <file path="/GenericDao.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450774624615" ignored="false" />
     <file path="/GenericDaoImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450775483333" ignored="false" />
@@ -32,9 +46,16 @@
     <file path="/UserServiceImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451317085498" ignored="false" />
     <file path="$USER_HOME$/Desktop/PhotoCon/html/css/styles.css" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451307147460" ignored="false" />
     <file path="/HomeController.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451397816047" ignored="false" />
-    <file path="/signUp.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451403484422" ignored="false" />
+    <file path="/signUp.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451805054427" ignored="false" />
     <file path="/form-script.js" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451430476589" ignored="false" />
     <file path="/main-script.js" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451516402737" ignored="false" />
+    <file path="/HelperController.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451751491595" ignored="false" />
+    <file path="/userTest.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451751773287" ignored="false" />
+    <file path="/SignUpController.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451822437876" ignored="false" />
+    <file path="/GuestController.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451805955493" ignored="false" />
+    <file path="/LinkNavigation.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451822024674" ignored="false" />
+    <file path="/PhotoContest" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451827144635" ignored="false" />
+    <file path="/GenericDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451827445074" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +75,7 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -88,7 +110,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -98,85 +119,102 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="general-layout.tag" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/general-layout.tag">
+      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="18" selection-start="1991" selection-end="1991" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form-script.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/resources/js/form-script.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="25" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/home.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="35" selection-start="558" selection-end="558" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="signUp.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/signUp.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="20" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GuestController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/controller/GuestController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spring-dispatcher-servlet.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/spring-dispatcher-servlet.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="47" selection-start="709" selection-end="709" vertical-scroll-proportion="0.23890063">
+            <state line="24" column="0" selection-start="534" selection-end="534" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="tag#bean#0;tag#beans#0" expanded="false" />
-                <element signature="tag#mvc:resources#0;tag#beans#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contests.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/contests.jsp">
+      <file leaf-file-name="Admin.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/model/Admin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="19" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0">
+            <state line="16" column="0" selection-start="364" selection-end="364" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="allTimeBest.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/allTimeBest.jsp">
+      <file leaf-file-name="SignUpController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/controller/SignUpController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="20" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0">
+            <state line="35" column="55" selection-start="1241" selection-end="1241" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user-general-layout.tag" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/user-general-layout.tag">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="33" selection-start="524" selection-end="524" vertical-scroll-proportion="0.4383057">
+              <folding>
+                <marker date="1451516246878" expanded="true" signature="1159:1248" placeholder="..." />
+                <marker date="1451516246878" expanded="true" signature="1176:1236" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.sql" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/database.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="18" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="photographers.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/photographers.jsp">
+      <file leaf-file-name="UserService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="19" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0">
+            <state line="15" column="0" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserDAOImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/UserDAOImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="13" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GenericDAOImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/generic/GenericDAOImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="39" selection-start="1324" selection-end="1324" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LinkNavigation.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/controller/LinkNavigation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="60" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="datasource-config.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/datasource-config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="71" selection-start="643" selection-end="678" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -200,22 +238,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/services/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/UserDAOImpl.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/spring-dispatcher-servlet.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/home.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/signUp.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/controller/HomeController.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/guest/photographers.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/guest/contests.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/guest/allTimeBest.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/controller/GuestController.java" />
-        <option value="$PROJECT_DIR$/web/resources/js/form-script.js" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/guest/signUp.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tags/general-layout.tag" />
-        <option value="$PROJECT_DIR$/web/resources/js/main-script.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/controller/GuestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/controller/SecurityNavigation.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/web/resources/log4j.properties" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/classes/log4j.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/controller/LinkNavigation.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/user/home.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/services/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/dao/generic/GenericDAOImpl.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/database.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/model/Admin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/controller/SignUpController.java" />
       </list>
     </option>
   </component>
@@ -283,8 +321,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -346,6 +382,10 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -368,8 +408,26 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="guest" />
+              <option name="myItemId" value="PhotoContest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PhotoContest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tags" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -391,7 +449,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tags" />
+              <option name="myItemId" value="classes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -739,20 +797,22 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="OverrideImplement.combined" value="false" />
-    <property name="project.structure.proportion" value="0.15000002" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="settings.github" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.20000005" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -767,18 +827,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\web\WEB-INF\tags" />
       <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\web\resources\css" />
       <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\src\main\java\com\photocontest" />
       <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\src\main\java\com\photocontest\dao" />
       <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\web\WEB-INF\resources\js" />
-      <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\web\WEB-INF\resources\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\web\WEB-INF\classes" />
       <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\web\WEB-INF\views\guest" />
       <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\web\resources\js" />
       <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\web" />
       <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\web\WEB-INF\resources\css" />
-      <recent name="C:\Users\Andrei\IdeaProjects\PhotoContest\web\WEB-INF\tags\css" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 7.0">
@@ -1039,33 +1099,34 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="960" height="1040" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.4910913" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32628062" sideWeight="0.29545453" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.66477275" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39285713" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37188208" sideWeight="0.5055679" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36607143" sideWeight="0.5117396" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36525613" sideWeight="0.23181818" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64810693" sideWeight="0.68636364" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10356347" sideWeight="0.78636366" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.344098" sideWeight="0.6281179" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37272727" sideWeight="0.48663697" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32628062" sideWeight="0.48295453" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21363637" sideWeight="0.48452508" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33522728" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Hibernate Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3236607" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1164,120 +1225,127 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/UserDAOImpl.java">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="20" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.0">
+        <state line="15" column="7" selection-start="316" selection-end="316" vertical-scroll-proportion="-9.807693">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/datasource-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="11" selection-start="1554" selection-end="1554" vertical-scroll-proportion="0.0">
+        <state line="41" column="13" selection-start="1006" selection-end="1006" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/resources/css/styles.css">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/AdminDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="402" column="18" selection-start="5431" selection-end="5448" vertical-scroll-proportion="0.33186814" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="34" selection-start="2435" selection-end="2435" vertical-scroll-proportion="0.0">
+        <state line="13" column="13" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/contests.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="19" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0">
+        <state line="9" column="14" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/allTimeBest.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/UserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="20" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/photographers.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="19" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/home.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="35" selection-start="558" selection-end="558" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/resources/js/jquery-2.1.4.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="30" selection-start="312" selection-end="313" vertical-scroll-proportion="0.50530785" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/resources/js/form-script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="25" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/signUp.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="20" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/general-layout.tag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="18" selection-start="1991" selection-end="1991" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/resources/js/main-script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="20" selection-start="199" selection-end="323" vertical-scroll-proportion="0.56198347" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/controller/GuestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="12" column="17" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/spring-dispatcher-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="47" selection-start="709" selection-end="709" vertical-scroll-proportion="0.23890063">
+        <state line="29" column="22" selection-start="1275" selection-end="1275" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/datasource-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="71" selection-start="643" selection-end="678" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/UserDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="13" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="tag#bean#0;tag#beans#0" expanded="false" />
-            <element signature="tag#mvc:resources#0;tag#beans#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/controller/LinkNavigation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="60" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/generic/GenericDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="39" selection-start="1324" selection-end="1324" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/database.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="18" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="534" selection-end="534" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/model/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="364" selection-end="364" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/controller/SignUpController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="55" selection-start="1241" selection-end="1241" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/user-general-layout.tag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="33" selection-start="524" selection-end="524" vertical-scroll-proportion="0.4383057">
+          <folding>
+            <marker date="1451516246878" expanded="true" signature="1159:1248" placeholder="..." />
+            <marker date="1451516246878" expanded="true" signature="1176:1236" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -1292,7 +1360,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.20000005" />
                 <option value="0.5" />
               </list>
             </option>

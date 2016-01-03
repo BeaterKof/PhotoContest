@@ -1,6 +1,7 @@
 package com.photocontest.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -19,14 +20,12 @@ public class Admin implements Serializable {
     @Column(name = "admin_id")
     private int admin_id;
 
-    @Column(name = "name")
+    @Size(min = 2, max = 30)
     private String name;
-
-    @Column(name = "type")
 
     private int type;
 
-    @Column(name = "password")
+    @Size(min = 6, max = 30)
     private String password;
 
     public int getId() {

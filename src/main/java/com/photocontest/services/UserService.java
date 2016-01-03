@@ -13,5 +13,6 @@ public interface UserService {
 
     boolean checkAvalilable(String userName);
     boolean createUser(User user);
+
     User loadUserByEmail(String email);
 }

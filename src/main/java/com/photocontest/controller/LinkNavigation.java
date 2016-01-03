@@ -1,9 +1,12 @@
 package com.photocontest.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,7 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-public class GuestController {
+public class LinkNavigation {
+    final static Logger logger = Logger.getLogger(LinkNavigation.class);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getIndexPage(){
@@ -24,6 +28,7 @@ public class GuestController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView getHomePage(){
         ModelAndView model = new ModelAndView("guest/home");
+        logger.info("------------------ Inside home page --------------------");
         return model;
     }
 

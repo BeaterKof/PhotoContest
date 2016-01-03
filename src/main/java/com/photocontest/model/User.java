@@ -1,6 +1,7 @@
 package com.photocontest.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -12,17 +13,29 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "users")
-public class User  implements Serializable {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     private int user_id;
+
+    @Size(min = 8, max = 50)
     private String email;
+
+    @Size(min = 6, max = 30)
     private String password;
+
+    @Size(min = 2, max = 30)
     private String first_name;
+
+    @Size(min = 2, max = 30)
     private String last_name;
+
+    @Size(min = 2, max = 50)
     private String website;
+
+    @Size(max = 100)
     private String description;
 
     public int getUser_id() {

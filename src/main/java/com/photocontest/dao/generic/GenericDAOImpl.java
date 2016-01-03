@@ -3,6 +3,10 @@ package com.photocontest.dao.generic;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.spi.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
@@ -16,9 +20,10 @@ import java.util.List;
  * Time: 7:02 PM
  * To change this template use File | Settings | File Templates.
  */
+@Transactional
 public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO<T, ID> {
 
-    //private static final Logger logger = LoggerFactory.getLogger(GenericDAOImpl.class);
+    private static final Logger logger = Logger.getLogger(GenericDAOImpl.class);
     protected Class<T> entityClass;
     
     @PersistenceContext
@@ -43,7 +48,7 @@ public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO<T,
     @Override
     public T update(T entity){
         this.entityManager.merge(entity);
-    //    logger.info("Entity updated!");
+        logger.info("Entity updated!");
         return entity;
     }
 
