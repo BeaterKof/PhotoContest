@@ -12,6 +12,6 @@ import com.photocontest.model.Admin;
  */
 public interface AdminDAO extends GenericDAO<Admin, Integer> {
 
-    boolean checkAvailableEmail(String email);
+    boolean checkAvailable(String email);
 
 }

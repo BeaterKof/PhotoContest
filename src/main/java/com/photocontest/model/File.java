@@ -20,7 +20,7 @@ public class File implements Serializable {
     private int file_id;
     private String name;
     private int visible;
-    private int type;
+    private String type;
     private String description;
 
     public int getFile_id() {
@@ -47,11 +47,11 @@ public class File implements Serializable {
         this.visible = visible;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 

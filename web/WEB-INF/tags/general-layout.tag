@@ -75,7 +75,7 @@
                             <h1 class="text-center">Login</h1>
                         </div>
                         <div class="modal-body">
-                            <form class="form col-md-12 center-block">
+                            <form action="/submitLogInForm" class="form col-md-12 center-block">
                                 <div class="form-group">
                                     <input type="text" class="form-control input-lg" placeholder="Email">
                                 </div>
@@ -83,7 +83,7 @@
                                     <input type="password" class="form-control input-lg" placeholder="Password">
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-primary btn-lg btn-block">Login</button>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
                                     <span class="pull-right"><a href="#">Need help?</a></span>
                                 </div>
                             </form>

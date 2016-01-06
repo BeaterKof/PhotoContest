@@ -13,7 +13,7 @@ import com.photocontest.model.Admin;
  */
 public class AdminDAOImpl extends GenericDAOImpl<Admin, Integer> implements AdminDAO {
     @Override
-    public boolean checkAvailableEmail(String email) {
+    public boolean checkAvailable(String email) {
         return false;
     }
 }

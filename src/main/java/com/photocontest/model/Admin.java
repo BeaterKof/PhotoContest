@@ -23,9 +23,9 @@ public class Admin implements Serializable {
     @Size(min = 2, max = 30)
     private String name;
 
-    private int type;
+    private String type;
 
-    @Size(min = 6, max = 30)
+    @Size(min = 6, max = 60)
     private String password;
 
     public int getId() {
@@ -44,11 +44,11 @@ public class Admin implements Serializable {
         this.name = name;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 

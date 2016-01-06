@@ -33,8 +33,19 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
         try{
             user = (User) query.getSingleResult();
         }catch(NoResultException e){
-                ////
+            ////
         }
         return user;
+    }
+
+    public boolean checkAvailable(String email){
+        Assert.notNull(email);
+
+        Query query = this.entityManager.createQuery("select u from " +
+                this.entityClass.getSimpleName() + " u where u.email = :email")
+                .setParameter("email", email);
+
+        int count = query.getResultList().size();
+        return count < 1;
     }
 }

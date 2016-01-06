@@ -18,12 +18,12 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private int user_id;
+    private long user_id;
 
-    @Size(min = 8, max = 50)
+    @Size(min = 8, max = 0)
     private String email;
 
-    @Size(min = 6, max = 30)
+    @Size(min = 6, max = 60)
     private String password;
 
     @Size(min = 2, max = 30)
@@ -38,11 +38,11 @@ public class User implements Serializable {
     @Size(max = 100)
     private String description;
 
-    public int getUser_id() {
+    public long getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(long user_id) {
         this.user_id = user_id;
     }
 

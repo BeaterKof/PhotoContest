@@ -2,13 +2,13 @@ create table admins (
   admin_id integer,
   name varchar2(30),
   type number,
-  password varchar2(30),
+  password varchar2(60),
   email varchar2(50)
 );
 
 create table users (
   user_id integer,
-  password varchar2(30),
+  password varchar2(60),
   firstname varchar2(30),
   lastname varchar2(30),
   email varchar2(50),

@@ -28,7 +28,6 @@ public class LinkNavigation {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView getHomePage(){
         ModelAndView model = new ModelAndView("guest/home");
-        logger.info("------------------ Inside home page --------------------");
         return model;
     }
 
