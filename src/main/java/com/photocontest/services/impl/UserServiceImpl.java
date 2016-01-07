@@ -43,24 +43,24 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean createUser(User user) {
+    public User saveUser(User user) {
         if(!checkAvalilable(user.getEmail())){
             //email not available
-            return false;
+            return null;
         } else {
             try{
                 user.setPassword(passwordEncoder.encode(user.getPassword()));
                 userDAO.save(user);
             } catch(Exception e) {
                 //
-                return false;
+                return null;
             }
         }
-        return true;
+        return user;
     }
 
     @Override
-    public User loadUserByEmail(String email) throws EmailNotFoundException{
+    public User getUserByEmail(String email) throws EmailNotFoundException{
 
         User user = userDAO.loadByEmail(email);
 
@@ -90,33 +90,33 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean updateUser(User user) {
+    public void updateUser(User user) {
 
         if(!checkAvalilable(user.getEmail())){
-            return false;
+
         }
 
         try{
             userDAO.update(user);
         } catch (Exception e){
             //
-            return false;
+
         }
-        return true;
+
     }
 
     @Override
-    public boolean deleteUser(User user) {
+    public void deleteUser(User user) {
         if(!checkAvalilable(user.getEmail())){
-            return false;
+
         }
 
         try{
             userDAO.delete(user);
         } catch (Exception e){
             //
-            return false;
+
         }
-        return true;
+
     }
 }

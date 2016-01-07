@@ -12,7 +12,6 @@ import com.photocontest.model.User;
  */
 public interface UserDAO extends GenericDAO<User, Integer> {
 
-
     boolean checkAvailable(String email);
     User loadByEmail(String email);
 }

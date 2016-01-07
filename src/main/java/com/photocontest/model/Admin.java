@@ -28,11 +28,14 @@ public class Admin implements Serializable {
     @Size(min = 6, max = 60)
     private String password;
 
-    public int getId() {
+    @Size(min = 8, max = 50)
+    private String email;
+
+    public int getAdmin_id() {
         return admin_id;
     }
 
-    public void setId(int admin_id) {
+    public void setAdmin_id(int admin_id) {
         this.admin_id = admin_id;
     }
 
@@ -60,7 +63,11 @@ public class Admin implements Serializable {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
-
-
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

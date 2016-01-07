@@ -20,7 +20,7 @@ public class User implements Serializable {
     @Column(name = "user_id")
     private long user_id;
 
-    @Size(min = 8, max = 0)
+    @Size(min = 8, max = 50)
     private String email;
 
     @Size(min = 6, max = 60)

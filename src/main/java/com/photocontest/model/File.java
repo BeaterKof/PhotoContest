@@ -19,8 +19,8 @@ public class File implements Serializable {
     @Column(name = "file_id")
     private int file_id;
     private String name;
-    private int visible;
     private String type;
+    private int visible;
     private String description;
 
     public int getFile_id() {

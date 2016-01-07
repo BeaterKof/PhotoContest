@@ -48,4 +48,6 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
         int count = query.getResultList().size();
         return count < 1;
     }
+
+
 }
