@@ -3,6 +3,11 @@
 
     <persistence-unit name="PhotoContest" transaction-type="RESOURCE_LOCAL">
         <class>com.photocontest.model.User</class>
+        <class>com.photocontest.model.Admin</class>
+        <class>com.photocontest.model.Report</class>
+        <class>com.photocontest.model.File</class>
+        <class>com.photocontest.model.Contest</class>
+        <class>com.photocontest.model.Voter</class>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>

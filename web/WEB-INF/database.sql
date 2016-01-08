@@ -34,7 +34,8 @@ create table files (
   name varchar2(30),
   type varchar2(20),
   visible varchar2(20),
-  description varchar2(100)
+  description varchar2(100),
+  path varchar(50)
 );
 
 create table voters (

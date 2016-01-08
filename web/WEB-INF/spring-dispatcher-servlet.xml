@@ -28,12 +28,18 @@
     <mvc:annotation-driven/>
 
     <!-- DAO Declarations -->
-    <bean id="userDAO" class="com.photocontest.dao.impl.UserDAOImpl"/>
+    <bean id="userDAO" class="com.photocontest.dao.impl.UserDAOImpl" />
+    <bean id="adminDAO" class="com.photocontest.dao.impl.AdminDAOImpl" />
+    <bean id="fileDAO" class="com.photocontest.dao.impl.FileDAOImpl" />
 
 
     <!-- Services declarations -->
     <bean id="userService" class="com.photocontest.services.impl.UserServiceImpl">
         <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+    <bean id="adminService" class="com.photocontest.services.impl.UserServiceImpl" >
+        <property name="adminDAO" ref="adminDAO"/>
     </bean>
 
 </beans>

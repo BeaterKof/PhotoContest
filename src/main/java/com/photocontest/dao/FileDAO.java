@@ -11,4 +11,6 @@ import com.photocontest.model.File;
  * To change this template use File | Settings | File Templates.
  */
 public interface FileDAO extends GenericDAO<File, Integer> {
+
+    File loadByUserId(int id);
 }

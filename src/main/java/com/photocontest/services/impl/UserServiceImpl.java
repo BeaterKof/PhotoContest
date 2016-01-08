@@ -1,7 +1,9 @@
 package com.photocontest.services.impl;
 
 import com.photocontest.dao.UserDAO;
+import com.photocontest.exceptions.EmailExistsException;
 import com.photocontest.exceptions.EmailNotFoundException;
+import com.photocontest.exceptions.UserNotFoundException;
 import com.photocontest.model.User;
 import com.photocontest.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,26 +45,25 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User saveUser(User user) {
+    public User createUser(User user) throws EmailExistsException {
         if(!checkAvalilable(user.getEmail())){
-            //email not available
-            return null;
-        } else {
-            try{
-                user.setPassword(passwordEncoder.encode(user.getPassword()));
-                userDAO.save(user);
-            } catch(Exception e) {
-                //
-                return null;
-            }
+            throw new EmailExistsException(user.getEmail());
         }
+        try{
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userDAO.save(user);
+        } catch(Exception e) {
+            //
+            return null;
+        }
+
         return user;
     }
 
     @Override
     public User getUserByEmail(String email) throws EmailNotFoundException{
 
-        User user = userDAO.loadByEmail(email);
+        final User user = userDAO.loadByEmail(email);
 
         if(user == null){
             throw new EmailNotFoundException(email);
@@ -74,7 +75,7 @@ public class UserServiceImpl implements UserService{
     //for authentication provider
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = userDAO.loadByEmail(s);
+        final User user = userDAO.loadByEmail(s);
 
         if(user == null){
             throw new UsernameNotFoundException(s);
@@ -90,33 +91,21 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void updateUser(User user) {
+    public void updateUser(User user) throws UserNotFoundException {
 
         if(!checkAvalilable(user.getEmail())){
-
+            throw new UserNotFoundException(user.getEmail());
         }
 
-        try{
-            userDAO.update(user);
-        } catch (Exception e){
-            //
-
-        }
-
+        userDAO.update(user);
     }
 
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser(User user) throws UserNotFoundException{
         if(!checkAvalilable(user.getEmail())){
-
+            throw new UserNotFoundException(user.getEmail());
         }
 
-        try{
-            userDAO.delete(user);
-        } catch (Exception e){
-            //
-
-        }
-
+        userDAO.delete(user);
     }
 }

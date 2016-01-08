@@ -17,17 +17,18 @@ public class File implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "file_id")
-    private int file_id;
+    private long file_id;
     private String name;
     private String type;
     private int visible;
     private String description;
+    private String path;
 
-    public int getFile_id() {
+    public long getFile_id() {
         return file_id;
     }
 
-    public void setFile_id(int file_id) {
+    public void setFile_id(long file_id) {
         this.file_id = file_id;
     }
 
@@ -63,4 +64,11 @@ public class File implements Serializable {
         this.description = description;
     }
 
+    public String getLocation() {
+        return path;
+    }
+
+    public void setLocation(String path) {
+        this.path = path;
+    }
 }

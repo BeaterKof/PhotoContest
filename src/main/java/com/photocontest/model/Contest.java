@@ -19,18 +19,18 @@ public class Contest implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "contest_id")
-    private int contest_id;
+    private long contest_id;
     private String name;
     private String description;
     private String prize;
     private Date start_date;
     private Date finish_date;
 
-    public int getContest_id() {
+    public long getContest_id() {
         return contest_id;
     }
 
-    public void setContest_id(int contest_id) {
+    public void setContest_id(long contest_id) {
         this.contest_id = contest_id;
     }
 

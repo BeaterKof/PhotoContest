@@ -1,6 +1,8 @@
 package com.photocontest.services;
 
+import com.photocontest.exceptions.EmailExistsException;
 import com.photocontest.exceptions.EmailNotFoundException;
+import com.photocontest.exceptions.UserNotFoundException;
 import com.photocontest.model.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -14,8 +16,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface UserService extends UserDetailsService{
 
     boolean checkAvalilable(String email);
-    User saveUser(User user);
-    void updateUser(User user);
-    void deleteUser(User user);
+    User createUser(User user) throws EmailExistsException;
+    void updateUser(User user) throws UserNotFoundException;
+    void deleteUser(User user) throws UserNotFoundException;
     User getUserByEmail(String email) throws EmailNotFoundException;
 }
