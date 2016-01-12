@@ -8,6 +8,7 @@
 <%@attribute name="footer_area" fragment="true" %>
 <%@attribute name="content_area_login" fragment="true" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
@@ -37,9 +38,9 @@
 
 <body>
     <section id="page">
-        <jsp:invoke fragment="header_area"/>
         <header>
             <nav>
+                <jsp:invoke fragment="header_area"/>
                 <ul>
                     <li><a class="short-a" href="/home">Home</a></li>
                     <li><a class="short-a" href="/contests">Contests</a></li>
@@ -65,9 +66,11 @@
             </div>
         </header>
 
+
         <section id="content">
             <!--login modal-->
-            <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+            <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true"
+                 style="display:${display}; <c:if test="${display=='block'}"> visibility:visible; </c:if> ">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -75,12 +78,12 @@
                             <h1 class="text-center">Login</h1>
                         </div>
                         <div class="modal-body">
-                            <form action="/submitLogInForm" class="form col-md-12 center-block">
+                            <form action="/submitSignInForm" method="post" class="form col-md-12 center-block">
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-lg" placeholder="Email">
+                                    <input type="text" class="form-control input-lg" placeholder="Email" name="email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control input-lg" placeholder="Password">
+                                    <input type="password" class="form-control input-lg" placeholder="Password" name="password">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
@@ -93,6 +96,9 @@
                                 <button id="form-close-button" class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
                             </div>
                         </div>
+                        <c:if test="${display=='block'}">
+                            <p style="color:red; text-align: center;"> Email and password are not valid!</p>
+                        </c:if>
                     </div>
                 </div>
             </div>

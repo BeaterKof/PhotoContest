@@ -35,7 +35,7 @@ public class User implements Serializable {
     @Size(min = 2, max = 50)
     private String website;
 
-    @Size(max = 100)
+    @Size(max = 200)
     private String description;
 
     public long getUser_id() {

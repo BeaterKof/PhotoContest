@@ -24,4 +24,11 @@
 
     <jsp:attribute name="footer_area">
     </jsp:attribute>
+
+
 </t:general-layout>
+
+<!-- Remove second navigation  -->
+<script>
+    document.getElementById("sec-nav").style.display = "none";
+</script>

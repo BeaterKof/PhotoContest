@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script type="text/javascript" src="<spring:url value='/resources/js/form-script.js'/>"></script>
 
@@ -19,10 +20,10 @@
     </jsp:attribute>
 
     <jsp:attribute name="content_area">
-        <div id="content-wrapper-signup" class="wrapper" >
-            <form id="contactForm" action="/submitSignUpForm" method="post" class="form-horizontal"  onsubmit="return validateForm()">
+        <div id="content-wrapper-signup" class="wrapper">
+            <form id="contactForm" action="/submitSignUpForm" class="form-horizontal" onsubmit="return validateForm()" role="form" method="post">
                 <div class="form-group">
-                    <div class="page-header">
+                    <div>
                         <h1 style="text-align:center;">Sign-Up</h1>
                     </div>
                     <label class="col-xs-3 control-label">Full name</label>
@@ -48,20 +49,39 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">Personal webpage</label>
+                    <div class="col-xs-5">
+                        <input type="text" class="form-control" name="webpage" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">About yourself <br> (max 200 characters)</label>
+                    <div class="col-xs-5">
+                        <textarea class="form-control" name="description" rows="3" maxlength="200"></textarea>
+                    </div>
+                    </textarea>
+                </div>
 
                 <div class="alert alert-danger" role="alert" id="formErrorMessageContainer" style="visibility:hidden">
                     <span class="sr-only">Error:</span>
                     <div id="formErrorMessage"></div>
                 </div>
 
+                <c:if test="${not empty errorString}">
+                        <p style="text-align: center"> Server error: ${errorString} </p>
+                </c:if>
+
 
                 <div class="form-group">
                     <div class="col-xs-9 col-xs-offset-3">
-                        <button type="submit" class="btn btn-primary" >Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </form>
         </div>
+
     </jsp:attribute>
 
 
@@ -70,3 +90,10 @@
     </jsp:attribute>
 
 </t:general-layout>
+
+<!-- Remove second navigation and focus -->
+<script>
+    document.getElementById("sec-nav").style.display = "none";
+    document.forms["contactForm"]["firstName"].focus();
+</script>
+

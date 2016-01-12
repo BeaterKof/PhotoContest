@@ -55,5 +55,4 @@ public class LinkNavigation {
         return model;
     }
 
-
 }

@@ -33,7 +33,9 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
         try{
             user = (User) query.getSingleResult();
         }catch(NoResultException e){
-            ////
+            e.printStackTrace();
+            ////////////////////////////////
+            ///////////////////////////////
         }
         return user;
     }

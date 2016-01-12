@@ -13,5 +13,8 @@ import com.photocontest.model.Contest;
  */
 public class ContestDAOImpl extends GenericDAOImpl<Contest, Integer> implements ContestDAO {
 
+    public ContestDAOImpl(){
+        super(Contest.class);
+    }
 
 }

@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService{
         this.userDAO = userDAO;
     }
 
-    public void getUserDAO(UserDAO userDAO) {
+    public void getUserDAO() {
         this.userDAO = userDAO;
     }
 
@@ -102,7 +102,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void deleteUser(User user) throws UserNotFoundException{
-        if(!checkAvalilable(user.getEmail())){
+        if(checkAvalilable(user.getEmail())){
             throw new UserNotFoundException(user.getEmail());
         }
 

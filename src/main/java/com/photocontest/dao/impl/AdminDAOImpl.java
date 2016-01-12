@@ -15,6 +15,11 @@ import javax.persistence.Query;
  * To change this template use File | Settings | File Templates.
  */
 public class AdminDAOImpl extends GenericDAOImpl<Admin, Integer> implements AdminDAO {
+
+    public AdminDAOImpl(){
+        super(Admin.class);
+    }
+
     @Override
     public boolean checkAvailable(String email) {
         Assert.notNull(email);

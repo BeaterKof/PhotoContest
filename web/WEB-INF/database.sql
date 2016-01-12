@@ -10,8 +10,8 @@ create table users (
   user_id integer,
   email varchar2(50),
   password varchar2(60),
-  firstname varchar2(30),
-  lastname varchar2(30),
+  first_name varchar2(30),
+  last_name varchar2(30),
   website varchar2(50),
   description varchar2(100)
 );
@@ -34,7 +34,7 @@ create table files (
   name varchar2(30),
   type varchar2(20),
   visible varchar2(20),
-  description varchar2(100),
+  description varchar2(200),
   path varchar(50)
 );
 

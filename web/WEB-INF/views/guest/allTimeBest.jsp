@@ -24,4 +24,6 @@
 
     <jsp:attribute name="footer_area">
     </jsp:attribute>
+
+
 </t:general-layout>

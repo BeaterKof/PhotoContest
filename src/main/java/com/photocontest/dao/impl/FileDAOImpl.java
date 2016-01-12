@@ -20,6 +20,10 @@ import javax.persistence.Query;
 public class FileDAOImpl extends GenericDAOImpl<File, Integer> implements FileDAO {
     static final Logger logger = Logger.getLogger(FileDAOImpl.class);
 
+    public FileDAOImpl(){
+        super(File.class);
+    }
+
     @Override
     public File loadByUserId(int id) {
         Assert.notNull(id);

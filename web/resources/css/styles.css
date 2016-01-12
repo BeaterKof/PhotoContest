@@ -161,7 +161,7 @@ nav a:hover{
 }
 
 .wrapper{
-    min-height: 900px;
+    min-height: 750px;
     min-width: 400px;
     margin-right: 50px;
     margin-left: 50px;
@@ -325,7 +325,6 @@ nav a:hover{
 
 #loginModal{
     visibility:hidden;
-    display:none;
     margin-top: 100px;
 }
 
@@ -408,14 +407,18 @@ nav a:hover{
     margin-right: auto;
 }
 
+/* Login form */
+
 #contactForm {
-    background-color:rgba(36, 137, 180, 0.3);
+    background-color:rgba(192, 192, 192, 0.4);
     padding-bottom: 30px;
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
-    border: 0px solid #000000;
+    border: 1px solid #337AB7;
 }
+
+/* On media size modified*/
 
 @media (max-width: 600px) {
     .photographer-wrapper {
@@ -457,8 +460,27 @@ nav a:hover{
 
 #account-link {
     color: #1a89b4;
+    font-style: italic;
 }
 
 #signout-link {
-    font-style: italic;
+
+}
+
+#content-wrapper-user-edit {
+    margin: 0 auto;
+}
+
+#account-edit-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#deletionPrompt {
+    height: 50px;
+    width: 400px;
+    position: inherit;
+    display: none;
+    visibility: hidden;
+    margin: 0 auto;
 }

@@ -18,7 +18,9 @@
 
 
     <jsp:attribute name="content_area">
-        <div class="wrapper"></div>
+        <div class="wrapper">
+
+        </div>
     </jsp:attribute>
 
 

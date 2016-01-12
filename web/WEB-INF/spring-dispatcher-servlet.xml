@@ -38,7 +38,7 @@
         <property name="userDAO" ref="userDAO"/>
     </bean>
 
-    <bean id="adminService" class="com.photocontest.services.impl.UserServiceImpl" >
+    <bean id="adminService" class="com.photocontest.services.impl.AdminServiceImpl" >
         <property name="adminDAO" ref="adminDAO"/>
     </bean>
 
