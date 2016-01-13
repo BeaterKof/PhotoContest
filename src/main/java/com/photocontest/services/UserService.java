@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface UserService extends UserDetailsService{
 
     boolean checkAvalilable(String email);
+    boolean exists(String email);
     User createUser(User user) throws EmailExistsException;
     void updateUser(User user) throws UserNotFoundException;
     void deleteUser(User user) throws UserNotFoundException;

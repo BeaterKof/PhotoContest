@@ -52,7 +52,7 @@
                 <div class="form-group">
                     <label class="col-xs-3 control-label">Personal webpage</label>
                     <div class="col-xs-5">
-                        <input type="text" class="form-control" name="webpage" />
+                        <input type="text" class="form-control" name="website" />
                     </div>
                 </div>
 

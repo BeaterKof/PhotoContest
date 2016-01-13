@@ -16,8 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-public class LinkNavigation {
-    final static Logger logger = Logger.getLogger(LinkNavigation.class);
+public class GuestLinkNavigation {
+    final static Logger logger = Logger.getLogger(GuestLinkNavigation.class);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getIndexPage(){
@@ -25,33 +25,39 @@ public class LinkNavigation {
         return model;
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @RequestMapping(value = "/guest/home", method = RequestMethod.GET)
     public ModelAndView getHomePage(){
         ModelAndView model = new ModelAndView("guest/home");
         return model;
     }
 
-    @RequestMapping(value = "/contests", method = RequestMethod.GET)
+    @RequestMapping(value = "/guest/contests", method = RequestMethod.GET)
     public ModelAndView getContestsPage(){
         ModelAndView model = new ModelAndView("guest/contests");
         return model;
     }
 
-    @RequestMapping(value = "/allTimeBest", method = RequestMethod.GET)
+    @RequestMapping(value = "/guest/allTimeBest", method = RequestMethod.GET)
     public ModelAndView getAllTimeBestPage(){
         ModelAndView model = new ModelAndView("guest/allTimeBest");
         return model;
     }
 
-    @RequestMapping(value = "/photographers", method = RequestMethod.GET)
+    @RequestMapping(value = "/guest/photographers", method = RequestMethod.GET)
     public ModelAndView getPhotographersPage(){
         ModelAndView model = new ModelAndView("guest/photographers");
         return model;
     }
 
-    @RequestMapping(value = "/signUp", method = RequestMethod.GET)
+    @RequestMapping(value = "/guest/signUp", method = RequestMethod.GET)
     public ModelAndView getSignUpPage(){
         ModelAndView model = new ModelAndView("guest/signUp");
+        return model;
+    }
+
+    @RequestMapping(value = "/guest/other", method = RequestMethod.GET)
+    public ModelAndView getOtherPage(){
+        ModelAndView model = new ModelAndView("guest/other");
         return model;
     }
 

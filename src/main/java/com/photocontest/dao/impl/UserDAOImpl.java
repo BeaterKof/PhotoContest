@@ -3,6 +3,7 @@ package com.photocontest.dao.impl;
 import com.photocontest.dao.UserDAO;
 import com.photocontest.dao.generic.GenericDAOImpl;
 import com.photocontest.model.User;
+import org.apache.log4j.Logger;
 import org.springframework.util.Assert;
 
 import javax.persistence.NoResultException;
@@ -16,6 +17,7 @@ import javax.persistence.Query;
  * To change this template use File | Settings | File Templates.
  */
 public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDAO {
+    static final Logger logger = Logger.getLogger(UserDAOImpl.class);
 
     public UserDAOImpl(){
         super(User.class);
@@ -33,9 +35,7 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
         try{
             user = (User) query.getSingleResult();
         }catch(NoResultException e){
-            e.printStackTrace();
-            ////////////////////////////////
-            ///////////////////////////////
+            logger.error(e.getMessage());
         }
         return user;
     }
@@ -51,5 +51,13 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
         return count < 1;
     }
 
+    @Override
+    public boolean exists(String email) {
+        Query query = this.entityManager.createQuery("select u from " +
+                this.entityClass.getSimpleName() + " u where u.email = :email")
+                .setParameter("email", email);
 
+        int count = query.getResultList().size();
+        return count > 0;
+    }
 }

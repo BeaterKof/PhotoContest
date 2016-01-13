@@ -42,15 +42,15 @@
             <nav>
                 <jsp:invoke fragment="header_area"/>
                 <ul>
-                    <li><a class="short-a" href="/home">Home</a></li>
-                    <li><a class="short-a" href="/contests">Contests</a></li>
-                    <li><a href="/allTimeBest">AllTimeBest</a></li>
-                    <li><a href="/photographers">Photographers</a></li>
-                    <li><a class="short-a" href="#">Other</a></li>
+                    <li><a class="short-a" href="/guest/home">Home</a></li>
+                    <li><a class="short-a" href="/guest/contests">Contests</a></li>
+                    <li><a href="/guest/allTimeBest">AllTimeBest</a></li>
+                    <li><a href="/guest/photographers">Photographers</a></li>
+                    <li><a href="/guest/other" class="short-a">Other</a></li>
                 </ul>
                 <ul class="right-nav">
                     <li><a href="#" id="login-link">Login</a></li>
-                    <li><a href="/signUp">Sign Up</a></li>
+                    <li><a href="/guest/signUp">Sign Up</a></li>
                 </ul>
             </nav>
             <div id="sec-nav">

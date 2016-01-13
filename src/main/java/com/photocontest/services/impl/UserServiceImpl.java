@@ -6,6 +6,7 @@ import com.photocontest.exceptions.EmailNotFoundException;
 import com.photocontest.exceptions.UserNotFoundException;
 import com.photocontest.model.User;
 import com.photocontest.services.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,6 +25,7 @@ import java.util.Collection;
  * To change this template use File | Settings | File Templates.
  */
 public class UserServiceImpl implements UserService{
+    static final Logger logger = Logger.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserDAO userDAO;
@@ -35,13 +37,18 @@ public class UserServiceImpl implements UserService{
         this.userDAO = userDAO;
     }
 
-    public void getUserDAO() {
-        this.userDAO = userDAO;
+    public UserDAO getUserDAO() {
+        return userDAO;
     }
 
     @Override
     public boolean checkAvalilable(String email) {
         return userDAO.checkAvailable(email);
+    }
+
+    @Override
+    public boolean exists(String email) {
+        return userDAO.exists(email);
     }
 
     @Override
@@ -53,7 +60,7 @@ public class UserServiceImpl implements UserService{
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             userDAO.save(user);
         } catch(Exception e) {
-            //
+            logger.error(e.getMessage());
             return null;
         }
 
@@ -92,8 +99,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void updateUser(User user) throws UserNotFoundException {
-
-        if(!checkAvalilable(user.getEmail())){
+        if(!exists(user.getEmail())){
             throw new UserNotFoundException(user.getEmail());
         }
 
@@ -102,10 +108,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void deleteUser(User user) throws UserNotFoundException{
-        if(checkAvalilable(user.getEmail())){
+        if(!exists(user.getEmail())){
             throw new UserNotFoundException(user.getEmail());
         }
 
         userDAO.delete(user);
     }
+
+
 }
