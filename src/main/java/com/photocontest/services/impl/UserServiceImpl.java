@@ -41,6 +41,14 @@ public class UserServiceImpl implements UserService{
         return userDAO;
     }
 
+    public PasswordEncoder getPasswordEncoder() {
+        return passwordEncoder;
+    }
+
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
     @Override
     public boolean checkAvalilable(String email) {
         return userDAO.checkAvailable(email);

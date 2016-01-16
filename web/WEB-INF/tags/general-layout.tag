@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <c:if test="${display=='block'}">
-                            <p style="color:red; text-align: center;"> Email and password are not valid!</p>
+                            <p style="color:red; text-align: center;"> ${errorMessage}</p>
                         </c:if>
                     </div>
                 </div>

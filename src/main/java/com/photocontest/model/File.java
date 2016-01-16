@@ -2,6 +2,7 @@ package com.photocontest.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,7 +23,12 @@ public class File implements Serializable {
     private String type;
     private int visible;
     private String description;
+    private Date date_added;
     private String path;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id",nullable = false, updatable = true, insertable = true)
+    private User user;
 
     public long getFile_id() {
         return file_id;
@@ -64,11 +70,27 @@ public class File implements Serializable {
         this.description = description;
     }
 
-    public String getLocation() {
+    public String getPath() {
         return path;
     }
 
-    public void setLocation(String path) {
+    public void setPath(String path) {
         this.path = path;
+    }
+
+    public Date getDate_added() {
+        return date_added;
+    }
+
+    public void setDate_added(Date date_added) {
+        this.date_added = date_added;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -13,7 +13,8 @@ create table users (
   first_name varchar2(30),
   last_name varchar2(30),
   website varchar2(50),
-  description varchar2(100)
+  description varchar2(100),
+  status integer
 );
 
 create table contests (
@@ -35,7 +36,8 @@ create table files (
   type varchar2(20),
   visible varchar2(20),
   description varchar2(200),
-  path varchar(50)
+  path varchar(200),
+  date_added date
 );
 
 create table voters (

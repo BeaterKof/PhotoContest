@@ -463,12 +463,10 @@ nav a:hover{
     font-style: italic;
 }
 
-#signout-link {
-
-}
-
 #content-wrapper-user-edit {
     margin: 0 auto;
+    min-width: 900px;
+    max-width: 1666px;
 }
 
 #account-edit-buttons {
@@ -484,3 +482,24 @@ nav a:hover{
     visibility: hidden;
     margin: 0 auto;
 }
+
+#accountEditError {
+    height: 50px;
+    width: 400px;
+    position: inherit;
+    display: none;
+    visibility: hidden;
+    margin: 0 auto;
+}
+
+#thumbnail-image {
+    height: 200px;
+    width: 200px;
+    display: none;
+}
+
+#fileInputForm {
+    display: none;
+    margin-top: 8px;
+}
+
