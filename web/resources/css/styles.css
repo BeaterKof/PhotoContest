@@ -291,7 +291,9 @@ nav a:hover{
 
 .image-options h4{
     color: white;
+    /*
     padding-top: 17px;
+    */
     padding-left: 5px;
     float: left;
 }
@@ -502,4 +504,3 @@ nav a:hover{
     display: none;
     margin-top: 8px;
 }
-
