@@ -1,5 +1,9 @@
 package com.photocontest.services;
 
+import com.photocontest.model.Voter;
+
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -9,5 +13,5 @@ package com.photocontest.services;
  */
 public interface VoterService {
 
-    //List<Integer> getIpListByFileId();
+    void addVoter(Voter voter);
 }

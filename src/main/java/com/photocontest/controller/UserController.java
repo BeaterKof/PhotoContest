@@ -47,6 +47,9 @@ public class UserController implements ServletContextAware{
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     private ServletContext servletContext;
 
     @Override
@@ -121,7 +124,7 @@ public class UserController implements ServletContextAware{
             logger.error(e.getMessage());
         }
 
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
         if(!passwordEncoder.matches(password,user.getPassword())){
             modelAndView = new ModelAndView("/guest/home");
             String errorMessage = "Password does not match.";
@@ -222,7 +225,6 @@ public class UserController implements ServletContextAware{
                                           @ModelAttribute("user") User user){
 
         ModelAndView modelAndView = new ModelAndView("/user/editUser");
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         if(oldPass != newPass){
             if(passwordEncoder.matches(oldPass,user.getPassword())){
@@ -251,7 +253,7 @@ public class UserController implements ServletContextAware{
     }
 
     @RequestMapping(value = "/user/uploadFile")
-    public ModelAndView uploadFile(@Valid @ModelAttribute("file") File uploadedFile,
+    public ModelAndView uploadFile(@ModelAttribute("file") File uploadedFile,
                                    @ModelAttribute("user") User user,
                                    MultipartFile image){
 

@@ -4,8 +4,11 @@ import com.photocontest.dao.AdminDAO;
 import com.photocontest.dao.impl.AdminDAOImpl;
 import com.photocontest.exceptions.AdminNotFoundException;
 import com.photocontest.exceptions.EmailExistsException;
+import com.photocontest.exceptions.EmailNotFoundException;
 import com.photocontest.model.Admin;
+import com.photocontest.model.User;
 import com.photocontest.services.AdminService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.authentication.PasswordEncoderParser;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * To change this template use File | Settings | File Templates.
  */
 public class AdminServiceImpl implements AdminService {
+    static final Logger logger = Logger.getLogger(AdminServiceImpl.class);
 
     @Autowired
     private AdminDAO adminDAO;
@@ -40,7 +44,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Admin createAdmin(Admin admin) throws EmailExistsException {
-        if(checkAvailable(admin.getEmail())){
+        if(!checkAvailable(admin.getEmail())){
             throw new EmailExistsException(admin.getEmail());
         }
 
@@ -48,7 +52,7 @@ public class AdminServiceImpl implements AdminService {
             admin.setPassword(passwordEncoder.encode(admin.getPassword()));
             adminDAO.save(admin);
         } catch(Exception e) {
-            //send message to view
+            logger.error(e.getMessage());
         }
 
         return admin;
@@ -64,7 +68,7 @@ public class AdminServiceImpl implements AdminService {
             admin.setPassword(passwordEncoder.encode(admin.getPassword()));
             adminDAO.update(admin);
         } catch(Exception e){
-            //send msg to view
+            logger.error(e.getMessage());
         }
     }
 
@@ -77,9 +81,17 @@ public class AdminServiceImpl implements AdminService {
         try{
             adminDAO.delete(admin);
         } catch(Exception e){
-            //send msg to view
+            logger.error(e.getMessage());
         }
     }
 
+    @Override
+    public Admin getAdminByEmail(String email) throws EmailNotFoundException {
+        final Admin admin = adminDAO.getAdminByEmail(email);
 
+        if(admin == null){
+            throw new EmailNotFoundException(email);
+        }
+        return admin;
+    }
 }

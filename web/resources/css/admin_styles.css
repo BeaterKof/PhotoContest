@@ -1,0 +1,72 @@
+/*
+author: Aioanei Alexandru Andrei
+*/
+
+*{
+	/* Universal reset: */
+	margin:0;
+	padding:0;
+}
+
+header,footer,
+article,section,
+hgroup,nav,
+figure{
+	/* Giving a display value to the HTML5 rendered elements: */
+	display:block;
+}
+
+body{
+	/* Setting the default text color, size, page background and a font stack: */
+	background: url("../images/gray-squares.png");
+}
+
+a {
+	color: black; 		
+}
+
+#admin_content {
+	margin: 0 auto;
+	max-width: 1100px;
+}
+
+.menu_button {
+	width: 280px;
+}
+
+#user_mng {
+	display: none;
+	visibility: hidden;
+	padding-top: 20px;
+}
+
+#admin_mng {
+	display: none;
+	visibility: hidden;
+	padding-top: 20px;
+}
+
+#contest_mng {
+	display: none;
+	visibility: hidden;
+	padding-top: 20px;
+}
+
+#reports_mng {
+	display: none;
+	visibility: hidden;
+	padding-top: 20px;
+}
+
+#nav_buttons {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#add_button {
+	text-align: left !important;
+}
+
+.my_container{
+	max-width: 600px; 
+}

@@ -1,5 +1,8 @@
 package com.photocontest.utils;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -9,9 +12,15 @@ package com.photocontest.utils;
  */
 
 public class LoginBean {
+    private static final String EMAIL_PATTERN =
+            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     private String email;
+
+    @Size(min = 6, max = 60)
     private String password;
 
+    @Pattern(regexp = EMAIL_PATTERN)
     public String getEmail() {
         return email;
     }

@@ -34,7 +34,6 @@ create table files (
   contest_id integer,
   name varchar2(30),
   type varchar2(20),
-  visible varchar2(20),
   description varchar2(200),
   path varchar(200),
   date_added date
@@ -49,5 +48,7 @@ create table voters (
 create table reports (
   report_id integer,
   admin_id integer,
-  file_id integer
+  file_id integer,
+  reporter_id integer,
+  message varchar2(100)
 );

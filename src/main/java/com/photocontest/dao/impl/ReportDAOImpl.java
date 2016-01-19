@@ -1,22 +1,24 @@
 package com.photocontest.dao.impl;
 
 import com.photocontest.dao.ContestDAO;
+import com.photocontest.dao.ReportDAO;
 import com.photocontest.dao.generic.GenericDAOImpl;
 import com.photocontest.model.Contest;
+import com.photocontest.model.Report;
 
 import javax.persistence.Query;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
- * Date: 10/4/15
- * Time: 9:12 PM
+ * Date: 1/19/16
+ * Time: 2:27 AM
  * To change this template use File | Settings | File Templates.
  */
-public class ContestDAOImpl extends GenericDAOImpl<Contest, Integer> implements ContestDAO {
+public class ReportDAOImpl extends GenericDAOImpl<Report, Integer> implements ReportDAO {
 
-    public ContestDAOImpl(){
-        super(Contest.class);
+    public ReportDAOImpl(){
+        super(Report.class);
     }
 
     @Override

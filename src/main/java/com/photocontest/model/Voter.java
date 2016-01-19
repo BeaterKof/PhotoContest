@@ -19,5 +19,5 @@ public class Voter implements Serializable {
     @Column(name = "voter_id")
     private long voter_id;
 
-    private int ip_address;
+    private long ip_address;
 }

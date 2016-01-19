@@ -1,16 +1,17 @@
 package com.photocontest.dao;
 
 import com.photocontest.dao.generic.GenericDAO;
-import com.photocontest.model.Contest;
+import com.photocontest.model.File;
+import com.photocontest.model.Report;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
- * Date: 10/4/15
- * Time: 9:10 PM
+ * Date: 1/19/16
+ * Time: 2:27 AM
  * To change this template use File | Settings | File Templates.
  */
-public interface ContestDAO extends GenericDAO<Contest, Integer> {
+public interface ReportDAO extends GenericDAO<Report, Integer> {
 
     boolean exists(long id);
 }

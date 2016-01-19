@@ -41,7 +41,7 @@ public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO<T,
     @Override
     public T save(T entity){
         this.entityManager.persist(entity);
-    //    logger.info("Entity saved!");
+        logger.info("Entity saved!");
         return entity;
     }
 
@@ -55,7 +55,7 @@ public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO<T,
     @Override
     public void delete(T entity){
         entity = this.entityManager.merge(entity);
-    //    logger.info("Entity deleted");
+        logger.info("Entity deleted");
         this.entityManager.remove(entity);
     }
 

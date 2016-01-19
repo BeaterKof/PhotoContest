@@ -31,21 +31,42 @@
     <bean id="userDAO" class="com.photocontest.dao.impl.UserDAOImpl" />
     <bean id="adminDAO" class="com.photocontest.dao.impl.AdminDAOImpl" />
     <bean id="fileDAO" class="com.photocontest.dao.impl.FileDAOImpl" />
+    <bean id="contestDAO" class="com.photocontest.dao.impl.ContestDAOImpl" />
+    <bean id="reportDAO" class="com.photocontest.dao.impl.ReportDAOImpl" />
+    <bean id="voterDAO" class="com.photocontest.dao.impl.VoterDAOImpl" />
 
 
     <!-- Services declarations -->
     <bean id="userService" class="com.photocontest.services.impl.UserServiceImpl">
         <property name="userDAO" ref="userDAO"/>
-        <property name="passwordEncoder" ref="passwordEncoder"/>
     </bean>
 
     <bean id="adminService" class="com.photocontest.services.impl.AdminServiceImpl" >
         <property name="adminDAO" ref="adminDAO"/>
     </bean>
 
+    <bean id="fileService" class="com.photocontest.services.impl.FileServiceImpl" >
+        <property name="fileDAO" ref="fileDAO" />
+    </bean>
+
+    <bean id="contestService" class="com.photocontest.services.impl.ContestServiceImpl" >
+        <property name="contestDAO" ref="contestDAO" />
+    </bean>
+
+    <bean id="repoortService" class="com.photocontest.services.impl.VoterServiceImpl" >
+        <property name="reportDAO" ref="reportDAO" />
+    </bean>
+
+    <bean id="voterService" class="com.photocontest.services.impl.ReportServiceImpl" >
+        <property name="voterDAO" ref="voterDAO" />
+    </bean>
+
     <!-- File upload - MultiPartResolver -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="500000" />
     </bean>
+
+    <!-- On Load Bean-->
+    <bean name="onLoadBean" init-method="load" class="com.photocontest.utils.OnApplicationLoadBean" lazy-init="false" />
 
 </beans>

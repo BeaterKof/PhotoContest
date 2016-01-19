@@ -1,5 +1,8 @@
 package com.photocontest.services;
 
+import com.photocontest.exceptions.ContestNotFoundException;
+import com.photocontest.model.Contest;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -9,5 +12,8 @@ package com.photocontest.services;
  */
 public interface ContestService {
 
-    //List<Contest> getContestList();
+    boolean exists(Contest contest);
+    Contest createContest(Contest contest);
+    void updateContest(Contest contest) throws ContestNotFoundException;
+    void deleteContest(Contest contest) throws ContestNotFoundException;
 }

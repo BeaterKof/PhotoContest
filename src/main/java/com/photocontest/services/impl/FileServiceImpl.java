@@ -5,6 +5,7 @@ import com.photocontest.exceptions.EmailExistsException;
 import com.photocontest.model.File;
 import com.photocontest.model.User;
 import com.photocontest.services.FileService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * To change this template use File | Settings | File Templates.
  */
 public class FileServiceImpl implements FileService{
+    static final Logger logger = Logger.getLogger(FileServiceImpl.class);
 
     @Autowired
     private FileDAO fileDAO;
@@ -33,7 +35,7 @@ public class FileServiceImpl implements FileService{
         try {
             fileDAO.save(file);
         } catch(Exception e){
-            //message to view
+            logger.error(e.getMessage());
         }
         return file;
     }
@@ -43,7 +45,7 @@ public class FileServiceImpl implements FileService{
         try {
             fileDAO.update(file);
         } catch(Exception e){
-            //message to view
+            logger.error(e.getMessage());
         }
     }
 
@@ -52,7 +54,7 @@ public class FileServiceImpl implements FileService{
         try {
             fileDAO.delete(file);
         } catch(Exception e){
-            //message to view
+            logger.error(e.getMessage());
         }
     }
 }

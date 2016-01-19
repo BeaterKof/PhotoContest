@@ -9,7 +9,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:general-layout title="Home">
+<t:general-layout title="Photographers">
     <jsp:attribute name="head">
     </jsp:attribute>
 

@@ -12,7 +12,7 @@
 
 <script type="text/javascript" src="<spring:url value='/resources/js/form-script.js'/>"></script>
 
-<t:general-layout title="Home">
+<t:general-layout title="Sign Up">
     <jsp:attribute name="head">
     </jsp:attribute>
 

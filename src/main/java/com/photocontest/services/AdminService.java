@@ -2,7 +2,9 @@ package com.photocontest.services;
 
 import com.photocontest.exceptions.AdminNotFoundException;
 import com.photocontest.exceptions.EmailExistsException;
+import com.photocontest.exceptions.EmailNotFoundException;
 import com.photocontest.model.Admin;
+import com.photocontest.model.User;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,4 +19,5 @@ public interface AdminService {
     Admin createAdmin(Admin admin) throws EmailExistsException;
     void updateAdmin(Admin admin) throws AdminNotFoundException;
     void deleteAdmin(Admin admin) throws AdminNotFoundException;
+    Admin getAdminByEmail(String email) throws EmailNotFoundException;
 }

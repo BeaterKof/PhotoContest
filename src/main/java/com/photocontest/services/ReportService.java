@@ -1,5 +1,12 @@
 package com.photocontest.services;
 
+import com.photocontest.exceptions.FileNotFoundException;
+import com.photocontest.exceptions.ReportNotFoundException;
+import com.photocontest.model.File;
+import com.photocontest.model.Report;
+
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -9,5 +16,6 @@ package com.photocontest.services;
  */
 public interface ReportService {
 
-    //List<String> getReportList();
+    void createReport(Report report);
+    void deleteReport(Report report) throws ReportNotFoundException;
 }

@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService{
         return user;
     }
 
-    //for authentication provider
+    /* For authentication provider */
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         final User user = userDAO.loadByEmail(s);
