@@ -1,11 +1,15 @@
 package com.photocontest.controller;
 
+import com.photocontest.services.ContestService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -18,6 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class GuestLinkNavigation {
     final static Logger logger = Logger.getLogger(GuestLinkNavigation.class);
+
+    @Autowired
+    ContestService contestService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getIndexPage(){
@@ -34,6 +41,14 @@ public class GuestLinkNavigation {
     @RequestMapping(value = "/guest/contests", method = RequestMethod.GET)
     public ModelAndView getContestsPage(){
         ModelAndView model = new ModelAndView("guest/contests");
+        List contestList = null;
+        try {
+            contestList = contestService.getAllContests();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        model.addObject(contestList);
+
         return model;
     }
 

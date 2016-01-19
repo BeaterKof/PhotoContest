@@ -15,7 +15,7 @@ import javax.persistence.Query;
  * Time: 2:27 AM
  * To change this template use File | Settings | File Templates.
  */
-public class ReportDAOImpl extends GenericDAOImpl<Report, Integer> implements ReportDAO {
+public class ReportDAOImpl extends GenericDAOImpl<Report, Long> implements ReportDAO {
 
     public ReportDAOImpl(){
         super(Report.class);

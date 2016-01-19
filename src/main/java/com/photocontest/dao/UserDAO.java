@@ -10,7 +10,7 @@ import com.photocontest.model.User;
  * Time: 8:07 PM
  * To change this template use File | Settings | File Templates.
  */
-public interface UserDAO extends GenericDAO<User, Integer> {
+public interface UserDAO extends GenericDAO<User, Long> {
 
     boolean checkAvailable(String email);
     boolean exists(String email);

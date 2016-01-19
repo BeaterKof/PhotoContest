@@ -8,6 +8,9 @@ import com.photocontest.services.ContestService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -35,9 +38,8 @@ public class ContestServiceImpl implements ContestService {
     }
 
     @Override
-    public Contest createContest(Contest contest) {
+    public void createContest(Contest contest) {
         contestDAO.save(contest);
-        return contest;
     }
 
     @Override
@@ -54,5 +56,16 @@ public class ContestServiceImpl implements ContestService {
             throw new ContestNotFoundException(contest.getName());
         }
         contestDAO.delete(contest);
+    }
+
+    @Override
+    public List<Contest> getAllContests() throws Exception {
+        List<Contest> list = (ArrayList<Contest>)contestDAO.findAll();
+
+        if(list == null){
+            throw new Exception();
+        }
+
+        return list;
     }
 }

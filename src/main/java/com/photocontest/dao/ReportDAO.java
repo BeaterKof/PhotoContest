@@ -11,7 +11,7 @@ import com.photocontest.model.Report;
  * Time: 2:27 AM
  * To change this template use File | Settings | File Templates.
  */
-public interface ReportDAO extends GenericDAO<Report, Integer> {
+public interface ReportDAO extends GenericDAO<Report, Long> {
 
     boolean exists(long id);
 }

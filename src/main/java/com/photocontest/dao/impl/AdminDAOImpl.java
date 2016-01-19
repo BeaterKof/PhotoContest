@@ -16,7 +16,7 @@ import javax.persistence.Query;
  * Time: 8:00 PM
  * To change this template use File | Settings | File Templates.
  */
-public class AdminDAOImpl extends GenericDAOImpl<Admin, Integer> implements AdminDAO {
+public class AdminDAOImpl extends GenericDAOImpl<Admin, Long> implements AdminDAO {
     static final Logger logger = Logger.getLogger(FileDAOImpl.class);
 
     public AdminDAOImpl(){

@@ -10,7 +10,7 @@ import com.photocontest.model.Admin;
  * Time: 1:21 AM
  * To change this template use File | Settings | File Templates.
  */
-public interface AdminDAO extends GenericDAO<Admin, Integer> {
+public interface AdminDAO extends GenericDAO<Admin, Long> {
 
     boolean checkAvailable(String email);
     Admin getAdminByEmail(String email);

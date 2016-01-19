@@ -10,7 +10,7 @@ import com.photocontest.model.File;
  * Time: 9:03 PM
  * To change this template use File | Settings | File Templates.
  */
-public interface FileDAO extends GenericDAO<File, Integer> {
+public interface FileDAO extends GenericDAO<File, Long> {
 
-    File loadByUserId(int id);
+    File loadByUserId(long id);
 }

@@ -11,7 +11,7 @@ import com.photocontest.model.Voter;
  * Time: 2:21 AM
  * To change this template use File | Settings | File Templates.
  */
-public interface VoterDAO extends GenericDAO<Voter, Integer> {
+public interface VoterDAO extends GenericDAO<Voter, Long> {
 
     boolean exists(long id);
 }

@@ -1,8 +1,11 @@
 package com.photocontest.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,16 +22,28 @@ public class File implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "file_id")
     private long file_id;
+
+    @Size(min = 2, max = 30)
     private String name;
+
     private String type;
-    private int visible;
+
+    @Size(max = 100)
     private String description;
+
     private Date date_added;
     private String path;
 
     @ManyToOne
     @JoinColumn(name = "user_id",nullable = false, updatable = true, insertable = true)
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "contest_id",nullable = true, updatable = true, insertable = true)
+    private Contest contest;
+
+    @OneToMany(mappedBy = "file",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    List<Voter> voterList = new ArrayList<Voter>();
 
     public long getFile_id() {
         return file_id;
@@ -44,14 +59,6 @@ public class File implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getVisible() {
-        return visible;
-    }
-
-    public void setVisible(int visible) {
-        this.visible = visible;
     }
 
     public String getType() {
@@ -92,5 +99,13 @@ public class File implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Contest getContest() {
+        return contest;
+    }
+
+    public void setContest(Contest contest) {
+        this.contest = contest;
     }
 }

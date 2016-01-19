@@ -2,6 +2,7 @@ package com.photocontest.services.impl;
 
 import com.photocontest.dao.FileDAO;
 import com.photocontest.exceptions.EmailExistsException;
+import com.photocontest.exceptions.FileNotFoundException;
 import com.photocontest.model.File;
 import com.photocontest.model.User;
 import com.photocontest.services.FileService;
@@ -54,6 +55,16 @@ public class FileServiceImpl implements FileService{
         try {
             fileDAO.delete(file);
         } catch(Exception e){
+            logger.error(e.getMessage());
+        }
+    }
+
+    @Override
+    public void deleteFileById(long id) throws FileNotFoundException {
+        try {
+            File file = fileDAO.findById(id);
+            fileDAO.delete(file);
+        }catch(Exception e){
             logger.error(e.getMessage());
         }
     }

@@ -79,7 +79,7 @@
 
 
             <div id="contest_mng">
-                <a href="/admin/getAdminForm" class="add_button"><button type="button" class="btn btn-primary">Create new contest</button></a>
+                <a href="/admin/getContestForm" class="add_button"><button type="button" class="btn btn-primary">Create new contest</button></a>
                 <table class="table table-striped">
                     <thead>
                     <tr>

@@ -3,6 +3,7 @@ package com.photocontest.controller;
 import com.photocontest.exceptions.EmailExistsException;
 import com.photocontest.exceptions.EmailNotFoundException;
 import com.photocontest.exceptions.UserNotFoundException;
+import com.photocontest.model.Contest;
 import com.photocontest.model.File;
 import com.photocontest.model.User;
 import com.photocontest.services.FileService;
@@ -287,9 +288,10 @@ public class UserController implements ServletContextAware{
             String realName = s[1].substring(1);
 
             uploadedFile.setPath(realName);
-            uploadedFile.setVisible(1);
             uploadedFile.setType(image.getContentType());
             uploadedFile.setDate_added(new Date());
+            Contest contest;
+            //uploadedFile.setContest();
 
         } catch (IOException e) {
             logger.error(e.getMessage());

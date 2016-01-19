@@ -3,6 +3,8 @@ package com.photocontest.model;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,6 +32,7 @@ public class Admin implements Serializable {
 
     @Size(min = 8, max = 50)
     private String email;
+
 
     public long getAdmin_id() {
         return admin_id;
@@ -70,4 +73,5 @@ public class Admin implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }

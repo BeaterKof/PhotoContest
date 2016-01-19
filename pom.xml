@@ -12,6 +12,7 @@
         <spring.version>4.2.4.RELEASE</spring.version>
         <spring.security.version>3.2.5.RELEASE</spring.security.version>
         <hibernate.version>4.3.8.Final</hibernate.version>
+        <aspectj.version>1.8.1</aspectj.version>
     </properties>
 
     <dependencies>
@@ -115,6 +116,19 @@
             <artifactId>spring-security-config</artifactId>
             <version>${spring.security.version}</version>
         </dependency>
+
+        <!-- AspectJ -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

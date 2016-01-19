@@ -48,4 +48,5 @@ public class Report implements Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

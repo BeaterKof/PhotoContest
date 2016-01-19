@@ -13,7 +13,7 @@ import javax.persistence.Query;
  * Time: 9:12 PM
  * To change this template use File | Settings | File Templates.
  */
-public class ContestDAOImpl extends GenericDAOImpl<Contest, Integer> implements ContestDAO {
+public class ContestDAOImpl extends GenericDAOImpl<Contest, Long> implements ContestDAO {
 
     public ContestDAOImpl(){
         super(Contest.class);

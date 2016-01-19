@@ -20,7 +20,6 @@ create table users (
 create table contests (
   contest_id integer,
   admin_id integer,
-  user_id integer,
   name varchar2(50),
   start_date date,
   finish_date date,
@@ -47,7 +46,6 @@ create table voters (
 
 create table reports (
   report_id integer,
-  admin_id integer,
   file_id integer,
   reporter_id integer,
   message varchar2(100)

@@ -10,7 +10,7 @@ import com.photocontest.model.Contest;
  * Time: 9:10 PM
  * To change this template use File | Settings | File Templates.
  */
-public interface ContestDAO extends GenericDAO<Contest, Integer> {
+public interface ContestDAO extends GenericDAO<Contest, Long> {
 
     boolean exists(long id);
 }

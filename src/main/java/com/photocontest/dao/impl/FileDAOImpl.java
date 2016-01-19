@@ -17,7 +17,7 @@ import javax.persistence.Query;
  * Time: 9:03 PM
  * To change this template use File | Settings | File Templates.
  */
-public class FileDAOImpl extends GenericDAOImpl<File, Integer> implements FileDAO {
+public class FileDAOImpl extends GenericDAOImpl<File, Long> implements FileDAO {
     static final Logger logger = Logger.getLogger(FileDAOImpl.class);
 
     public FileDAOImpl(){
@@ -25,7 +25,7 @@ public class FileDAOImpl extends GenericDAOImpl<File, Integer> implements FileDA
     }
 
     @Override
-    public File loadByUserId(int id) {
+    public File loadByUserId(long id) {
         Assert.notNull(id);
 
         File file = null;
@@ -41,4 +41,5 @@ public class FileDAOImpl extends GenericDAOImpl<File, Integer> implements FileDA
         }
         return file;
     }
+
 }

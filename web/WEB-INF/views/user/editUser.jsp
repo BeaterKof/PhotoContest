@@ -165,10 +165,11 @@
                 <div id="content-wrapper" class="wrapper" style="margin-top: 10px;">
                     <c:forEach items="${user.files}" var="file">
                         <div class="image-cell">
-                            <div class="image-name"></div>
                             <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself">
-                            <div class="image-options">
-                                <h4>${file.name}</h4>
+                            <div class="image-options" name="${file.file_id}">
+                                <span class=".picture_name">${file.name}</span>
+                                <a href=""><img class="like" src="/resources/images/green-arrow.ico"></a>
+                                <img class="like removeBtn" src="/resources/images/delete.png">
                             </div>
                         </div>
                     </c:forEach>
@@ -181,5 +182,20 @@
 
     <jsp:attribute name="footer_area">
         <script type="text/javascript" src="<spring:url value='/resources/js/account-script.js'/>"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.removeBtn').click(function(){
+                    var fileId = $(this).parent().attr('name');
+                    $.ajax({
+                        type:'GET',
+                        data: {fileId: fileId},
+                        url:'UserAjaxController',
+                        success: function(result){
+                            $(this).parent().closest('div').fadeOut();
+                        }
+                    });
+                });
+            });
+        </script>
     </jsp:attribute>
 </t:user-general-layout>

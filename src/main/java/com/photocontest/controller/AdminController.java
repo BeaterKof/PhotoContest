@@ -167,6 +167,9 @@ public class AdminController {
         contestService.createContest(contest);
 
         model = new ModelAndView("/admin/home");
+        String errorMessage = "Concurs adaugat cu succes!!";
+        model.addObject(errorMessage);
+
         return model;
     }
 }

@@ -20,4 +20,8 @@ public class Voter implements Serializable {
     private long voter_id;
 
     private long ip_address;
+
+    @ManyToOne
+    @JoinColumn(name = "file_id",nullable = false, updatable = true, insertable = true)
+    private File file;
 }

@@ -3,6 +3,8 @@ package com.photocontest.services;
 import com.photocontest.exceptions.ContestNotFoundException;
 import com.photocontest.model.Contest;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -13,7 +15,8 @@ import com.photocontest.model.Contest;
 public interface ContestService {
 
     boolean exists(Contest contest);
-    Contest createContest(Contest contest);
+    void createContest(Contest contest);
     void updateContest(Contest contest) throws ContestNotFoundException;
     void deleteContest(Contest contest) throws ContestNotFoundException;
+    List<Contest> getAllContests() throws Exception;
 }
