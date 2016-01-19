@@ -21,6 +21,14 @@ public class ContestServiceImpl implements ContestService {
     @Autowired
     private ContestDAO contestDAO;
 
+    public ContestDAO getContestDAO() {
+        return contestDAO;
+    }
+
+    public void setContestDAO(ContestDAO contestDAO) {
+        this.contestDAO = contestDAO;
+    }
+
     @Override
     public boolean exists(Contest contest) {
         return contestDAO.exists(contest.getContest_id());

@@ -17,6 +17,14 @@ public class VoterServiceImpl implements VoterService {
     @Autowired
     private VoterDAO voterDAO;
 
+    public VoterDAO getVoterDAO() {
+        return voterDAO;
+    }
+
+    public void setVoterDAO(VoterDAO voterDAO) {
+        this.voterDAO = voterDAO;
+    }
+
     @Override
     public void addVoter(Voter voter) {
         voterDAO.save(voter);

@@ -18,6 +18,14 @@ public class ReportServiceImpl implements ReportService {
     @Autowired
     private ReportDAO reportDAO;
 
+    public void setReportDAO(ReportDAO reportDAO){
+        this.reportDAO = reportDAO;
+    }
+
+    public ReportDAO getReportDAO() {
+        return reportDAO;
+    }
+
     @Override
     public void createReport(Report report) {
         reportDAO.save(report);
