@@ -10,7 +10,7 @@
 
     <properties>
         <spring.version>4.2.4.RELEASE</spring.version>
-        <spring.security.version>3.2.5.RELEASE</spring.security.version>
+        <spring.security.version>4.0.3.RELEASE</spring.security.version>
         <hibernate.version>4.3.8.Final</hibernate.version>
         <aspectj.version>1.8.1</aspectj.version>
     </properties>
@@ -105,18 +105,6 @@
             <version>1.2</version>
         </dependency>
 
-        <!-- Spring Security -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${spring.security.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${spring.security.version}</version>
-        </dependency>
-
         <!-- AspectJ -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -129,6 +117,17 @@
             <version>${aspectj.version}</version>
         </dependency>
 
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -2,13 +2,11 @@ package com.photocontest.servlets;
 
 import com.photocontest.exceptions.FileNotFoundException;
 import com.photocontest.services.FileService;
+import com.photocontest.services.impl.FileServiceImpl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,17 +31,10 @@ public class UserAjaxController extends HttpServlet {
     private WebApplicationContext springContext;
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        springContext = WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext());
-        final AutowireCapableBeanFactory beanFactory = springContext.getAutowireCapableBeanFactory();
-        beanFactory.autowireBean(this);
-    }
-
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String fileIdString = request.getParameter("fileId");
         long fileId = Long.parseLong(fileIdString);
+        fileService = new FileServiceImpl();
 
         try {
             fileService.deleteFileById(fileId);

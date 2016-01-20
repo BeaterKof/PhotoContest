@@ -79,10 +79,10 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.2" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:3.2.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:3.2.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:3.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.8.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:4.0.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:4.0.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:4.0.3.RELEASE" level="project" />
   </component>
 </module>
 

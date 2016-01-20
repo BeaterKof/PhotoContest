@@ -309,6 +309,10 @@ nav a:hover{
     opacity: 0.5;
 }
 
+.like:hover{
+    opacity: 1;
+}
+
 /* Hyperlink Styles: */
 /* Headings: */
 /* The clearfix hack to clear the floats: */
