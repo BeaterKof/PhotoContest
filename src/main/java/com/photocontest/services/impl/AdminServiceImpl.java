@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.authentication.PasswordEncoderParser;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.transaction.Transactional;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -20,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * Time: 2:39 AM
  * To change this template use File | Settings | File Templates.
  */
+
 public class AdminServiceImpl implements AdminService {
     static final Logger logger = Logger.getLogger(AdminServiceImpl.class);
 

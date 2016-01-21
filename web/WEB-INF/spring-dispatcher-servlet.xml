@@ -12,6 +12,7 @@
     <import resource="datasource-config.xml" />
     <import resource="spring-security-config.xml" />
 
+    <context:annotation-config/>
     <context:component-scan base-package="com.photocontest.controller"/>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

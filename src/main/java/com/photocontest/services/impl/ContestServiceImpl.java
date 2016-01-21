@@ -8,6 +8,7 @@ import com.photocontest.services.ContestService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
  * Time: 1:00 AM
  * To change this template use File | Settings | File Templates.
  */
+
 public class ContestServiceImpl implements ContestService {
     static final Logger logger = Logger.getLogger(ContestServiceImpl.class);
 

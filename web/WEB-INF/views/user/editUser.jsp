@@ -166,15 +166,14 @@
                     <c:forEach items="${user.files}" var="file">
                         <div class="image-cell">
                             <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself">
-                            <div class="image-options" name="${file.file_id}">
+                            <div class="image-options" id="${file.file_id}">
                                 <span class=".picture_name">${file.name}</span>
-                                <a href=""><img class="like" src="/resources/images/green-arrow.ico"></a>
+                                <img class="like" src="/resources/images/green-arrow.ico">
                                 <img class="like removeBtn" src="/resources/images/delete.png">
                             </div>
                         </div>
                     </c:forEach>
                 </div>
-
             </div>
         </div>
     </jsp:attribute>
@@ -185,15 +184,16 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 $('.removeBtn').click(function(){
-                    var fileId = $(this).parent().attr('name');
+                    var fileId = $(this).parent().attr('id');
                     $.ajax({
                         type:'GET',
                         data: {fileId: fileId},
-                        url:'UserAjaxController',
-                        success: function(result){
-                            $(this).parent().closest('div').fadeOut();
+                        url:'userAjaxController/deletePhoto',
+                        success: function(){
+                            $('#' + fileId).closest('.image-cell').fadeOut(700);
                         }
                     });
+                return false;
                 });
             });
         </script>

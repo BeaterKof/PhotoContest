@@ -1,8 +1,5 @@
 package com.photocontest.dao.generic;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-
 import org.apache.log4j.Logger;
 import org.apache.log4j.spi.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,8 +52,8 @@ public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO<T,
     @Override
     public void delete(T entity){
         entity = this.entityManager.merge(entity);
-        logger.info("Entity deleted");
         this.entityManager.remove(entity);
+        logger.info("Entity deleted");
     }
 
     @Override

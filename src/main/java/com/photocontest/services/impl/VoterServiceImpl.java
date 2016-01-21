@@ -5,6 +5,8 @@ import com.photocontest.model.Voter;
 import com.photocontest.services.VoterService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.transaction.Transactional;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Time: 2:19 AM
  * To change this template use File | Settings | File Templates.
  */
+
 public class VoterServiceImpl implements VoterService {
 
     @Autowired

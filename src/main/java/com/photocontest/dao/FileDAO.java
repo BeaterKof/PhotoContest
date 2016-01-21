@@ -12,5 +12,6 @@ import com.photocontest.model.File;
  */
 public interface FileDAO extends GenericDAO<File, Long> {
 
+    boolean exists(long id);
     File loadByUserId(long id);
 }

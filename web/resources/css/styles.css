@@ -311,6 +311,7 @@ nav a:hover{
 
 .like:hover{
     opacity: 1;
+    cursor: pointer;
 }
 
 /* Hyperlink Styles: */
@@ -504,4 +505,5 @@ nav a:hover{
 .picture_name{
     float: left;
     color: red;
+    padding-top: 3px;;
 }

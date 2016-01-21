@@ -1,6 +1,7 @@
 package com.photocontest.services;
 
 import com.photocontest.exceptions.EmailExistsException;
+import com.photocontest.exceptions.FileExistsException;
 import com.photocontest.exceptions.FileNotFoundException;
 import com.photocontest.model.File;
 import com.photocontest.model.User;
@@ -13,7 +14,9 @@ import com.photocontest.model.User;
  * To change this template use File | Settings | File Templates.
  */
 public interface FileService {
-    File createFile(File file);
+    boolean exists(long id);
+    File getFileById(long id) throws FileNotFoundException;;
+    File createFile(File file) throws FileExistsException;
     void updateFile(File file) throws FileNotFoundException;
     void deleteFile(File file) throws FileNotFoundException;
     void deleteFileById(long id) throws FileNotFoundException;

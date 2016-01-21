@@ -5,6 +5,7 @@ import com.photocontest.dao.generic.GenericDAOImpl;
 import com.photocontest.model.File;
 import com.photocontest.model.User;
 import org.apache.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import javax.persistence.NoResultException;
@@ -17,6 +18,7 @@ import javax.persistence.Query;
  * Time: 9:03 PM
  * To change this template use File | Settings | File Templates.
  */
+@Transactional
 public class FileDAOImpl extends GenericDAOImpl<File, Long> implements FileDAO {
     static final Logger logger = Logger.getLogger(FileDAOImpl.class);
 
@@ -40,6 +42,16 @@ public class FileDAOImpl extends GenericDAOImpl<File, Long> implements FileDAO {
             logger.error(e.getMessage());
         }
         return file;
+    }
+
+    @Override
+    public boolean exists(long id) {
+        Query query = this.entityManager.createQuery("select u from " +
+                this.entityClass.getSimpleName() + " u where u.id = :id")
+                .setParameter("id", id);
+
+        int count = query.getResultList().size();
+        return count > 0;
     }
 
 }

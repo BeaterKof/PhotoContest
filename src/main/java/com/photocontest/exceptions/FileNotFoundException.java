@@ -9,7 +9,7 @@ package com.photocontest.exceptions;
  */
 public class FileNotFoundException extends Exception {
 
-    public FileNotFoundException(String filename){
-        super("File with name " + filename + " not found.");
+    public FileNotFoundException(long id){
+        super("File with id " + id + " not found.");
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -24,6 +25,7 @@ import java.util.Collection;
  * Time: 11:26 AM
  * To change this template use File | Settings | File Templates.
  */
+
 public class UserServiceImpl implements UserService{
     static final Logger logger = Logger.getLogger(UserServiceImpl.class);
 

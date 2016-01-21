@@ -257,7 +257,7 @@ public class UserController implements ServletContextAware{
     public ModelAndView uploadFile(@ModelAttribute("file") File uploadedFile,
                                    @ModelAttribute("user") User user,
                                    MultipartFile image){
-
+        ModelAndView model;
         String fileType = "";
         String fileExtension = "";
 
@@ -290,8 +290,6 @@ public class UserController implements ServletContextAware{
             uploadedFile.setPath(realName);
             uploadedFile.setType(image.getContentType());
             uploadedFile.setDate_added(new Date());
-            Contest contest;
-            //uploadedFile.setContest();
 
         } catch (IOException e) {
             logger.error(e.getMessage());
@@ -308,7 +306,9 @@ public class UserController implements ServletContextAware{
             logger.error(e.getMessage());
         }
 
-        return new ModelAndView("/user/editUser");
+        model = new ModelAndView("/user/editUser");
+        model.addObject("user",user);
+        return model;
     }
 
 }

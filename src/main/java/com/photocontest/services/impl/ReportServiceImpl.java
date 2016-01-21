@@ -6,6 +6,8 @@ import com.photocontest.model.Report;
 import com.photocontest.services.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.transaction.Transactional;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Time: 2:29 AM
  * To change this template use File | Settings | File Templates.
  */
+
 public class ReportServiceImpl implements ReportService {
 
     @Autowired
