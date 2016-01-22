@@ -1,11 +1,16 @@
 package com.photocontest.controller;
 
+import com.photocontest.model.Contest;
+import com.photocontest.services.ContestService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,6 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 @SessionAttributes("user")
 public class UserLinkNavigation {
     final static Logger logger = Logger.getLogger(GuestLinkNavigation.class);
+
+    @Autowired
+    private ContestService contestService;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView getHomePage(){
@@ -47,6 +55,12 @@ public class UserLinkNavigation {
     @RequestMapping(value = "/userAccount", method = RequestMethod.GET)
     public ModelAndView userEdit(){
         ModelAndView model = new ModelAndView("/user/editUser");
+        List<Contest> contestList = contestService.getRunningContests();
+
+        if(contestList != null) {
+            model.addObject("contestList", contestList);
+        }
+
         return model;
     }
 

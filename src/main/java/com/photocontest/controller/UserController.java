@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Date;
@@ -150,9 +151,14 @@ public class UserController implements ServletContextAware{
     }
 
     @RequestMapping(value = "/user/userSignOut")
-    public ModelAndView userSignOut(SessionStatus sessionStatus){
+    public ModelAndView userSignOut(@ModelAttribute User user, SessionStatus sessionStatus){
         ModelAndView modelAndView = new ModelAndView("/guest/home");
 
+        try {
+            userService.updateUser(user);
+        } catch (UserNotFoundException e) {
+            logger.error(e.getMessage());
+        }
         SecurityContextHolder.getContext().setAuthentication(null);
         sessionStatus.setComplete();
 
@@ -160,8 +166,8 @@ public class UserController implements ServletContextAware{
     }
 
     @RequestMapping(value = "/deleteUser")
-    public ModelAndView deleteUser(@ModelAttribute("user") User user, SessionStatus sessionStatus){
-
+    public ModelAndView deleteUser(HttpSession session,SessionStatus sessionStatus){
+        User user = (User) session.getAttribute("user");
         try {
             userService.deleteUser(user);
         } catch (UserNotFoundException e) {
@@ -181,8 +187,6 @@ public class UserController implements ServletContextAware{
                                           @ModelAttribute("user") User user){
 
         ModelAndView modelAndView = new ModelAndView("/user/editUser");
-
-
 
         if(newFirstName.length() < 2 || newFirstName.length() > 30 ||
            newLastName.length() < 2 || newLastName.length() > 30 ||

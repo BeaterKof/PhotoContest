@@ -3,6 +3,9 @@ package com.photocontest.dao;
 import com.photocontest.dao.generic.GenericDAO;
 import com.photocontest.model.Contest;
 
+import java.sql.Date;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -13,4 +16,5 @@ import com.photocontest.model.Contest;
 public interface ContestDAO extends GenericDAO<Contest, Long> {
 
     boolean exists(long id);
+    List<Contest> findRunningContests(Date currentDate);
 }

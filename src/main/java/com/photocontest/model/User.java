@@ -45,7 +45,7 @@ public class User implements Serializable {
 
     private int status;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<File> files = new ArrayList<File>();
 
     public long getUser_id() {

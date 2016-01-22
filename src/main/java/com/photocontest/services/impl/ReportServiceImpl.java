@@ -21,12 +21,12 @@ public class ReportServiceImpl implements ReportService {
     @Autowired
     private ReportDAO reportDAO;
 
-    public void setReportDAO(ReportDAO reportDAO){
-        this.reportDAO = reportDAO;
-    }
-
     public ReportDAO getReportDAO() {
         return reportDAO;
+    }
+
+    public void setReportDAO(ReportDAO reportDAO) {
+        this.reportDAO = reportDAO;
     }
 
     @Override

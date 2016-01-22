@@ -1,11 +1,14 @@
 package com.photocontest.servlets;
 
+import com.photocontest.exceptions.ContestNotFoundException;
 import com.photocontest.exceptions.FileNotFoundException;
 import com.photocontest.exceptions.UserNotFoundException;
+import com.photocontest.model.Contest;
 import com.photocontest.model.File;
 import com.photocontest.model.User;
 import com.photocontest.services.ContestService;
 import com.photocontest.services.FileService;
+import com.photocontest.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
@@ -20,23 +23,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
  * Date: 1/21/16
- * Time: 3:07 AM
+ * Time: 2:25 PM
  * To change this template use File | Settings | File Templates.
  */
-@WebServlet("/user/userAjaxController/to/*")
-public class UserAjaxControllerToContest extends HttpServlet {
-    static final Logger logger = Logger.getLogger(UserAjaxControllerDelete.class);
+@WebServlet("/user/userAjax/enterContest/*")
+public class UserAjaxEnterContest extends HttpServlet {
+    static final Logger logger = Logger.getLogger(UserAjaxDeleteFile.class);
 
     @Autowired
     private ContestService contestService;
 
     @Autowired
     private FileService fileService;
+
+    @Autowired
+    private UserService userService;
 
     private WebApplicationContext springContext;
 
@@ -51,18 +58,29 @@ public class UserAjaxControllerToContest extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String fileIdString = request.getParameter("fileId");
+        String contestIdString = request.getParameter("contestId");
         HttpSession session = request.getSession(true);
-        long fileId = Long.parseLong(fileIdString);
-        File file = null;
+        long contestId = Long.parseLong(contestIdString);
+        File file = (File)session.getAttribute("fileToContest");
+        User user = (User)session.getAttribute("user");
+        Contest contest = null;
 
         try {
-            file = fileService.getFileById(fileId);
-        } catch (FileNotFoundException e) {
+            contest = contestService.getContestById(contestId);
+            file.setContest(contest);
+            file.setDate_added(new Date());
+            fileService.updateFile(file);
+            contest.getFileList().add(file);
+            contestService.updateContest(contest);
+            userService.updateUser(user);
+        } catch (ContestNotFoundException e) {
+            logger.error(e.getMessage());
+        }catch (FileNotFoundException e) {
+            logger.error(e.getMessage());
+        }catch (UserNotFoundException e) {
             logger.error(e.getMessage());
         }
 
-        session.setAttribute("uploadFile",file);
     }
 
     @Override

@@ -19,4 +19,7 @@ public interface ContestService {
     void updateContest(Contest contest) throws ContestNotFoundException;
     void deleteContest(Contest contest) throws ContestNotFoundException;
     List<Contest> getAllContests() throws Exception;
+    List<Contest> getRunningContests();
+    Contest getContestById(long id) throws ContestNotFoundException;
+    Contest getLastContest() throws ContestNotFoundException;
 }

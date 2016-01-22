@@ -1,5 +1,8 @@
 package com.photocontest.controller;
 
+import com.photocontest.exceptions.ContestNotFoundException;
+import com.photocontest.model.Contest;
+import com.photocontest.model.File;
 import com.photocontest.services.ContestService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +32,64 @@ public class GuestLinkNavigation {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getIndexPage(){
         ModelAndView model = new ModelAndView("guest/home");
+        Contest lastContest = null;
+
+        try {
+            lastContest = contestService.getLastContest();
+        } catch (ContestNotFoundException e) {
+            logger.error(e.getMessage());
+        }
+
+        model.addObject("lastContest", lastContest);
         return model;
     }
 
     @RequestMapping(value = "/guest/home", method = RequestMethod.GET)
-    public ModelAndView getHomePage(){
+         public ModelAndView getHomePage(){
         ModelAndView model = new ModelAndView("guest/home");
+        Contest lastContest = null;
+        String secondMenu = "allPhotos";
+
+        try {
+            lastContest = contestService.getLastContest();
+        } catch (ContestNotFoundException e) {
+            logger.error(e.getMessage());
+        }
+
+        model.addObject("lastContest", lastContest);
+        return model;
+    }
+
+    @RequestMapping(value = "/guest/homeShowTop", method = RequestMethod.GET)
+    public ModelAndView getHomePageTop(){
+        ModelAndView model = new ModelAndView("guest/home");
+        Contest lastContest = null;
+        String secondMenu = "allPhotos";
+
+        try {
+            lastContest = contestService.getLastContest();
+        } catch (ContestNotFoundException e) {
+            logger.error(e.getMessage());
+        }
+
+
+        model.addObject("lastContest", lastContest);
+        return model;
+    }
+
+    @RequestMapping(value = "/guest/homeShowNewest", method = RequestMethod.GET)
+    public ModelAndView getHomePageNewest(){
+        ModelAndView model = new ModelAndView("guest/home");
+        Contest lastContest = null;
+        String secondMenu = "allPhotos";
+
+        try {
+            lastContest = contestService.getLastContest();
+        } catch (ContestNotFoundException e) {
+            logger.error(e.getMessage());
+        }
+
+        model.addObject("lastContest", lastContest);
         return model;
     }
 

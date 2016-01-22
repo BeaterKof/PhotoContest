@@ -66,6 +66,7 @@ public class FileServiceImpl implements FileService{
         }
         try {
             fileDAO.delete(file);
+            fileDAO.flush();
         } catch(Exception e){
             logger.error(e.getMessage());
         }
@@ -102,4 +103,6 @@ public class FileServiceImpl implements FileService{
         }
         return file;
     }
+
+
 }

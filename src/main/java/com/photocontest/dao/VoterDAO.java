@@ -13,5 +13,5 @@ import com.photocontest.model.Voter;
  */
 public interface VoterDAO extends GenericDAO<Voter, Long> {
 
-    boolean exists(long id);
+    boolean exists(String ip);
 }

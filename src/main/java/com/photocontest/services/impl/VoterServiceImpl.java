@@ -1,6 +1,7 @@
 package com.photocontest.services.impl;
 
 import com.photocontest.dao.VoterDAO;
+import com.photocontest.exceptions.VoterExistsException;
 import com.photocontest.model.Voter;
 import com.photocontest.services.VoterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,15 @@ public class VoterServiceImpl implements VoterService {
     }
 
     @Override
-    public void addVoter(Voter voter) {
+    public void createVoter(Voter voter) throws VoterExistsException {
+        if(voterDAO.exists(voter.getIp_address())){
+            throw new VoterExistsException(voter.getIp_address());
+        }
         voterDAO.save(voter);
+    }
+
+    @Override
+    public boolean exists(String ip) {
+        return voterDAO.exists(ip);
     }
 }

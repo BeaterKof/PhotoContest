@@ -6,6 +6,8 @@ import com.photocontest.model.Contest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
+import java.sql.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,6 +31,14 @@ public class ContestDAOImpl extends GenericDAOImpl<Contest, Long> implements Con
 
         int count = query.getResultList().size();
         return count > 0;
+    }
+
+    @Override
+    public List<Contest> findRunningContests(Date currentDate) {
+        return this.entityManager.createQuery("select u from " +
+                this.entityClass.getSimpleName() + " u where u.finish_date > :currentDate")
+                .setParameter("currentDate",currentDate)
+                .getResultList();
     }
 
 }

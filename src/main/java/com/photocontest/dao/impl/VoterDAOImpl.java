@@ -23,10 +23,10 @@ public class VoterDAOImpl extends GenericDAOImpl<Voter, Long> implements VoterDA
     }
 
     @Override
-    public boolean exists(long id) {
+    public boolean exists(String ip) {
         Query query = this.entityManager.createQuery("select u from " +
-                this.entityClass.getSimpleName() + " u where u.id = :id")
-                .setParameter("id", id);
+                this.entityClass.getSimpleName() + " u where u.ip_address = :ip")
+                .setParameter("ip", ip);
 
         int count = query.getResultList().size();
         return count > 0;

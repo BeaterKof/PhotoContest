@@ -28,9 +28,9 @@ import java.io.IOException;
  * Time: 6:48 PM
  * To change this template use File | Settings | File Templates.
  */
-@WebServlet("/user/userAjaxController/deletePhoto/*")
-public class UserAjaxControllerDelete extends HttpServlet {
-    static final Logger logger = Logger.getLogger(UserAjaxControllerDelete.class);
+@WebServlet("/user/userAjax/deletePhoto/*")
+public class UserAjaxDeleteFile extends HttpServlet {
+    static final Logger logger = Logger.getLogger(UserAjaxDeleteFile.class);
 
     @Autowired
     private FileService fileService;
@@ -72,6 +72,7 @@ public class UserAjaxControllerDelete extends HttpServlet {
 
         try {
             userService.updateUser(user);
+            fileService.updateFile(file);
             fileService.deleteFile(file);
         } catch (UserNotFoundException e) {
             logger.error(e.getMessage());

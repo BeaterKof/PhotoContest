@@ -2,29 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c54c346-3682-490f-b528-e0923964bec2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/exceptions/FileExistsException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxControllerDelete.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxControllerToContest.java" />
-      <change type="DELETED" beforePath="C:\Users\Andrei\IdeaProjects\PhotoContest\src\main\java\com\photocontest\servlets\UserAjaxController.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/AdminDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/AdminDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/AdminServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/AdminServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/utils/ContestComparator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/servlets/LikesServlet.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxEnterContest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/exceptions/VoterExistsException.java" />
+      <change type="MOVED" beforePath="C:\Users\Andrei\IdeaProjects\PhotoContest\src\main\java\com\photocontest\servlets\UserAjaxControllerDelete.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxDeleteFile.java" />
+      <change type="MOVED" beforePath="C:\Users\Andrei\IdeaProjects\PhotoContest\src\main\java\com\photocontest\servlets\UserAjaxControllerToContest.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxLoadFileId.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/ContestDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/ContestDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/ContestDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/ContestDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/services/ContestService.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/services/ContestService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/ContestServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/ContestServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/FileDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/FileDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/FileDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/FileDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/exceptions/FileNotFoundException.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/exceptions/FileNotFoundException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/services/FileService.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/services/FileService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/model/File.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/model/File.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/FileServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/FileServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/generic/GenericDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/generic/GenericDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/ReportDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/ReportDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/controller/GuestLinkNavigation.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/controller/GuestLinkNavigation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/ReportServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/ReportServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/model/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/UserDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/UserDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/UserServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/controller/UserLinkNavigation.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/controller/UserLinkNavigation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/model/Voter.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/model/Voter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/VoterDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/VoterDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/VoterDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/VoterDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/services/VoterService.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/services/VoterService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/VoterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/VoterServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/applicationContext.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/admin/createContest.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/admin/createContest.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/user/editUser.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/user/editUser.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/tags/general-layout.tag" afterPath="$PROJECT_DIR$/web/WEB-INF/tags/general-layout.tag" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/guest/home.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/guest/home.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/spring-dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/spring-dispatcher-servlet.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/resources/css/styles.css" afterPath="$PROJECT_DIR$/web/resources/css/styles.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -33,24 +36,24 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/pom.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453250325431" ignored="false" />
     <file path="/web.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453298407769" ignored="false" />
-    <file path="/spring-dispatcher-servlet.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453325528602" ignored="false" />
+    <file path="/spring-dispatcher-servlet.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453410448943" ignored="false" />
     <file path="/index.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450126218889" ignored="false" />
     <file path="/WelcomeController.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450128290656" ignored="false" />
-    <file path="/home.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453165856853" ignored="false" />
-    <file path="/general-layout.tag" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452778443403" ignored="false" />
-    <file path="/styles.css" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453334908510" ignored="false" />
-    <file path="/Dummy.txt" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453365282017" ignored="false" />
+    <file path="/home.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453428191813" ignored="false" />
+    <file path="/general-layout.tag" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453423950741" ignored="false" />
+    <file path="/styles.css" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453427538703" ignored="false" />
+    <file path="/Dummy.txt" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453455974972" ignored="false" />
     <file path="/AdminDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453335273604" ignored="false" />
     <file path="/AdminDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453237000642" ignored="false" />
-    <file path="/ContestDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453161061197" ignored="false" />
+    <file path="/ContestDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453403083186" ignored="false" />
     <file path="/FileDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453336201638" ignored="false" />
     <file path="/persistence.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452172214032" ignored="false" />
     <file path="/Admin.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453191788875" ignored="false" />
     <file path="/datasource-config.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450762670980" ignored="false" />
     <file path="/UserDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452635805413" ignored="false" />
     <file path="/UserDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452635566583" ignored="false" />
-    <file path="/fragment.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453338624640" ignored="false" />
-    <file path="/User.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453255240147" ignored="false" />
+    <file path="/fragment.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453379237439" ignored="false" />
+    <file path="/User.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453391800583" ignored="false" />
     <file path="/database.sql" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453193814151" ignored="false" />
     <file path="/GenericDao.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450774624615" ignored="false" />
     <file path="/GenericDaoImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1450775483333" ignored="false" />
@@ -69,7 +72,7 @@
     <file path="/PhotoContest" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451827144635" ignored="false" />
     <file path="/GenericDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1451827445074" ignored="false" />
     <file path="/user-general-layout.tag" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453138157162" ignored="false" />
-    <file path="/UserController.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453326673363" ignored="false" />
+    <file path="/UserController.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453401083718" ignored="false" />
     <file path="/LoginBean.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453138446047" ignored="false" />
     <file path="/UserNotFoundException.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452249357985" ignored="false" />
     <file path="/spring-security-config.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453248961910" ignored="false" />
@@ -81,20 +84,20 @@
     <file path="/Report.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453191924350" ignored="false" />
     <file path="/voter.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452128156178" ignored="false" />
     <file path="/EmailNotFoundException.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452178172322" ignored="false" />
-    <file path="/ContestService.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453196705557" ignored="false" />
+    <file path="/ContestService.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453402967483" ignored="false" />
     <file path="/FileService.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453335900617" ignored="false" />
     <file path="/File.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453205639042" ignored="false" />
-    <file path="/VoterService.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453164023479" ignored="false" />
+    <file path="/VoterService.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453413058373" ignored="false" />
     <file path="/ReportService.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453164033688" ignored="false" />
-    <file path="/FileServiceImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453336615075" ignored="false" />
+    <file path="/FileServiceImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453401678850" ignored="false" />
     <file path="/FileDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453336212971" ignored="false" />
     <file path="/FileNotFoundException.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453292066280" ignored="false" />
     <file path="/AdminNotFoundException.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452249948300" ignored="false" />
-    <file path="/ContestDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453161028994" ignored="false" />
+    <file path="/ContestDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453405610834" ignored="false" />
     <file path="/allTimeBest.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453135063758" ignored="false" />
     <file path="/contests.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453198126185" ignored="false" />
     <file path="/user-messages.properties" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452427481951" ignored="false" />
-    <file path="/editUser.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453328259992" ignored="false" />
+    <file path="/editUser.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453399047315" ignored="false" />
     <file path="$PROJECT_DIR$/../FirstSpringMVCProject/web/WEB-INF/HelloPage.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452511022311" ignored="false" />
     <file path="/HelloPage.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452509845163" ignored="false" />
     <file path="$PROJECT_DIR$/../FirstSpringMVCProject/web/WEB-INF/tags/general-layout.tag" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452511827300" ignored="false" />
@@ -105,8 +108,8 @@
     <file path="$PROJECT_DIR$/../FirstSpringMVCProject/pom.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452512018118" ignored="false" />
     <file path="/UserInfoTest.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452628221324" ignored="false" />
     <file path="/account-script.js" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452629570914" ignored="false" />
-    <file path="/GuestLinkNavigation.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453196786288" ignored="false" />
-    <file path="/UserLinkNavigation.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452640492366" ignored="false" />
+    <file path="/GuestLinkNavigation.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453423981201" ignored="false" />
+    <file path="/UserLinkNavigation.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453376153804" ignored="false" />
     <file path="/UniqueFileNameGenerator.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452739035330" ignored="false" />
     <file path="/UniqueValueGenerators.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452738958121" ignored="false" />
     <file path="$PROJECT_DIR$/../BasicPractice/WorkModule/src/main/java/Test.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1452738746272" ignored="false" />
@@ -118,24 +121,29 @@
     <file path="/photographers.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453135093530" ignored="false" />
     <file path="/admin-layout.tag" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453143815824" ignored="false" />
     <file path="/createAdmin.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453156154970" ignored="false" />
-    <file path="/createContest.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453194847910" ignored="false" />
+    <file path="/createContest.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453378486234" ignored="false" />
     <file path="/login.jsp" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453144629447" ignored="false" />
     <file path="/AdminController.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453194324673" ignored="false" />
-    <file path="/Voter.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453193475239" ignored="false" />
+    <file path="/Voter.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453412466888" ignored="false" />
     <file path="/OnApplicationLoadBean.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453148421109" ignored="false" />
-    <file path="/ContestServiceImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453196716482" ignored="false" />
+    <file path="/ContestServiceImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453406272016" ignored="false" />
     <file path="/ContestNotFoundException.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453158246729" ignored="false" />
-    <file path="/VoterServiceImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453164744834" ignored="false" />
-    <file path="/VoterDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453163198049" ignored="false" />
+    <file path="/VoterServiceImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453413318670" ignored="false" />
+    <file path="/VoterDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453413004066" ignored="false" />
     <file path="/ReportDAOImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453164146367" ignored="false" />
     <file path="/ReportServiceImpl.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453165497448" ignored="false" />
     <file path="/ReportNotFoundException.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453163662411" ignored="false" />
     <file path="/ReportDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453164173681" ignored="false" />
-    <file path="/VoterDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453164213984" ignored="false" />
+    <file path="/VoterDAO.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453412954141" ignored="false" />
     <file path="/UserAjaxController.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453336757719" ignored="false" />
     <file path="/applicationContext.xml" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453325755868" ignored="false" />
     <file path="/FileExistsException.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453335798336" ignored="false" />
-    <file path="/UserAjaxControllerToContest.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453340210902" ignored="false" />
+    <file path="/UserAjaxControllerToContest.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453372853946" ignored="false" />
+    <file path="/UserAjaxEnterContest.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453423180675" ignored="false" />
+    <file path="/UserAjaxDeleteFile.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453391253558" ignored="false" />
+    <file path="/ContestComparator.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453405948370" ignored="false" />
+    <file path="/LikesServlet.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453413660679" ignored="false" />
+    <file path="/VoterExistsException.java" changelist="8c54c346-3682-490f-b528-e0923964bec2" time="1453413229297" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +213,49 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/FileServiceImpl.java" line="67" class="com.photocontest.services.impl.FileServiceImpl" package="com.photocontest.services.impl">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxDeleteFile.java" line="73" class="com.photocontest.servlets.UserAjaxDeleteFile" package="com.photocontest.servlets">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/FileServiceImpl.java" line="63" class="com.photocontest.services.impl.FileServiceImpl" package="com.photocontest.services.impl">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/photocontest/servlets/LikesServlet.java" line="56" class="com.photocontest.servlets.LikesServlet" package="com.photocontest.servlets">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxEnterContest.java" line="60" class="com.photocontest.servlets.UserAjaxEnterContest" package="com.photocontest.servlets">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -229,31 +279,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ContestServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/ContestServiceImpl.java">
+      <file leaf-file-name="UserService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0">
+            <state line="15" column="17" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserAjaxControllerDelete.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxControllerDelete.java">
+      <file leaf-file-name="LikesServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/servlets/LikesServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="0" selection-start="2221" selection-end="2417" vertical-scroll-proportion="0.0">
+            <state line="63" column="43" selection-start="2412" selection-end="2412" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserAjaxControllerToContest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxControllerToContest.java">
+      <file leaf-file-name="home.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/home.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="0" selection-start="2167" selection-end="2167" vertical-scroll-proportion="0.6423077">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="33" column="14" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.35096774">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -261,61 +309,58 @@
       <file leaf-file-name="editUser.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/editUser.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="190" column="59" selection-start="8839" selection-end="8839" vertical-scroll-proportion="0.0">
+            <state line="172" column="34" selection-start="8235" selection-end="8235" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spring-dispatcher-servlet.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/spring-dispatcher-servlet.xml">
+      <file leaf-file-name="File.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/model/File.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="45" column="51" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spring-security-config.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/spring-security-config.xml">
+      <file leaf-file-name="admin-layout.tag" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/admin-layout.tag">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="20" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0">
+            <state line="12" column="37" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1453143864336" expanded="false" signature="1118:1227" placeholder="..." />
+                <marker date="1453143864336" expanded="false" signature="1139:1211" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="general-layout.tag" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/general-layout.tag">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="34" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1453423981576" expanded="false" signature="1223:1312" placeholder="..." />
+                <marker date="1453423981576" expanded="false" signature="1240:1300" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserAjaxEnterContest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxEnterContest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="31" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="datasource-config.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/datasource-config.xml">
+      <file leaf-file-name="GuestLinkNavigation.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/controller/GuestLinkNavigation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/FileService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="15" selection-start="508" selection-end="508" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/FileServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="0" selection-start="1900" selection-end="1900" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GenericDAOImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/generic/GenericDAOImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="0" selection-start="1496" selection-end="1496" vertical-scroll-proportion="0.0">
+            <state line="72" column="0" selection-start="2316" selection-end="2316" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -339,22 +384,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/UserDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/VoterDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/AdminServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/ContestServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/ReportServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/spring-dispatcher-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/model/Voter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/dao/VoterDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/VoterDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/services/VoterService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/exceptions/VoterExistsException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/VoterServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/exceptions/FileExistsException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/services/FileService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/dao/FileDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/FileDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/FileServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/spring-security-config.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/servlets/LikesServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxEnterContest.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/tags/general-layout.tag" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/controller/GuestLinkNavigation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/model/File.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/user/editUser.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxControllerToContest.java" />
+        <option value="$PROJECT_DIR$/web/resources/css/styles.css" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/guest/home.jsp" />
       </list>
     </option>
   </component>
@@ -391,7 +436,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="960" />
+    <option name="width" value="964" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -487,6 +532,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -572,6 +619,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PhotoContest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PhotoContest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -718,6 +795,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="photocontest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -870,6 +951,32 @@
               <option name="myItemId" value="photocontest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PhotoContest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PhotoContest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="photocontest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dao" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -975,8 +1082,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -995,13 +1100,13 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
-    <property name="dynamic.classpath" value="false" />
     <property name="Downloaded.Files.Path" value="C:\Users\Andrei\IdeaProjects\PhotoContest\lib" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1055,6 +1160,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -1081,19 +1199,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1139,17 +1244,17 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local">
       <deployment />
       <server-settings />
       <predefined_log_file id="Tomcat" enabled="true" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 7.0" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
@@ -1317,7 +1422,11 @@
       <created>1453250696928</created>
       <updated>1453250696928</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Implemented UserAjaxControllerDelete">
+      <created>1453365481954</created>
+      <updated>1453365481954</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers>
       <GitHub shared="false">
         <commitMessageFormat>{id} {summary}</commitMessageFormat>
@@ -1354,8 +1463,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="960" height="1040" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="964" height="1040" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19772728" sideWeight="0.48479086" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1363,7 +1472,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896653" sideWeight="0.6" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4875" sideWeight="0.8730512" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33863637" sideWeight="0.98880595" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3840909" sideWeight="0.5634744" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -1371,18 +1480,18 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24772727" sideWeight="0.46863118" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.63151926" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35274726" sideWeight="0.24659091" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21046771" sideWeight="0.7034091" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21024546" sideWeight="0.67745537" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22321428" sideWeight="0.49786553" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3997773" sideWeight="0.5443182" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45524862" sideWeight="0.85300666" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35365853" sideWeight="0.67727274" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32272726" sideWeight="0.99775785" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33522728" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hibernate Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3236607" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32272726" sideWeight="0.42873052" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284091" sideWeight="0.42873052" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1425,7 +1534,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Migrated to Spring Security 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented UserAjaxControllerDelete" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1450,6 +1559,7 @@
     <MESSAGE value="Added remaining DAO and Services for all Models.&#10;Added admin pages and autogenerated admin.&#10;Implemented admin create account." />
     <MESSAGE value="Added UserAjaxController.&#10;Added contextLoaderListener." />
     <MESSAGE value="Migrated to Spring Security 4" />
+    <MESSAGE value="Implemented UserAjaxControllerDelete" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1495,113 +1605,117 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/UserServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/model/Report.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="1033" selection-end="1033" vertical-scroll-proportion="0.0">
+        <state line="22" column="29" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/exceptions/VoterExistsException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="51" selection-start="244" selection-end="244" vertical-scroll-proportion="0.3207547" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/VoterServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="14" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0">
+        <state line="22" column="0" selection-start="583" selection-end="583" vertical-scroll-proportion="0.029850746">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/exceptions/FileExistsException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/VoterService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="74" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/FileDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="31" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0">
+        <state line="17" column="30" selection-start="434" selection-end="434" vertical-scroll-proportion="0.46575344">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/FileDAOImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/impl/VoterDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.0">
+        <state line="27" column="73" selection-start="812" selection-end="812" vertical-scroll-proportion="0.62650603">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/ContestServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/VoterDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0">
+        <state line="15" column="28" selection-start="396" selection-end="396" vertical-scroll-proportion="0.4324853">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/FileService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="15" selection-start="508" selection-end="508" vertical-scroll-proportion="0.0">
+        <state line="15" column="17" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/services/impl/FileServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/servlets/LikesServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="1900" selection-end="1900" vertical-scroll-proportion="0.0">
+        <state line="63" column="43" selection-start="2412" selection-end="2412" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.2.4.RELEASE/spring-aop-4.2.4.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/admin-layout.tag">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="35" selection-start="1993" selection-end="1993" vertical-scroll-proportion="0.68976897" />
+        <state line="12" column="37" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1453143864336" expanded="false" signature="1118:1227" placeholder="..." />
+            <marker date="1453143864336" expanded="false" signature="1139:1211" placeholder="{...}" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/spring-dispatcher-servlet.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/controller/GuestLinkNavigation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="72" column="0" selection-start="2316" selection-end="2316" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/datasource-config.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/model/File.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/spring-security-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="20" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0">
+        <state line="45" column="51" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/editUser.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="190" column="59" selection-start="8839" selection-end="8839" vertical-scroll-proportion="0.0">
+        <state line="172" column="34" selection-start="8235" selection-end="8235" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxControllerDelete.java">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/general-layout.tag">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="0" selection-start="2221" selection-end="2417" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/dao/generic/GenericDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1496" selection-end="1496" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxControllerToContest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="0" selection-start="2167" selection-end="2167" vertical-scroll-proportion="0.6423077">
+        <state line="59" column="34" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1453423981576" expanded="false" signature="1223:1312" placeholder="..." />
+            <marker date="1453423981576" expanded="false" signature="1240:1300" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/resources/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="508" column="1" selection-start="7843" selection-end="7843" vertical-scroll-proportion="0.69509596" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/photocontest/servlets/UserAjaxEnterContest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="31" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/guest/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="14" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.35096774">
+          <folding />
         </state>
       </provider>
     </entry>

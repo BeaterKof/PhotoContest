@@ -5,11 +5,14 @@ import com.photocontest.dao.impl.ContestDAOImpl;
 import com.photocontest.exceptions.ContestNotFoundException;
 import com.photocontest.model.Contest;
 import com.photocontest.services.ContestService;
+import com.photocontest.utils.ContestComparator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -46,7 +49,7 @@ public class ContestServiceImpl implements ContestService {
 
     @Override
     public void updateContest(Contest contest) throws ContestNotFoundException {
-        if(contestDAO.exists(contest.getContest_id())){
+        if(!contestDAO.exists(contest.getContest_id())){
             throw new ContestNotFoundException(contest.getName());
         }
         contestDAO.update(contest);
@@ -69,5 +72,32 @@ public class ContestServiceImpl implements ContestService {
         }
 
         return list;
+    }
+
+    @Override
+    public List<Contest> getRunningContests() {
+        java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
+        List<Contest> contestList = contestDAO.findRunningContests(sqlDate);
+        return contestList;
+    }
+
+    @Override
+    public Contest getContestById(long id) throws ContestNotFoundException {
+        Contest contest = contestDAO.findById(id);
+        if(contest == null){
+            throw new ContestNotFoundException(contest.getName());
+        }
+        return contest;
+    }
+
+    @Override
+    public Contest getLastContest() throws ContestNotFoundException {
+        List<Contest> contestList = contestDAO.findAll();
+        Collections.sort(contestList, new ContestComparator());
+        Contest lastContest = contestList.get(contestList.size()- 1);
+        if(lastContest == null){
+            throw new ContestNotFoundException(lastContest.getName());
+        }
+        return lastContest;
     }
 }

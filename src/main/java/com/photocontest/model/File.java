@@ -108,4 +108,12 @@ public class File implements Serializable {
     public void setContest(Contest contest) {
         this.contest = contest;
     }
+
+    public List<Voter> getVoterList() {
+        return voterList;
+    }
+
+    public void setVoterList(List<Voter> voterList) {
+        this.voterList = voterList;
+    }
 }

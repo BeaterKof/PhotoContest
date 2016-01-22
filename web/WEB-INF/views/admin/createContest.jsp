@@ -28,11 +28,11 @@
                 </div>
                 <div class="form-group">
                     <label>Start date:</label>
-                    <input type="text" name="start_date" class="form-control" id="start_date">
+                    <input type="text" name="start_date" class="form-control" id="start_date" placeholder="MM/DD/YY">
                 </div>
                 <div class="form-group">
                     <label>Finish date:</label>
-                    <input type="text" name="finish_date" class="form-control" id="finish_date">
+                    <input type="text" name="finish_date" class="form-control" id="finish_date" placeholder="MM/DD/YY">
                 </div>
                 <div class="form-group">
                     <label>Description:</label>

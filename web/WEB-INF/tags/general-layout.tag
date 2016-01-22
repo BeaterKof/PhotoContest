@@ -56,11 +56,11 @@
             <div id="sec-nav">
                 <div id="sec-nav-wrapper">
                     <ul>
-                        <li><a href="#" id="nav-contest-name">Contest name</a></li>
+                        <li><a href="#" id="nav-contest-name">${lastContest.name}</a></li>
                         <li>-</li>
-                        <li><a href="#" class="under-link">All</a></li>
-                        <li><a href="#" class="under-link">Top</a></li>
-                        <li><a href="#" class="under-link">Newest</a></li>
+                        <li><a href="/guest/home" class="under-link" id="allPhotos">All</a></li>
+                        <li><a href="/guest/homeShowTop" class="under-link" id="topPhotos">Top</a></li>
+                        <li><a href="/guest/homeShowNewest" class="under-link" id="newestPhotos">Newest</a></li>
                     </ul>
                 </div>
             </div>
@@ -117,11 +117,11 @@
                     <p><a href="#">Privacy policy</a></p>
                 </div>
                 <div id="center-col" class="col">
-                    <div id="logoG" class="social"><a href="#"></a></div>
-                    <div id="logoF" class="social"><a href="#"></a></div>
-                    <div id="logoY" class="social"><a href="#"></a></div>
-                    <div id="logoI" class="social"><a href="#"></a></div>
-                    <div id="logoT" class="social"><a href="#"></a></div>
+                    <div id="logoG" class="social"><a href="https://plus.google.com"></a></div>
+                    <div id="logoF" class="social"><a href="www.facebook.com"></a></div>
+                    <div id="logoY" class="social"><a href="www.youtube.com"></a></div>
+                    <div id="logoI" class="social"><a href="www.linkedin.com"></a></div>
+                    <div id="logoT" class="social"><a href="https://twitter.com"></a></div>
                 </div>
                 <div id="right-col" class="col">
                     <p class="footer-title">Recent contests</p>

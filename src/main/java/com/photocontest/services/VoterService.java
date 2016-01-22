@@ -1,5 +1,6 @@
 package com.photocontest.services;
 
+import com.photocontest.exceptions.VoterExistsException;
 import com.photocontest.model.Voter;
 
 import java.util.List;
@@ -13,5 +14,6 @@ import java.util.List;
  */
 public interface VoterService {
 
-    void addVoter(Voter voter);
+    void createVoter(Voter voter) throws VoterExistsException;
+    boolean exists(String ip);
 }

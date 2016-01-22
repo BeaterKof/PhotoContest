@@ -54,13 +54,13 @@
         <property name="contestDAO" ref="contestDAO" />
     </bean>
 
-    <!--<bean id="reportService" class="com.photocontest.services.impl.VoterServiceImpl" >-->
-        <!--<property name="reportDAO" ref="reportDAO" />-->
-    <!--</bean>-->
+    <bean id="reportService" class="com.photocontest.services.impl.ReportServiceImpl" >
+        <property name="reportDAO" ref="reportDAO" />
+    </bean>
 
-    <!--<bean id="voterService" class="com.photocontest.services.impl.ReportServiceImpl" >-->
-        <!--<property name="voterDAO" ref="voterDAO" />-->
-    <!--</bean>-->
+    <bean id="voterService" class="com.photocontest.services.impl.VoterServiceImpl" >
+        <property name="voterDAO" ref="voterDAO" />
+    </bean>
 
     <!-- File upload - MultiPartResolver -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

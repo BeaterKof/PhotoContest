@@ -168,11 +168,18 @@
                             <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself">
                             <div class="image-options" id="${file.file_id}">
                                 <span class=".picture_name">${file.name}</span>
-                                <img class="like" src="/resources/images/green-arrow.ico">
-                                <img class="like removeBtn" src="/resources/images/delete.png">
+                                <img class="img_icon toContest" src="/resources/images/green-arrow.ico" title="Enter contest">
+                                <img class="img_icon removeBtn" src="/resources/images/delete.png" title="Delete">
                             </div>
                         </div>
                     </c:forEach>
+
+                    <div id="chooseContest">
+                        <p style="padding-top: 10px">Available contests</p>
+                        <c:forEach items="${contestList}" var="contest">
+                            <button type="button" class="btn buton_contest" id="${contest.contest_id}">${contest.name}</button>
+                        </c:forEach>
+                    </div>
                 </div>
             </div>
         </div>
@@ -188,12 +195,43 @@
                     $.ajax({
                         type:'GET',
                         data: {fileId: fileId},
-                        url:'userAjaxController/deletePhoto',
+                        url:'userAjax/deletePhoto',
                         success: function(){
                             $('#' + fileId).closest('.image-cell').fadeOut(700);
                         }
                     });
-                return false;
+                    return false;
+                });
+
+                $('.buton_contest').click(function(){
+                    var contestId = $(this).attr('id');
+                    $.ajax({
+                        type:'GET',
+                        data: {contestId: contestId},
+                        url:'userAjax/enterContest',
+                        success: function(){
+                            $('#chooseContest').fadeOut(700);
+                        }
+                    });
+                    return false;
+                });
+
+                $('.toContest').click(function(){
+                    $('#chooseContest').css('display','block');
+                    $('#chooseContest').css('visibility','visible');
+                    $('#chooseContest').focus();
+                    var fileId =  $(this).parent().attr('id');
+
+                    $.ajax({
+                        type:'GET',
+                        data: {fileId: fileId},
+                        url:'userAjax/loadFileId'
+                    });
+                    return false;
+                });
+
+                $('#chooseContest').blur(function(){
+                    $('#chooseContest').css('display','block');
                 });
             });
         </script>
