@@ -7,6 +7,8 @@ import com.photocontest.services.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -40,5 +42,14 @@ public class ReportServiceImpl implements ReportService {
             throw new ReportNotFoundException(report.getReport_id());
         }
         reportDAO.delete(report);
+    }
+
+    @Override
+    public List<Report> getAllReports() {
+        List<Report> reportList = reportDAO.findAll();
+        if(reportList == null){
+            reportList = new ArrayList<Report>();
+        }
+        return reportList;
     }
 }

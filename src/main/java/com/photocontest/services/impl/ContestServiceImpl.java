@@ -64,11 +64,11 @@ public class ContestServiceImpl implements ContestService {
     }
 
     @Override
-    public List<Contest> getAllContests() throws Exception {
-        List<Contest> list = (ArrayList<Contest>)contestDAO.findAll();
+    public List<Contest> getAllContests() {
+        List<Contest> list = contestDAO.findAll();
 
         if(list == null){
-            throw new Exception();
+            list = new ArrayList<Contest>();
         }
 
         return list;
@@ -78,6 +78,9 @@ public class ContestServiceImpl implements ContestService {
     public List<Contest> getRunningContests() {
         java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
         List<Contest> contestList = contestDAO.findRunningContests(sqlDate);
+        if(contestList == null){
+            contestList = new ArrayList<Contest>();
+        }
         return contestList;
     }
 
@@ -91,13 +94,16 @@ public class ContestServiceImpl implements ContestService {
     }
 
     @Override
-    public Contest getLastContest() throws ContestNotFoundException {
+    public Contest getLastContest(){
         List<Contest> contestList = contestDAO.findAll();
         Collections.sort(contestList, new ContestComparator());
-        Contest lastContest = contestList.get(contestList.size()- 1);
-        if(lastContest == null){
-            throw new ContestNotFoundException(lastContest.getName());
+        Contest lastContest = null;
+        if(contestList.size() > 0){
+            lastContest = contestList.get(contestList.size()- 1);
+        } else {
+            lastContest = new Contest();
         }
+
         return lastContest;
     }
 }

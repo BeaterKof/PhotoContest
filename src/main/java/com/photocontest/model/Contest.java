@@ -40,7 +40,7 @@ public class Contest implements Serializable {
     @NotNull
     private Date finish_date;
 
-    @OneToMany(mappedBy = "contest",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "contest",fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<File> fileList = new ArrayList<File>();
 
     public long getContest_id() {

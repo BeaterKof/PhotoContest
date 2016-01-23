@@ -6,6 +6,8 @@ import com.photocontest.exceptions.UserNotFoundException;
 import com.photocontest.model.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -21,4 +23,6 @@ public interface UserService extends UserDetailsService{
     void updateUser(User user) throws UserNotFoundException;
     void deleteUser(User user) throws UserNotFoundException;
     User getUserByEmail(String email) throws EmailNotFoundException;
+    User getUserById(long id) throws UserNotFoundException;;
+    List<User> getAllUsers();
 }

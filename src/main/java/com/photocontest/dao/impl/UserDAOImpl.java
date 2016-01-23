@@ -62,4 +62,5 @@ public class UserDAOImpl extends GenericDAOImpl<User, Long> implements UserDAO {
         int count = query.getResultList().size();
         return count > 0;
     }
+
 }

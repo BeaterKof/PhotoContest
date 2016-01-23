@@ -1,4 +1,4 @@
-package com.photocontest.servlets;
+package com.photocontest.controller.ajax;
 
 import org.apache.log4j.Logger;
 
@@ -51,15 +51,3 @@ public class ImageServlet extends HttpServlet{
         in.close();
     }
 }
-
-
-//for( File image : images ){
-//            Path path = Paths.get(LOCAL_FILES_PATH + image.getPath());
-//            byte[] data = Files.readAllBytes(path);
-//            response.setContentType(getServletContext().getMimeType(image.getPath()));
-//            response.setContentLength(data.length);
-//            logger.info("Data PATH:" + path.toString());
-//            logger.info(LOCAL_FILES_PATH + image.getPath());
-//
-//            response.getOutputStream().write(data);
-//        }

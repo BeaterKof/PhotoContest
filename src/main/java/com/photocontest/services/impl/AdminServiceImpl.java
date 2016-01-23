@@ -14,6 +14,8 @@ import org.springframework.security.config.authentication.PasswordEncoderParser;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -96,5 +98,14 @@ public class AdminServiceImpl implements AdminService {
             throw new EmailNotFoundException(email);
         }
         return admin;
+    }
+
+    @Override
+    public List<Admin> getAllAdmins() {
+        List<Admin> adminList = adminDAO.findAll();
+        if(adminList == null){
+            adminList = new ArrayList<Admin>();
+        }
+        return adminList;
     }
 }

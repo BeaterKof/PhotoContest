@@ -34,11 +34,9 @@ public class GuestLinkNavigation {
         ModelAndView model = new ModelAndView("guest/home");
         Contest lastContest = null;
 
-        try {
-            lastContest = contestService.getLastContest();
-        } catch (ContestNotFoundException e) {
-            logger.error(e.getMessage());
-        }
+
+        lastContest = contestService.getLastContest();
+
 
         model.addObject("lastContest", lastContest);
         return model;
@@ -47,15 +45,12 @@ public class GuestLinkNavigation {
     @RequestMapping(value = "/guest/home", method = RequestMethod.GET)
          public ModelAndView getHomePage(){
         ModelAndView model = new ModelAndView("guest/home");
-        Contest lastContest = null;
         String secondMenu = "allPhotos";
 
-        try {
-            lastContest = contestService.getLastContest();
-        } catch (ContestNotFoundException e) {
-            logger.error(e.getMessage());
-        }
 
+        Contest lastContest = contestService.getLastContest();
+
+        model.addObject("secondMenu", secondMenu);
         model.addObject("lastContest", lastContest);
         return model;
     }
@@ -64,15 +59,12 @@ public class GuestLinkNavigation {
     public ModelAndView getHomePageTop(){
         ModelAndView model = new ModelAndView("guest/home");
         Contest lastContest = null;
-        String secondMenu = "allPhotos";
+        String secondMenu = "topPhotos";
 
-        try {
-            lastContest = contestService.getLastContest();
-        } catch (ContestNotFoundException e) {
-            logger.error(e.getMessage());
-        }
+        lastContest = contestService.getLastContest();
 
 
+        model.addObject("secondMenu", secondMenu);
         model.addObject("lastContest", lastContest);
         return model;
     }
@@ -81,14 +73,11 @@ public class GuestLinkNavigation {
     public ModelAndView getHomePageNewest(){
         ModelAndView model = new ModelAndView("guest/home");
         Contest lastContest = null;
-        String secondMenu = "allPhotos";
+        String secondMenu = "newestPhotos";
 
-        try {
-            lastContest = contestService.getLastContest();
-        } catch (ContestNotFoundException e) {
-            logger.error(e.getMessage());
-        }
+        lastContest = contestService.getLastContest();
 
+        model.addObject("secondMenu", secondMenu);
         model.addObject("lastContest", lastContest);
         return model;
     }

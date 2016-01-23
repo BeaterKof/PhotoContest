@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="prize">Prize:</label>
-                    <input type="number" name="prize" class="form-control" id="prize">
+                    <input type="text" name="prize" class="form-control" id="prize">
                 </div>
                 <div class="form-group">
                     <label>Start date:</label>

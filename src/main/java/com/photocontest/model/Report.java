@@ -3,6 +3,8 @@ package com.photocontest.model;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,7 +22,11 @@ public class Report implements Serializable {
     @Column(name = "report_id")
     private long report_id;
 
-    private long reporter_id;
+    private String reporter_email;
+
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "file_id",nullable = true, updatable = true, insertable = true)
+    private File file;
 
     @Size(max = 100)
     private String message;
@@ -33,12 +39,12 @@ public class Report implements Serializable {
         this.report_id = report_id;
     }
 
-    public long getReporter_id() {
-        return reporter_id;
+    public String getReporter_email() {
+        return reporter_email;
     }
 
-    public void setReporter_id(long reporter_id) {
-        this.reporter_id = reporter_id;
+    public void setReporter_email(String reporter_email) {
+        this.reporter_email = reporter_email;
     }
 
     public String getMessage() {
@@ -49,4 +55,11 @@ public class Report implements Serializable {
         this.message = message;
     }
 
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
 }

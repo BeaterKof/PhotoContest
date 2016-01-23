@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -112,8 +113,8 @@ public class UserServiceImpl implements UserService{
         if(!exists(user.getEmail())){
             throw new UserNotFoundException(user.getEmail());
         }
-
         userDAO.update(user);
+        userDAO.flush();
     }
 
     @Override
@@ -121,9 +122,24 @@ public class UserServiceImpl implements UserService{
         if(!exists(user.getEmail())){
             throw new UserNotFoundException(user.getEmail());
         }
-
         userDAO.delete(user);
     }
 
+    @Override
+    public List<User> getAllUsers() {
+        List<User> userList = userDAO.findAll();
+        if(userList == null){
+            userList = new ArrayList<User>();
+        }
+        return userList;
+    }
 
+    @Override
+    public User getUserById(long id) throws UserNotFoundException {
+        User user = userDAO.findById(id);
+        if(user == null){
+            throw new UserNotFoundException("id " + id);
+        }
+        return user;
+    }
 }

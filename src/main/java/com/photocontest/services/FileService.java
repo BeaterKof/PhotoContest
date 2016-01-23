@@ -6,6 +6,8 @@ import com.photocontest.exceptions.FileNotFoundException;
 import com.photocontest.model.File;
 import com.photocontest.model.User;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei

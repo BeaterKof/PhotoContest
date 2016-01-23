@@ -2,6 +2,7 @@ package com.photocontest.controller;
 
 import com.photocontest.exceptions.EmailExistsException;
 import com.photocontest.exceptions.EmailNotFoundException;
+import com.photocontest.exceptions.FileExistsException;
 import com.photocontest.exceptions.UserNotFoundException;
 import com.photocontest.model.Contest;
 import com.photocontest.model.File;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import javax.servlet.ServletContext;
@@ -42,12 +44,15 @@ import java.util.regex.Pattern;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-@SessionAttributes("user")
+@SessionAttributes(value = "user", types = {User.class})
 public class UserController implements ServletContextAware{
     static final Logger logger = Logger.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private FileService fileService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -60,8 +65,9 @@ public class UserController implements ServletContextAware{
     }
 
     @RequestMapping(value = "/submitSignUpForm", method = RequestMethod.POST)
-    public ModelAndView createUserAccount(@ModelAttribute("userForm") @Valid User user, BindingResult result){
-        ModelAndView modelAndView;
+    public String createUserAccount(@ModelAttribute("userForm") @Valid User user,
+                                          BindingResult result,final RedirectAttributes redirectAttributes){
+
         if(result.hasErrors()) {
             StringBuilder sb = new StringBuilder();
             int errorNr = result.getFieldErrorCount();
@@ -72,10 +78,9 @@ public class UserController implements ServletContextAware{
                 sb.append("\n");
             }
             String errorString = sb.toString();
-            modelAndView = new ModelAndView("guest/signUp");
-            modelAndView.addObject("errorString", errorString);
+            redirectAttributes.addFlashAttribute("errorString",errorString);
 
-            return modelAndView;
+            return "redirect:/guest/signUp";
         }
 
         /* Set user fields */
@@ -87,37 +92,34 @@ public class UserController implements ServletContextAware{
         } catch(EmailExistsException e){
             logger.error(e.getMessage());
         }
+        redirectAttributes.addFlashAttribute("user",user);
 
-
-        modelAndView = new ModelAndView("user/home");
-        modelAndView.addObject("user",user);
-        return modelAndView;
+        return "redirect:/user/home";
     }
 
     @RequestMapping(value = "/submitSignInForm", method = RequestMethod.POST)
-    public ModelAndView userLogin(@Valid @ModelAttribute("loginBean") LoginBean loginBean){
-        ModelAndView modelAndView;
+    public String userLogin(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+                            RedirectAttributes redirectAttributes){
+
         String email = loginBean.getEmail();
         String password = loginBean.getPassword();
         String display = "block";
         User user = null;
 
         if(email == "" || email == null || password == "" || password == null) {
-            modelAndView = new ModelAndView("/guest/home");
-            String errorMessage = "User email or password are not valid";
-            modelAndView.addObject("display",display);
-            modelAndView.addObject("errorMessage",errorMessage);
+            String errorMessage = "User email or password are not valid.";
+            redirectAttributes.addFlashAttribute("display",display);
+            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 
-            return modelAndView;
+            return "redirect:/guest/home";
         }
 
         if(!userService.exists(email)){
-            modelAndView = new ModelAndView("/guest/home");
             String errorMessage = "User email does not exist.";
-            modelAndView.addObject("display",display);
-            modelAndView.addObject("errorMessage",errorMessage);
+            redirectAttributes.addFlashAttribute("display",display);
+            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 
-            return modelAndView;
+            return "redirect:/guest/home";
         }
 
         try {
@@ -128,65 +130,57 @@ public class UserController implements ServletContextAware{
 
 
         if(!passwordEncoder.matches(password,user.getPassword())){
-            modelAndView = new ModelAndView("/guest/home");
-            String errorMessage = "Password does not match.";
-            modelAndView.addObject("display",display);
-            modelAndView.addObject("errorMessage",errorMessage);
+            String errorMessage = "Passwords don't match!";
+            redirectAttributes.addFlashAttribute("display",display);
+            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 
-            return modelAndView;
+            return "redirect:/guest/home";
         }
 
         if(user.getStatus() == 0){
-            modelAndView = new ModelAndView("/guest/home");
-            String errorMessage = "Contul acestui user a fost dezactivat.";
-            modelAndView.addObject("display",display);
-            modelAndView.addObject("errorMessage",errorMessage);
+            String errorMessage = "This account has been disabled!";
+            redirectAttributes.addFlashAttribute("display",display);
+            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 
-            return modelAndView;
+            return "redirect:/guest/home";
         }
 
-        modelAndView = new ModelAndView("/user/home");
-        modelAndView.addObject("user", user);
-        return modelAndView;
+        redirectAttributes.addFlashAttribute("user",user);
+
+        return "redirect:/user/home";
     }
 
     @RequestMapping(value = "/user/userSignOut")
-    public ModelAndView userSignOut(@ModelAttribute User user, SessionStatus sessionStatus){
-        ModelAndView modelAndView = new ModelAndView("/guest/home");
+    public String userSignOut(@ModelAttribute User user, SessionStatus sessionStatus){
+
+        SecurityContextHolder.getContext().setAuthentication(null);
+        sessionStatus.setComplete();
+
+        return "redirect:/guest/home";
+    }
+
+    @RequestMapping(value = "/deleteUser")
+    public String deleteUser(@ModelAttribute User user,SessionStatus sessionStatus){
 
         try {
-            userService.updateUser(user);
+            userService.deleteUser(user);
         } catch (UserNotFoundException e) {
             logger.error(e.getMessage());
         }
         SecurityContextHolder.getContext().setAuthentication(null);
         sessionStatus.setComplete();
 
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/deleteUser")
-    public ModelAndView deleteUser(HttpSession session,SessionStatus sessionStatus){
-        User user = (User) session.getAttribute("user");
-        try {
-            userService.deleteUser(user);
-        } catch (UserNotFoundException e) {
-            logger.error(e.getMessage());
-        }
-        sessionStatus.setComplete();
-
-        return new ModelAndView("/guest/home");
+        return "redirect:/guest/home";
     }
 
     @RequestMapping(value = "/user/modifyUserAccount", method = RequestMethod.POST)
-    public ModelAndView modifyUserAccount(@RequestParam(value = "newFirstName")String newFirstName,
+    public String modifyUserAccount(@RequestParam(value = "newFirstName")String newFirstName,
                                           @RequestParam(value = "newLastName")String newLastName,
                                           @RequestParam(value = "newEmail")String newEmail,
                                           @RequestParam(value = "newWebsite")String newWebsite,
                                           @RequestParam(value = "newDescription")String newDescription,
-                                          @ModelAttribute("user") User user){
-
-        ModelAndView modelAndView = new ModelAndView("/user/editUser");
+                                          @ModelAttribute("user") User user,
+                                          RedirectAttributes redirectAttributes){
 
         if(newFirstName.length() < 2 || newFirstName.length() > 30 ||
            newLastName.length() < 2 || newLastName.length() > 30 ||
@@ -194,17 +188,17 @@ public class UserController implements ServletContextAware{
                 DataValidator.isEmailAddress(newEmail)) {
 
             String errorMessage = "The data you inserted is not valid. No changes were made in the account info.";
-            modelAndView.addObject("errorMessage",errorMessage);
+            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 
-            return modelAndView;
+            return "redirect:/user/userAccount";
         }
 
         if(!user.getEmail().equals(newEmail)){
             if(userService.exists(newEmail)){
                 String errorMessage = "Email is already taken.";
-                modelAndView.addObject("errorMessage",errorMessage);
+                redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 
-                return modelAndView;
+                return "redirect:/user/userAccount";
             }
         }
 
@@ -219,17 +213,16 @@ public class UserController implements ServletContextAware{
             logger.error(e.getMessage());
         }
 
-        modelAndView.addObject("user",user);
+        redirectAttributes.addFlashAttribute("user",user);
 
-        return modelAndView;
+        return "redirect:/user/userAccount";
     }
 
     @RequestMapping(value = "/user/modifyUserPassword", method = RequestMethod.POST)
-    public ModelAndView modifyUserAccount(@RequestParam("oldPass")String oldPass,
+    public String modifyUserPassword(@RequestParam("oldPass")String oldPass,
                                           @RequestParam("newPass")String newPass,
-                                          @ModelAttribute("user") User user){
-
-        ModelAndView modelAndView = new ModelAndView("/user/editUser");
+                                          @ModelAttribute("user") User user,
+                                          RedirectAttributes redirectAttributes){
 
         if(oldPass != newPass){
             if(passwordEncoder.matches(oldPass,user.getPassword())){
@@ -241,29 +234,33 @@ public class UserController implements ServletContextAware{
                 } catch (UserNotFoundException e) {
                     logger.error(e.getMessage());
                 }
-                modelAndView.addObject("user", user);
-                return modelAndView;
+                String errorMessage = "The password was changed!";
+                redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 
             } else {
                 String errorMessage = "The old password is incorrect.";
-                modelAndView.addObject("errorMessage",errorMessage);
-
-                return modelAndView;
+                redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
             }
         } else {
             String errorMessage = "The new password must be different.";
-            modelAndView.addObject("errorMessage",errorMessage);
-            return modelAndView;
+            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
+
         }
+        return "redirect:/user/userAccount";
     }
 
     @RequestMapping(value = "/user/uploadFile")
-    public ModelAndView uploadFile(@ModelAttribute("file") File uploadedFile,
-                                   @ModelAttribute("user") User user,
-                                   MultipartFile image){
-        ModelAndView model;
+    public String uploadFile(@ModelAttribute("file") File uploadedFile,@ModelAttribute("user") User user,
+                             MultipartFile image, HttpSession session, RedirectAttributes redirectAttributes){
+
         String fileType = "";
         String fileExtension = "";
+
+        if(image.isEmpty()){
+            String errorMessage = "No image was selected!";
+            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
+            return "redirect:/user/userAccount";
+        }
 
         /* Test if file has an extension */
         if( image.getContentType().contains("/")){
@@ -299,20 +296,19 @@ public class UserController implements ServletContextAware{
             logger.error(e.getMessage());
         }
 
-        /* User persist */
-        uploadedFile.setUser(user);
-        user.getFiles().add(uploadedFile);
-
 
         try {
+            uploadedFile.setUser(user);
+            //fileService.createFile(uploadedFile);
+            user.getFiles().add(uploadedFile);
             userService.updateUser(user);
+            user = userService.getUserById(user.getUser_id());
         } catch (UserNotFoundException e) {
             logger.error(e.getMessage());
         }
 
-        model = new ModelAndView("/user/editUser");
-        model.addObject("user",user);
-        return model;
+        session.setAttribute("user",user);
+        return "redirect:/user/userAccount";
     }
 
 }

@@ -32,6 +32,7 @@ public class File implements Serializable {
     private String description;
 
     private Date date_added;
+
     private String path;
 
     @ManyToOne
@@ -42,7 +43,7 @@ public class File implements Serializable {
     @JoinColumn(name = "contest_id",nullable = true, updatable = true, insertable = true)
     private Contest contest;
 
-    @OneToMany(mappedBy = "file",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "file",fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     List<Voter> voterList = new ArrayList<Voter>();
 
     public long getFile_id() {

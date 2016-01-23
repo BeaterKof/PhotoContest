@@ -6,6 +6,8 @@ import com.photocontest.exceptions.EmailNotFoundException;
 import com.photocontest.model.Admin;
 import com.photocontest.model.User;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -20,4 +22,5 @@ public interface AdminService {
     void updateAdmin(Admin admin) throws AdminNotFoundException;
     void deleteAdmin(Admin admin) throws AdminNotFoundException;
     Admin getAdminByEmail(String email) throws EmailNotFoundException;
+    List<Admin> getAllAdmins();
 }

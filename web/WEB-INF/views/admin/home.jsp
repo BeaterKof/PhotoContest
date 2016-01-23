@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:admin-layout title="Home">
     <jsp:attribute name="head">
@@ -19,6 +20,7 @@
             <button onclick="showAdminMng()" type="button" class="btn btn-lg btn-info menu_button">Admin Account Management</button>
             <button onclick="showContestMng()" type="button" class="btn btn-lg btn-warning menu_button">Contest Management</button>
             <button onclick="showReportsMng()" type="button" class="btn btn-lg btn-default menu_button">Reports Management</button>
+            <a href="/admin/logout"><button type="button" class="btn btn-lg btn-default menu_button">Logout</button></a>
         </div>
 
         <div id="admin_content">
@@ -35,14 +37,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th>1</th>
-                        <th>Ionel</th>
-                        <th>Amarie</th>
-                        <th>ionel.amarie@gmail.com</th>
-                        <th><button type="button" class="btn btn-warning">Deactivate</button></th>
-                        <th><button type="button" class="btn btn-danger">Delete</button></th>
-                    </tr>
+                        <c:forEach items="${userList}" var="user" varStatus="counter">
+                            <tr <c:if test="${user.status == 0}">style="background-color: white" </c:if> >
+                                <th>${counter.index}</th>
+                                <th>${user.last_name}</th>
+                                <th>${user.first_name}</th>
+                                <th>${user.email}</th>
+                                <th id="${user.user_id}"><button type="button" name="deactivate" class="btn btn-warning user_btn">Deactivate</button></th>
+                                <th id="${user.user_id}"><button type="button" name="delete" class="btn btn-danger user_btn">Delete</button></th>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -56,20 +60,20 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Name</th>
                         <th>Email Address</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th>1</th>
-                        <th>Ionel</th>
-                        <th>Amarie</th>
-                        <th>ionel.amarie@gmail.com</th>
-                        <th><button type="button" class="btn btn-danger">Delete</button></th>
-                    </tr>
+                        <c:forEach items="${adminList}" var="adminItem" varStatus="counter">
+                            <tr>
+                                <th>${counter.index}</th>
+                                <th>${adminItem.name}</th>
+                                <th>${adminItem.email}</th>
+                                <th><button type="button" class="btn btn-danger">Delete</button></th>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -92,14 +96,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th>1</th>
-                        <th>Nume concurs</th>
-                        <th>2000$</th>
-                        <th>20 Noe 2012</th>
-                        <th>30 Mar 2013</th>
-                        <th><button type="button" class="btn btn-danger">Delete</button></th>
-                    </tr>
+                        <c:forEach items="${contestList}" var="contest" varStatus="counter">
+                            <tr>
+                                <th>${counter.index}</th>
+                                <th>${contest.name}</th>
+                                <th>${contest.prize}</th>
+                                <th>${contest.start_date}</th>
+                                <th>${contest.finish_date}</th>
+                                <th><button type="button" class="btn btn-danger">Delete</button></th>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -113,22 +119,45 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>File name</th>
-                        <th>Contest</th>
-                        <th></th>
+                        <th>Message</th>
+                        <th>File id</th>
+                        <th>Reporter email</th>
+                        <th>Contest name</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th>1</th>
-                        <th>Nume fisier</th>
-                        <th>Nume concurs</th>
-                        <th><button type="button" class="btn btn-danger">Remove from contest</button></th>
-                        <th><button type="button" class="btn btn-danger">Delete file</button></th>
-                    </tr>
+                        <%--<c:forEach items="${reportList}" var="report" varStatus="counter">--%>
+                            <%--<tr>--%>
+                                <%--<th>${counter.index}</th>--%>
+                                <%--<th>${report.file_id}</th>--%>
+                                <%--<th>${report.reporter_email}</th>--%>
+                                <%--<th>${report.file.contest.name}</th>--%>
+                                <%--<th><button type="button" class="btn btn-danger">Remove from contest</button></th>--%>
+                                <%--<th><button type="button" class="btn btn-danger">Delete report</button></th>--%>
+                            <%--</tr>--%>
+                        <%--</c:forEach>--%>
                     </tbody>
                 </table>
             </div>
         </div>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.user_btn').click(function(){
+                    var userId = $(this).parent().attr('id');
+                    var action = $(this).attr('name');
+                    $.ajax({
+                        type:'GET',
+                        data: {userId: userId, action: action},
+                        url:'/admin/adminUserManager',
+                        success: function(){
+                            $('#' + fileId).find('tr').css("display","none");
+                        }
+                    });
+                    return false;
+                });
+            });
+        </script>
     </jsp:attribute>
 </t:admin-layout>
+

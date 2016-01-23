@@ -1,5 +1,8 @@
 package com.photocontest.model;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 import javax.swing.text.AsyncBoxView;
 import javax.validation.constraints.Size;
@@ -45,7 +48,8 @@ public class User implements Serializable {
 
     private int status;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<File> files = new ArrayList<File>();
 
     public long getUser_id() {
@@ -54,7 +58,7 @@ public class User implements Serializable {
 
     public void setUser_id(long user_id) {
         this.user_id = user_id;
-    }
+}
 
     public String getEmail() {
         return email;
