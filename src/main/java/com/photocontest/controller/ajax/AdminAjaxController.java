@@ -1,7 +1,13 @@
 package com.photocontest.controller.ajax;
 
+import com.photocontest.exceptions.AdminNotFoundException;
+import com.photocontest.exceptions.ContestNotFoundException;
 import com.photocontest.exceptions.UserNotFoundException;
+import com.photocontest.model.Admin;
+import com.photocontest.model.Contest;
 import com.photocontest.model.User;
+import com.photocontest.services.AdminService;
+import com.photocontest.services.ContestService;
 import com.photocontest.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +30,12 @@ public class AdminAjaxController {
     static final Logger logger = Logger.getLogger(AdminAjaxController.class);
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AdminService adminService;
+
+    @Autowired
+    private ContestService contestService;
 
     @RequestMapping("/admin/adminUserManager")
     public void userManager(HttpServletRequest request, HttpServletResponse response){
@@ -54,9 +66,54 @@ public class AdminAjaxController {
                 logger.error(e.getMessage());
             }
         }
+    }
 
+    @RequestMapping("/admin/adminAdminManager")
+    public void adminManager(HttpServletRequest request, HttpServletResponse response){
+
+        String adminIdString = request.getParameter("adminId");
+        HttpSession session = request.getSession(true);
+        long adminId = Long.parseLong(adminIdString);
+
+        try {
+            Admin admin = adminService.getAdminById(adminId);
+            adminService.deleteAdmin(admin);
+        } catch (AdminNotFoundException e) {
+            logger.error(e.getMessage());
+        }
+
+    }
+
+    @RequestMapping("/admin/adminContestManager")
+    public void contestManager(HttpServletRequest request, HttpServletResponse response){
+
+        String contestIdString = request.getParameter("contestId");
+        HttpSession session = request.getSession(true);
+        long contestId = Long.parseLong(contestIdString);
+
+        try {
+            Contest contest = contestService.getContestById(contestId);
+            contestService.deleteContest(contest);
+        } catch (ContestNotFoundException e) {
+            logger.error(e.getMessage());
+        }
 
     }
 
 
+    @RequestMapping("/admin/adminReportsManager")
+    public void reportsManager(HttpServletRequest request, HttpServletResponse response){
+
+        String contestIdString = request.getParameter("contestId");
+        HttpSession session = request.getSession(true);
+        long contestId = Long.parseLong(contestIdString);
+
+        try {
+            Contest contest = contestService.getContestById(contestId);
+            contestService.deleteContest(contest);
+        } catch (ContestNotFoundException e) {
+            logger.error(e.getMessage());
+        }
+
+    }
 }

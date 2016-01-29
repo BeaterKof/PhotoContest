@@ -24,7 +24,7 @@ import java.util.List;
  * Time: 2:39 AM
  * To change this template use File | Settings | File Templates.
  */
-
+@Transactional
 public class AdminServiceImpl implements AdminService {
     static final Logger logger = Logger.getLogger(AdminServiceImpl.class);
 
@@ -107,5 +107,14 @@ public class AdminServiceImpl implements AdminService {
             adminList = new ArrayList<Admin>();
         }
         return adminList;
+    }
+
+    @Override
+    public Admin getAdminById(long id) throws AdminNotFoundException {
+        Admin admin = adminDAO.findById(id);
+        if(admin == null){
+            throw new AdminNotFoundException("/id " + id);
+        }
+        return admin;
     }
 }

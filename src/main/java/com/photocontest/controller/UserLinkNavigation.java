@@ -1,10 +1,15 @@
 package com.photocontest.controller;
 
 import com.photocontest.model.Contest;
+import com.photocontest.model.User;
 import com.photocontest.services.ContestService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -29,8 +34,12 @@ public class UserLinkNavigation {
     private ContestService contestService;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public ModelAndView getHomePage(){
-        ModelAndView model = new ModelAndView("/user/home");
+    public ModelAndView getHomePage(ModelAndView model,@ModelAttribute("user")User user){
+        Contest lastContest = contestService.getLastContest();
+
+        model.addObject("lastContest", lastContest);
+//        model.addObject("user", getPrincipal());
+        model.addObject("user",user);
         return model;
     }
 
@@ -68,6 +77,18 @@ public class UserLinkNavigation {
     public ModelAndView getOtherPage(){
         ModelAndView model = new ModelAndView("/user/other");
         return model;
+    }
+
+    private String getPrincipal(){
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails)principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+        return userName;
     }
 
 }

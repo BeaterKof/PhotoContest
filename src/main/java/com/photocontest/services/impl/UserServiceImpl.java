@@ -26,7 +26,7 @@ import java.util.List;
  * Time: 11:26 AM
  * To change this template use File | Settings | File Templates.
  */
-
+@Transactional
 public class UserServiceImpl implements UserService{
     static final Logger logger = Logger.getLogger(UserServiceImpl.class);
 
@@ -42,14 +42,6 @@ public class UserServiceImpl implements UserService{
 
     public UserDAO getUserDAO() {
         return userDAO;
-    }
-
-    public PasswordEncoder getPasswordEncoder() {
-        return passwordEncoder;
-    }
-
-    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -114,7 +106,6 @@ public class UserServiceImpl implements UserService{
             throw new UserNotFoundException(user.getEmail());
         }
         userDAO.update(user);
-        userDAO.flush();
     }
 
     @Override

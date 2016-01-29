@@ -28,7 +28,12 @@ public class OnApplicationLoadBean {
         String email = "admin@mail.com";
         String pass = "asdasdasd";
         Admin admin = null;
+
+        String daoEmail = "dao@mail.com";
+        String daoPass = "asdasdasd";
+        Admin dao = null;
         String password = passwordEncoder.encode(pass);
+        String daoPassword = passwordEncoder.encode(daoPass);
 
         if(adminService.checkAvailable(email)){
             admin = new Admin();
@@ -36,6 +41,12 @@ public class OnApplicationLoadBean {
             admin.setPassword(password);
             admin.setName("GeneratedAdmin");
             admin.setType("admin");
+
+            dao = new Admin();
+            dao.setEmail(daoEmail);
+            dao.setPassword(daoPassword);
+            dao.setName("GeneratedDao");
+            dao.setType("dao");
 
             try {
                 adminService.createAdmin(admin);

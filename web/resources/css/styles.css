@@ -69,6 +69,7 @@ nav{
     text-align:left;
     font-size: 15px  !important;
     max-height: 90px;
+    z-index: 1000;
 }
 
 nav ul{
@@ -123,6 +124,7 @@ nav a:hover{
     position: fixed;
     list-style: none;
     margin: 0 auto;
+    z-index: 1000;
 }
 
 #sec-nav-wrapper{
@@ -283,21 +285,20 @@ nav a:hover{
     height: 30px;
     background-color: black;
     position: relative;
-    z-index: 1000;
+    z-index: 1;
     margin-top: -30px;
+    margin-bottom: 30px;
     opacity: 0.5;
 }
 
-
 .image-name{
     width: 100%;
-    height: 30px;
     background-color: black;
     position: relative;
     margin-bottom: -30px;
     opacity: 0.5;
     text-align: center;
-    color: black
+    color: white;
 }
 
 .img_icon{
@@ -502,16 +503,10 @@ nav a:hover{
     margin-top: 8px;
 }
 
-.picture_name{
-    float: left;
-    color: white !important;
-    padding-top: 5px;
-}
-
 #chooseContest {
     width: 300px;
     height: 300px;
-    position: absolute;
+    position: fixed;
     left:50%;
     top:50%;
     margin: 30px auto 0;
@@ -521,6 +516,8 @@ nav a:hover{
     overflow-y: scroll;
     text-align: center;
     display: none;
+    visibility: hidden;
+    z-index:1000;
 }
 
 .buton_contest{
@@ -528,5 +525,21 @@ nav a:hover{
 }
 
 .vote_number {
-    color: red;
+
+}
+
+#reportWindow {
+    width: 400px;
+    position: fixed;
+    left:50%;
+    top:50%;
+    margin: 30px auto 0;
+    margin-left: -150px;
+    margin-right: -150px;
+    background-color: #337AB7;
+    overflow-y: scroll;
+    text-align: center;
+    display: none;
+    visibility: hidden;
+    z-index:1000;
 }

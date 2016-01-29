@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
  * Time: 2:19 AM
  * To change this template use File | Settings | File Templates.
  */
-
+@Transactional
 public class VoterServiceImpl implements VoterService {
 
     @Autowired

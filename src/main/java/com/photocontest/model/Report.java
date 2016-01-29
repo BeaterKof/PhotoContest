@@ -24,9 +24,7 @@ public class Report implements Serializable {
 
     private String reporter_email;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "file_id",nullable = true, updatable = true, insertable = true)
-    private File file;
+    private long file_id;
 
     @Size(max = 100)
     private String message;
@@ -55,11 +53,11 @@ public class Report implements Serializable {
         this.message = message;
     }
 
-    public File getFile() {
-        return file;
+    public long getFile_id() {
+        return file_id;
     }
 
-    public void setFile(File file) {
-        this.file = file;
+    public void setFile_id(long file_id) {
+        this.file_id = file_id;
     }
 }

@@ -3,6 +3,7 @@ package com.photocontest.dao.impl;
 import com.photocontest.dao.ContestDAO;
 import com.photocontest.dao.generic.GenericDAOImpl;
 import com.photocontest.model.Contest;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
@@ -16,7 +17,7 @@ import java.util.List;
  * Time: 9:12 PM
  * To change this template use File | Settings | File Templates.
  */
-@Transactional
+@Repository
 public class ContestDAOImpl extends GenericDAOImpl<Contest, Long> implements ContestDAO {
 
     public ContestDAOImpl(){

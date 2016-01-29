@@ -30,16 +30,8 @@ public class GuestLinkNavigation {
     ContestService contestService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getIndexPage(){
-        ModelAndView model = new ModelAndView("guest/home");
-        Contest lastContest = null;
-
-
-        lastContest = contestService.getLastContest();
-
-
-        model.addObject("lastContest", lastContest);
-        return model;
+    public String getIndexPage(){
+        return "redirect:/guest/home";
     }
 
     @RequestMapping(value = "/guest/home", method = RequestMethod.GET)

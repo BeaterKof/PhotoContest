@@ -24,6 +24,7 @@
         </div>
 
         <div id="admin_content">
+            <h3>Deactivated accounts have white background.</h3>
             <div id="user_mng">
                 <table class="table table-striped">
                     <thead>
@@ -43,7 +44,7 @@
                                 <th>${user.last_name}</th>
                                 <th>${user.first_name}</th>
                                 <th>${user.email}</th>
-                                <th id="${user.user_id}"><button type="button" name="deactivate" class="btn btn-warning user_btn">Deactivate</button></th>
+                                <th id="${user.user_id}"><button type="button" name="deactivate" class="btn btn-warning user_btn">Activate/Deactivate</button></th>
                                 <th id="${user.user_id}"><button type="button" name="delete" class="btn btn-danger user_btn">Delete</button></th>
                             </tr>
                         </c:forEach>
@@ -71,7 +72,7 @@
                                 <th>${counter.index}</th>
                                 <th>${adminItem.name}</th>
                                 <th>${adminItem.email}</th>
-                                <th><button type="button" class="btn btn-danger">Delete</button></th>
+                                <th id="${adminItem.admin_id}"><button type="button" class="btn btn-danger admin_btn">Delete</button></th>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -103,7 +104,7 @@
                                 <th>${contest.prize}</th>
                                 <th>${contest.start_date}</th>
                                 <th>${contest.finish_date}</th>
-                                <th><button type="button" class="btn btn-danger">Delete</button></th>
+                                <th id="${contest.contest_id}"><button type="button" class="btn btn-danger contest_btn">Delete</button></th>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -133,7 +134,7 @@
                                 <%--<th>${report.reporter_email}</th>--%>
                                 <%--<th>${report.file.contest.name}</th>--%>
                                 <%--<th><button type="button" class="btn btn-danger">Remove from contest</button></th>--%>
-                                <%--<th><button type="button" class="btn btn-danger">Delete report</button></th>--%>
+                                <%--<th id=${report.report_id}><button type="button" class="btn btn-danger report_btn">Delete report</button></th>--%>
                             <%--</tr>--%>
                         <%--</c:forEach>--%>
                     </tbody>
@@ -151,7 +152,48 @@
                         data: {userId: userId, action: action},
                         url:'/admin/adminUserManager',
                         success: function(){
-                            $('#' + fileId).find('tr').css("display","none");
+                            if(action.isEqual('delete')){
+                                $('#' + userId).closest('tr').fadeOut(700);
+                            }
+                        }
+                    });
+                    return false;
+                });
+
+                $('.admin_btn').click(function(){
+                    var adminId = $(this).parent().attr('id');
+                    $.ajax({
+                        type:'GET',
+                        data: {adminId: adminId},
+                        url:'/admin/adminAdminManager',
+                        success: function(){
+                            $('#' + adminId).closest('tr').fadeOut(700);
+                        }
+                    });
+                    return false;
+                });
+
+                $('.contest_btn').click(function(){
+                    var contestId = $(this).parent().attr('id');
+                    $.ajax({
+                        type:'GET',
+                        data: {contestId: contestId},
+                        url:'/admin/adminContestManager',
+                        success: function(){
+                            $('#' + contestId).closest('tr').fadeOut(700);
+                        }
+                    });
+                    return false;
+                });
+
+                $('.report_btn').click(function(){
+                    var reportId = $(this).parent().attr('id');
+                    $.ajax({
+                        type:'GET',
+                        data: {reportId: reportId},
+                        url:'/admin/adminReportsManager',
+                        success: function(){
+                            $('#' + reportId).closest('tr').fadeOut(700);
                         }
                     });
                     return false;

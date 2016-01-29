@@ -230,8 +230,8 @@
                     return false;
                 });
 
-                $('#chooseContest').blur(function(){
-                    $('#chooseContest').css('display','block');
+                $('#chooseContest').focusout(function(){
+                    $('#chooseContest').fadeOut(500);
                 });
             });
         </script>

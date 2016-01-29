@@ -5,6 +5,7 @@ import com.photocontest.dao.ReportDAO;
 import com.photocontest.dao.generic.GenericDAOImpl;
 import com.photocontest.model.Contest;
 import com.photocontest.model.Report;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
@@ -16,7 +17,7 @@ import javax.persistence.Query;
  * Time: 2:27 AM
  * To change this template use File | Settings | File Templates.
  */
-@Transactional
+@Repository
 public class ReportDAOImpl extends GenericDAOImpl<Report, Long> implements ReportDAO {
 
     public ReportDAOImpl(){

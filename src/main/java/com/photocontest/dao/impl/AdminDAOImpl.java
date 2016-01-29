@@ -4,6 +4,7 @@ import com.photocontest.dao.AdminDAO;
 import com.photocontest.dao.generic.GenericDAOImpl;
 import com.photocontest.model.Admin;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
@@ -17,7 +18,7 @@ import javax.persistence.Query;
  * Time: 8:00 PM
  * To change this template use File | Settings | File Templates.
  */
-@Transactional
+@Repository
 public class AdminDAOImpl extends GenericDAOImpl<Admin, Long> implements AdminDAO {
     static final Logger logger = Logger.getLogger(FileDAOImpl.class);
 

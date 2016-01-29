@@ -22,5 +22,6 @@ public interface AdminService {
     void updateAdmin(Admin admin) throws AdminNotFoundException;
     void deleteAdmin(Admin admin) throws AdminNotFoundException;
     Admin getAdminByEmail(String email) throws EmailNotFoundException;
+    Admin getAdminById(long id) throws  AdminNotFoundException;
     List<Admin> getAllAdmins();
 }

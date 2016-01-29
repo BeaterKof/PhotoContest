@@ -20,7 +20,7 @@ import java.util.List;
  * Time: 10:05 AM
  * To change this template use File | Settings | File Templates.
  */
-
+@Transactional
 public class FileServiceImpl implements FileService{
     static final Logger logger = Logger.getLogger(FileServiceImpl.class);
 

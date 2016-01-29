@@ -44,7 +44,7 @@
                     </div>
                 </c:if>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="/admin"><button type="button" class="btn btn-warning">Go Back</button></a>
+                <a href="/admin/home"><button type="button" class="btn btn-warning">Go Back</button></a>
             </form>
         </div>
 

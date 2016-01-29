@@ -1,5 +1,8 @@
 package com.photocontest.model;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -43,7 +46,8 @@ public class File implements Serializable {
     @JoinColumn(name = "contest_id",nullable = true, updatable = true, insertable = true)
     private Contest contest;
 
-    @OneToMany(mappedBy = "file",fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OneToMany(mappedBy = "file",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     List<Voter> voterList = new ArrayList<Voter>();
 
     public long getFile_id() {
@@ -116,5 +120,12 @@ public class File implements Serializable {
 
     public void setVoterList(List<Voter> voterList) {
         this.voterList = voterList;
+    }
+
+    public boolean equals(File file){
+        if(this.file_id == file.file_id){
+            return true;
+        }
+        return false;
     }
 }

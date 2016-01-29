@@ -22,7 +22,7 @@ import java.util.List;
  * Time: 1:00 AM
  * To change this template use File | Settings | File Templates.
  */
-
+@Transactional
 public class ContestServiceImpl implements ContestService {
     static final Logger logger = Logger.getLogger(ContestServiceImpl.class);
 
@@ -57,7 +57,7 @@ public class ContestServiceImpl implements ContestService {
 
     @Override
     public void deleteContest(Contest contest) throws ContestNotFoundException {
-        if(contestDAO.exists(contest.getContest_id())){
+        if(!contestDAO.exists(contest.getContest_id())){
             throw new ContestNotFoundException(contest.getName());
         }
         contestDAO.delete(contest);
@@ -88,7 +88,7 @@ public class ContestServiceImpl implements ContestService {
     public Contest getContestById(long id) throws ContestNotFoundException {
         Contest contest = contestDAO.findById(id);
         if(contest == null){
-            throw new ContestNotFoundException(contest.getName());
+            throw new ContestNotFoundException("id: " + id);
         }
         return contest;
     }

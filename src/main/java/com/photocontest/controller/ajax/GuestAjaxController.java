@@ -39,7 +39,7 @@ public class GuestAjaxController {
     @Autowired
     private ServletContext context;
 
-    @RequestMapping("/userAjax/likePhoto")
+    @RequestMapping("/guest/userAjax/likePhoto")
     public void LikePhoto(HttpServletRequest request, HttpServletResponse response){
         String fileIdString = request.getParameter("fileId");
         String clientIp = request.getParameter("clientIp");

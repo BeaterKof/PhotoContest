@@ -16,9 +16,12 @@ import com.photocontest.utils.UniqueValueGenerators;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +33,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -44,15 +49,12 @@ import java.util.regex.Pattern;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-@SessionAttributes(value = "user", types = {User.class})
+@SessionAttributes(value = "user")
 public class UserController implements ServletContextAware{
     static final Logger logger = Logger.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private FileService fileService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -65,7 +67,7 @@ public class UserController implements ServletContextAware{
     }
 
     @RequestMapping(value = "/submitSignUpForm", method = RequestMethod.POST)
-    public String createUserAccount(@ModelAttribute("userForm") @Valid User user,
+    public String createUserAccount(@ModelAttribute("userForm") @Valid User user,HttpSession session,
                                           BindingResult result,final RedirectAttributes redirectAttributes){
 
         if(result.hasErrors()) {
@@ -85,6 +87,11 @@ public class UserController implements ServletContextAware{
 
         /* Set user fields */
         user.setStatus(1);
+        user.setType("USER");
+
+        if(userService.exists(user.getEmail())){
+            return "redirect:/guest/home";
+        }
 
         /* Create User */
         try{
@@ -93,13 +100,27 @@ public class UserController implements ServletContextAware{
             logger.error(e.getMessage());
         }
         redirectAttributes.addFlashAttribute("user",user);
-
+//        session.setAttribute("user",getPrincipal());
         return "redirect:/user/home";
+    }
+
+    /******* Spring Security Core - Login *******/
+
+    private String getPrincipal(){
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails)principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+        return userName;
     }
 
     @RequestMapping(value = "/submitSignInForm", method = RequestMethod.POST)
     public String userLogin(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
-                            RedirectAttributes redirectAttributes){
+                            RedirectAttributes redirectAttributes,HttpSession session){
 
         String email = loginBean.getEmail();
         String password = loginBean.getPassword();
@@ -145,15 +166,23 @@ public class UserController implements ServletContextAware{
             return "redirect:/guest/home";
         }
 
+        session.setAttribute("user",user);
         redirectAttributes.addFlashAttribute("user",user);
+//        session.setAttribute("user",getPrincipal());
+
 
         return "redirect:/user/home";
     }
 
-    @RequestMapping(value = "/user/userSignOut")
-    public String userSignOut(@ModelAttribute User user, SessionStatus sessionStatus){
+    /******************************************************/
 
-        SecurityContextHolder.getContext().setAuthentication(null);
+    @RequestMapping(value = "/user/userSignOut")
+    public String userSignOut(HttpServletRequest request, HttpServletResponse response,SessionStatus sessionStatus){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
         sessionStatus.setComplete();
 
         return "redirect:/guest/home";
@@ -250,9 +279,10 @@ public class UserController implements ServletContextAware{
     }
 
     @RequestMapping(value = "/user/uploadFile")
-    public String uploadFile(@ModelAttribute("file") File uploadedFile,@ModelAttribute("user") User user,
+    public String uploadFile(@ModelAttribute("file") File uploadedFile,
                              MultipartFile image, HttpSession session, RedirectAttributes redirectAttributes){
 
+        User user = (User) session.getAttribute("user");
         String fileType = "";
         String fileExtension = "";
 
@@ -302,7 +332,7 @@ public class UserController implements ServletContextAware{
             //fileService.createFile(uploadedFile);
             user.getFiles().add(uploadedFile);
             userService.updateUser(user);
-            user = userService.getUserById(user.getUser_id());
+            user = userService.getUserById(user.getUser_id()); //makes 2 files
         } catch (UserNotFoundException e) {
             logger.error(e.getMessage());
         }
@@ -310,5 +340,7 @@ public class UserController implements ServletContextAware{
         session.setAttribute("user",user);
         return "redirect:/user/userAccount";
     }
+
+
 
 }

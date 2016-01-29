@@ -2,15 +2,13 @@ package com.photocontest.model;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.springframework.context.annotation.Scope;
 
 import javax.persistence.*;
 import javax.swing.text.AsyncBoxView;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,6 +19,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "users")
+@Scope("session")
 public class User implements Serializable {
 
     @Id
@@ -46,10 +45,12 @@ public class User implements Serializable {
     @Size(max = 200)
     private String description;
 
+    private String type;
+
     private int status;
 
     @NotFound(action = NotFoundAction.IGNORE)
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<File> files = new ArrayList<File>();
 
     public long getUser_id() {
@@ -124,4 +125,29 @@ public class User implements Serializable {
         this.files = files;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void addFile(File file){
+        file.setUser(this);
+        files.add(file);
+    }
+
+    public void removeFile(File file){
+        for(Iterator<File> iter = files.listIterator(); iter.hasNext(); ){
+            File f = iter.next();
+            if(f.equals(file)){
+                iter.remove();
+            }
+        }
+
+        if(file != null){
+            file.setUser(null);
+        }
+    }
 }

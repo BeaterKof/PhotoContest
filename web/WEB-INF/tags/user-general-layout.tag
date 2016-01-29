@@ -56,11 +56,7 @@
             <div id="sec-nav">
                 <div id="sec-nav-wrapper">
                     <ul>
-                        <li><a href="#" id="nav-contest-name">Contest name</a></li>
-                        <li>-</li>
-                        <li><a href="#" class="under-link">All</a></li>
-                        <li><a href="#" class="under-link">Top</a></li>
-                        <li><a href="#" class="under-link">Newest</a></li>
+                        <li><a href="#" id="nav-contest-name">${lastContest.name}</a></li>
                     </ul>
                 </div>
             </div>

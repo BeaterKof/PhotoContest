@@ -17,7 +17,7 @@
     <jsp:attribute name="content_area">
         <div class="container my_container">
             <h2 style="text-align:center">New Admin Account Info</h2>
-            <form role="form" action="/admin/getAdminForm" method="post">
+            <form role="form" action="/admin/createNewAdmin" method="post">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
@@ -36,7 +36,7 @@
                     </div>
                 </c:if>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="/admin"><button type="button" class="btn btn-warning">Go Back</button></a>
+                <a href="/admin/home"><button type="button" class="btn btn-warning">Go Back</button></a>
             </form>
         </div>
 

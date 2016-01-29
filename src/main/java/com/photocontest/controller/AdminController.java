@@ -39,7 +39,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-@SessionAttributes("admin")
+@SessionAttributes({"admin"})
 public class AdminController {
     static final Logger logger = Logger.getLogger(AdminController.class);
 
@@ -58,8 +58,13 @@ public class AdminController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @RequestMapping(value = "/dba/home", method = RequestMethod.GET)
+    public ModelAndView getDbaIndex(){
+        return new ModelAndView("dba/home");
+    }
+
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public ModelAndView getAdminIndex(){
+         public ModelAndView getAdminIndex(){
         return new ModelAndView("admin/login");
     }
 
@@ -137,6 +142,10 @@ public class AdminController {
 //            return "redirect:/admin";
 //        }
 
+        if( admin.getType().equals("dba")){
+            return "redirect:/dba/home";
+        }
+
         return "redirect:/admin/home";
     }
 
@@ -166,6 +175,7 @@ public class AdminController {
 
         String message = "Contul a fost creeat cu succes!!";
         redirectAttributes.addFlashAttribute("message",message);
+        redirectAttributes.addFlashAttribute("admin",admin);
 
         return "redirect:/admin/home";
     }

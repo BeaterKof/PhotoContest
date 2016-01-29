@@ -2,7 +2,7 @@ create table admins (
   admin_id integer,
   name varchar2(30),
   password varchar2(60),
-  type varchar(20),
+  type varchar(10),
   email varchar2(50)
 );
 
@@ -14,7 +14,8 @@ create table users (
   last_name varchar2(30),
   website varchar2(50),
   description varchar2(100),
-  status integer
+  status integer,
+  type varchar2(10)
 );
 
 create table contests (

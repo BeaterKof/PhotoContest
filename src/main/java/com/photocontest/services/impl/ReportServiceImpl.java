@@ -17,7 +17,7 @@ import java.util.List;
  * Time: 2:29 AM
  * To change this template use File | Settings | File Templates.
  */
-
+@Transactional
 public class ReportServiceImpl implements ReportService {
 
     @Autowired
