@@ -14,4 +14,5 @@ import com.photocontest.model.Report;
 public interface ReportDAO extends GenericDAO<Report, Long> {
 
     boolean exists(long id);
+    void deleteById(long id);
 }

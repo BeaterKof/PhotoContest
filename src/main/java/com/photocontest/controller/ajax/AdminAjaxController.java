@@ -1,14 +1,8 @@
 package com.photocontest.controller.ajax;
 
-import com.photocontest.exceptions.AdminNotFoundException;
-import com.photocontest.exceptions.ContestNotFoundException;
-import com.photocontest.exceptions.UserNotFoundException;
-import com.photocontest.model.Admin;
-import com.photocontest.model.Contest;
-import com.photocontest.model.User;
-import com.photocontest.services.AdminService;
-import com.photocontest.services.ContestService;
-import com.photocontest.services.UserService;
+import com.photocontest.exceptions.*;
+import com.photocontest.model.*;
+import com.photocontest.services.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +30,12 @@ public class AdminAjaxController {
 
     @Autowired
     private ContestService contestService;
+
+    @Autowired
+    private ReportService reportService;
+
+    @Autowired
+    private FileService fileService;
 
     @RequestMapping("/admin/adminUserManager")
     public void userManager(HttpServletRequest request, HttpServletResponse response){
@@ -100,18 +100,31 @@ public class AdminAjaxController {
 
     }
 
-
     @RequestMapping("/admin/adminReportsManager")
     public void reportsManager(HttpServletRequest request, HttpServletResponse response){
 
-        String contestIdString = request.getParameter("contestId");
+        String reportIdString = request.getParameter("reportId");
+        String fileIdString = request.getParameter("fileId");
+        String action = request.getParameter("action");
         HttpSession session = request.getSession(true);
-        long contestId = Long.parseLong(contestIdString);
+        long reportId = Long.parseLong(reportIdString);
+        long fileId = Long.parseLong(fileIdString);
 
         try {
-            Contest contest = contestService.getContestById(contestId);
-            contestService.deleteContest(contest);
-        } catch (ContestNotFoundException e) {
+            Report report = reportService.getReportById(reportId);
+
+            if(action.equals("delete")){
+                fileService.deleteFileById(fileId);
+            } else {
+                File file = (File) fileService.getFileById(fileId);
+                file.setContest(null);
+                fileService.updateFile(file);
+            }
+            reportService.deleteReport(report);
+
+        } catch (ReportNotFoundException e) {
+            logger.error(e.getMessage());
+        } catch (FileNotFoundException e) {
             logger.error(e.getMessage());
         }
 

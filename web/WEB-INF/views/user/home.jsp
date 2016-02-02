@@ -24,9 +24,9 @@
             <c:forEach items="${lastContest.fileList}" var="file">
                 <div class="image-cell">
                     <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself">
-                    <div class="image-options" id="${file.file_id}">
+                    <div class="image-options" id="${lastContest.contest_id}">
                         <span class=".picture_name" style="color:white;font-size: 20px;">${file.name}</span>
-                        <img class="img_icon report_btn" src="/resources/images/red-alert.ico" title="Report">
+                        <img class="img_icon report_btn" id="${file.file_id}" src="/resources/images/red-alert.ico" title="Report">
                     </div>
                 </div>
             </c:forEach>
@@ -34,6 +34,7 @@
             <div id="reportWindow" class="form-group">
                 <textarea id="reportText" class="form-control" name="description" cols="50" rows="2" maxlength="100">Insert report reason</textarea>
                 <button id="submitReport" type="button" class="btn btn-lg">Submit Report</button>
+                <button id="closeReportWindow" type="button" class="btn btn-lg btn-danger">Close</button>
             </div>
         </div>
 
@@ -47,10 +48,11 @@
                     $('#reportWindow').css('display','block');
                     $('#reportWindow').css('visibility','visible');
                     $('#reportText').focus();
-                    var fileId =  $(this).parent().attr('id');
+                    var fileId =  $(this).attr('id');
+                    var contestId =  $(this).parent().attr('id');
                     $.ajax({
                         type:'GET',
-                        data: {fileId: fileId},
+                        data: {fileId: fileId, contestId: contestId},
                         url:'userAjax/loadFileId'
                     });
                     return false;
@@ -71,9 +73,9 @@
                     return false;
                 });
 
-//                $('#reportWindow').focusout(function(){
-//                    $('#reportWindow').fadeOut(500);
-//                });
+                $('#closeReportWindow').click(function(){
+                    $(this).fadeOut(500);
+                });
             });
         </script>
     </jsp:attribute>

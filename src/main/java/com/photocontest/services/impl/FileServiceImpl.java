@@ -37,7 +37,7 @@ public class FileServiceImpl implements FileService{
 
     @Override
     public File createFile(File file) throws FileExistsException {
-        if(!fileDAO.exists(file.getFile_id())){
+        if(fileDAO.exists(file.getFile_id())){
             throw new FileExistsException(file.getFile_id());
         }
         try {

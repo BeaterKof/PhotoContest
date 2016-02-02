@@ -25,6 +25,7 @@ public class Report implements Serializable {
     private String reporter_email;
 
     private long file_id;
+    private long contest_id;
 
     @Size(max = 100)
     private String message;
@@ -59,5 +60,13 @@ public class Report implements Serializable {
 
     public void setFile_id(long file_id) {
         this.file_id = file_id;
+    }
+
+    public long getContest_id() {
+        return contest_id;
+    }
+
+    public void setContest_id(long contest_id) {
+        this.contest_id = contest_id;
     }
 }

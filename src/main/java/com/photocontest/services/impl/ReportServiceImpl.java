@@ -52,4 +52,12 @@ public class ReportServiceImpl implements ReportService {
         }
         return reportList;
     }
+
+    @Override
+    public Report getReportById(long id) throws ReportNotFoundException{
+        if(!reportDAO.exists(id)){
+            throw new ReportNotFoundException(id);
+        }
+        return reportDAO.findById(id);
+    }
 }

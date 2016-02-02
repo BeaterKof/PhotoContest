@@ -48,6 +48,7 @@ create table voters (
 create table reports (
   report_id integer,
   file_id integer,
+  contest_id integer,
   reporter_id integer,
   message varchar2(100)
 );

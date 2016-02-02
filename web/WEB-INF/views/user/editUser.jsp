@@ -177,8 +177,10 @@
                     <div id="chooseContest">
                         <p style="padding-top: 10px">Available contests</p>
                         <c:forEach items="${contestList}" var="contest">
+                            <button type="button" class="btn btn-danger buton_contest" id="0">Remove from contests</button>
                             <button type="button" class="btn buton_contest" id="${contest.contest_id}">${contest.name}</button>
                         </c:forEach>
+                        <button type="button" class="btn btn-danger" id="closeContestList">Close</button>
                     </div>
                 </div>
             </div>
@@ -219,7 +221,6 @@
                 $('.toContest').click(function(){
                     $('#chooseContest').css('display','block');
                     $('#chooseContest').css('visibility','visible');
-                    $('#chooseContest').focus();
                     var fileId =  $(this).parent().attr('id');
 
                     $.ajax({
@@ -230,7 +231,7 @@
                     return false;
                 });
 
-                $('#chooseContest').focusout(function(){
+                $('#closeContestList').click(function(){
                     $('#chooseContest').fadeOut(500);
                 });
             });

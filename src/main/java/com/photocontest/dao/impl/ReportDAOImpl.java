@@ -34,4 +34,8 @@ public class ReportDAOImpl extends GenericDAOImpl<Report, Long> implements Repor
         return count > 0;
     }
 
+    @Override
+    public void deleteById(long id) {
+
+    }
 }

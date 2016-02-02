@@ -93,8 +93,7 @@ public class AdminController {
         model.addObject("userList",userList);
         model.addObject("contestList",contestList);
         model.addObject("adminList",adminList);
-        model.addObject("reportList",adminList);
-//        model.addObject("admin",admin);
+        model.addObject("reportList",reportList);
 
         return model;
     }

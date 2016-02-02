@@ -127,16 +127,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <%--<c:forEach items="${reportList}" var="report" varStatus="counter">--%>
-                            <%--<tr>--%>
-                                <%--<th>${counter.index}</th>--%>
-                                <%--<th>${report.file_id}</th>--%>
-                                <%--<th>${report.reporter_email}</th>--%>
-                                <%--<th>${report.file.contest.name}</th>--%>
-                                <%--<th><button type="button" class="btn btn-danger">Remove from contest</button></th>--%>
-                                <%--<th id=${report.report_id}><button type="button" class="btn btn-danger report_btn">Delete report</button></th>--%>
-                            <%--</tr>--%>
-                        <%--</c:forEach>--%>
+                        <c:forEach items="${reportList}" var="report" varStatus="counter">
+                            <tr id="${report.report_id}" name="${report.file_id}">
+                                <th>${counter.index}</th>
+                                <th>${report.message}</th>
+                                <th>${report.file_id}</th>
+                                <th>${report.reporter_email}</th>
+                                <th></th>
+                                <th><button type="button" name="removeFromContest" class="btn btn-danger report_btn">Remove from contest</button></th>
+                                <th><button type="button" name="delete" class="btn btn-danger report_btn">Delete report</button></th>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -187,13 +188,15 @@
                 });
 
                 $('.report_btn').click(function(){
-                    var reportId = $(this).parent().attr('id');
+                    var reportId = $(this).closest('tr').attr('id');
+                    var fileId = $(this).closest('tr').attr('name');
+                    var action = $(this).attr('name');
                     $.ajax({
                         type:'GET',
-                        data: {reportId: reportId},
+                        data: {reportId: reportId, action: action, fileId: fileId},
                         url:'/admin/adminReportsManager',
                         success: function(){
-                            $('#' + reportId).closest('tr').fadeOut(700);
+                                $('#' + reportId).closest('tr').fadeOut(700);
                         }
                     });
                     return false;

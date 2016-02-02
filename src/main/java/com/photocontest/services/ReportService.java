@@ -19,4 +19,5 @@ public interface ReportService {
     void createReport(Report report);
     void deleteReport(Report report) throws ReportNotFoundException;
     List<Report> getAllReports();
+    Report getReportById(long id) throws ReportNotFoundException;
 }

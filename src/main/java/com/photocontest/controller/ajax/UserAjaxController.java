@@ -65,26 +65,30 @@ public class UserAjaxController {
 
         try {
             file = fileService.getFileById(fileId);
-            contest = contestService.getContestById(contestId);
-
             file.setDate_added(new Date());
-            file.setContest(contest);
-            if(!contest.getFileList().contains(file)){
-                //contest.getFileList().add(file);
-                //contestService.updateContest(contest);
 
-               fileService.updateFile(file);
+            if(contestId == 0){
+                file.setContest(null);
+                fileService.updateFile(file);
+            } else {
+                contest = contestService.getContestById(contestId);
+                file.setContest(contest);
+
+                if(!contest.getFileList().contains(file)){
+                    fileService.updateFile(file);
+                }
+            }
 
             /* Session User file list update */
-                user = userService.getUserById(user.getUser_id());
-                session.setAttribute("user", user);
-            }
+            user = userService.getUserById(user.getUser_id());
+            session.setAttribute("user", user);
+
         } catch (UserNotFoundException e) {
             logger.error(e.getMessage());
         } catch (ContestNotFoundException e) {
             logger.error(e.getMessage());
         } catch (FileNotFoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            logger.error(e.getMessage());
         }
     }
 
@@ -117,13 +121,15 @@ public class UserAjaxController {
             user.removeFile(fisier);
             userService.updateUser(user);
             //fileService.deleteFileById(fileId);
-            session.setAttribute("user",user);
+            user = userService.getUserById(user.getUser_id());
+
         } catch (UserNotFoundException e) {
             logger.error(e.getMessage());
         } catch (FileNotFoundException e) {
             logger.error(e.getMessage());
         }
 
+        session.setAttribute("user",user);
     }
 
 
@@ -131,9 +137,11 @@ public class UserAjaxController {
     public void loadFileId(HttpServletRequest request,HttpServletResponse response){
 
         String fileIdString = request.getParameter("fileId");
+        String contestIdString = request.getParameter("contestId");
         HttpSession session = request.getSession();
 
         session.setAttribute("buffFileId",fileIdString);
+        session.setAttribute("contestId",contestIdString);
     }
 
 
@@ -143,8 +151,10 @@ public class UserAjaxController {
         String reportContent = request.getParameter("reportContent");
         HttpSession session = request.getSession(true);
 
-        String fileIdString = (String)session.getAttribute("buffFile");
+        String fileIdString = (String)session.getAttribute("buffFileId");
+        String contestIdString = (String)session.getAttribute("contestId");
         long fileId = Long.parseLong(fileIdString);
+        long contestId = Long.parseLong(contestIdString);
 
         File file = null;
         try {
@@ -155,6 +165,7 @@ public class UserAjaxController {
         User user = (User)session.getAttribute("user");
         Report report = new Report();
         report.setFile_id(file.getFile_id());
+        report.setContest_id(contestId);
         report.setMessage(reportContent);
         report.setReporter_email(user.getEmail());
 

@@ -59,6 +59,9 @@ public class UserController implements ServletContextAware{
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private FileService fileService;
+
     private ServletContext servletContext;
 
     @Override
@@ -327,15 +330,17 @@ public class UserController implements ServletContextAware{
         }
 
 
+        uploadedFile.setUser(user);
+        user.addFile(uploadedFile);
         try {
-            uploadedFile.setUser(user);
-            //fileService.createFile(uploadedFile);
-            user.getFiles().add(uploadedFile);
-            userService.updateUser(user);
-            user = userService.getUserById(user.getUser_id()); //makes 2 files
-        } catch (UserNotFoundException e) {
+            fileService.createFile(uploadedFile);
+        } catch (FileExistsException e) {
             logger.error(e.getMessage());
         }
+
+        //userService.updateUser(user);
+            //user = userService.getUserById(user.getUser_id()); //makes 2 files
+
 
         session.setAttribute("user",user);
         return "redirect:/user/userAccount";
