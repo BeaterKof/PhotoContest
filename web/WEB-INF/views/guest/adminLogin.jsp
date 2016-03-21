@@ -16,7 +16,7 @@
     <jsp:attribute name="content_area">
         <div class="container my_container">
             <h2 style="text-align:center">Admin Login</h2>
-            <form role="form" action="/admin/adminLogin" method="post">
+            <form role="form" action="/guest/adminLogin" method="post">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">

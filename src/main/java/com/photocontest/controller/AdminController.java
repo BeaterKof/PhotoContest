@@ -6,18 +6,24 @@ import com.photocontest.model.Admin;
 import com.photocontest.model.Contest;
 import com.photocontest.model.Report;
 import com.photocontest.model.User;
+import com.photocontest.security.CustomAdminDetails;
+import com.photocontest.security.CustomAdminDetailsService;
+import com.photocontest.security.CustomUserDetails;
+import com.photocontest.security.CustomUserDetailsService;
 import com.photocontest.services.AdminService;
 import com.photocontest.services.ContestService;
 import com.photocontest.services.ReportService;
 import com.photocontest.services.UserService;
 import com.photocontest.utils.LoginBean;
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +32,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -56,16 +62,11 @@ public class AdminController {
     private ReportService reportService;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private CustomAdminDetailsService customAdminDetailsService;
 
-    @RequestMapping(value = "/dba/home", method = RequestMethod.GET)
-    public ModelAndView getDbaIndex(){
-        return new ModelAndView("dba/home");
-    }
-
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    @RequestMapping(value = "/guest/admin", method = RequestMethod.GET)
          public ModelAndView getAdminIndex(){
-        return new ModelAndView("admin/login");
+        return new ModelAndView("guest/adminLogin");
     }
 
     @RequestMapping(value = "/admin/getAdminForm", method = RequestMethod.GET)
@@ -77,6 +78,50 @@ public class AdminController {
     public ModelAndView getContestForm(){
         return new ModelAndView("/admin/createContest");
     }
+
+    @RequestMapping(value = "/guest/adminLogin", method = RequestMethod.POST)
+    public String adminLogin(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+                             BindingResult result,final RedirectAttributes redirectAttributes, HttpSession session){
+        String email = loginBean.getEmail();
+        String password = loginBean.getPassword();
+
+        if(result.hasErrors()){
+            String errorMessage = "Datele introduse nu respecta normale!";
+            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
+
+            return "redirect:/admin";
+        }
+
+        if(adminService.checkAvailable(email)){
+            String errorMessage = "Acest admin nu exista in baza de date!";
+            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
+
+            return "redirect:/admin";
+        }
+
+        Admin admin = null;
+        try {
+            admin = adminService.getAdminByEmail(email);
+        } catch (EmailNotFoundException e) {
+            logger.error(e.getMessage());
+        }
+
+        // Spring Security Authentication
+        CustomAdminDetails adminDetails = (CustomAdminDetails)customAdminDetailsService.loadUserByUsername(admin.getEmail());
+        Authentication auth = new UsernamePasswordAuthenticationToken(adminDetails,null,adminDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
+        session.setAttribute("admin",getPrincipal());
+
+        //DBA Login
+        if( admin.getType().equals("dba")){
+            return "redirect:/dba/home";
+        }
+
+        return "redirect:/admin/home";
+    }
+
+
 
     @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
     public ModelAndView getAdminHome(){
@@ -104,48 +149,7 @@ public class AdminController {
         SecurityContextHolder.getContext().setAuthentication(null);
         sessionStatus.setComplete();
 
-        return "redirect:/guest/home";
-    }
-
-    @RequestMapping(value = "/admin/adminLogin", method = RequestMethod.POST)
-    public String adminLogin(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
-                                    BindingResult result,final RedirectAttributes redirectAttributes){
-        String email = loginBean.getEmail();
-        String password = loginBean.getPassword();
-
-        if(result.hasErrors()){
-            String errorMessage = "Datele introduse nu respecta normele!";
-            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
-
-            return "redirect:/admin";
-        }
-
-        if(adminService.checkAvailable(email)){
-            String errorMessage = "Acest admin nu exista in baza de date!";
-            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
-
-            return "redirect:/admin";
-        }
-
-        Admin admin = null;
-        try {
-            admin = adminService.getAdminByEmail(email);
-        } catch (EmailNotFoundException e) {
-            logger.error(e.getMessage());
-        }
-
-//        if(!passwordEncoder.matches(password,admin.getPassword())){
-//              String errorMessage = "Acest admin nu exista in baza de date!";
-//              redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
-//
-//            return "redirect:/admin";
-//        }
-
-        if( admin.getType().equals("dba")){
-            return "redirect:/dba/home";
-        }
-
-        return "redirect:/admin/home";
+        return "redirect:/guest/admin";
     }
 
     @RequestMapping(value = "/admin/createNewAdmin", method = RequestMethod.POST)
@@ -183,7 +187,6 @@ public class AdminController {
     public String createContest(@Valid @ModelAttribute("contest") Contest contest,
                                     BindingResult result, RedirectAttributes redirectAttributes){
 
-
         if(result.hasErrors()){
             String errorMessage = "Unul din campuri nu este valid.";
             redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
@@ -197,5 +200,17 @@ public class AdminController {
         redirectAttributes.addFlashAttribute("message",message);
 
         return "redirect:/admin/getContestForm";
+    }
+
+    private String getPrincipal(){
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails)principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+        return userName;
     }
 }

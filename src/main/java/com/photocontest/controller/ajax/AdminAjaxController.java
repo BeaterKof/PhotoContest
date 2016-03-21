@@ -127,6 +127,17 @@ public class AdminAjaxController {
         } catch (FileNotFoundException e) {
             logger.error(e.getMessage());
         }
-
     }
+
+    @RequestMapping("/admin/recovery")
+    public void dbRecovery(HttpServletRequest request, HttpServletResponse response){
+        return;
+    }
+
+    @RequestMapping("/admin/backup")
+    public void dbBackup(HttpServletRequest request, HttpServletResponse response){
+        return;
+    }
+
+
 }

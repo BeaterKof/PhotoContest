@@ -3,6 +3,7 @@ package com.photocontest.controller;
 import com.photocontest.exceptions.EmailNotFoundException;
 import com.photocontest.model.Admin;
 import com.photocontest.services.AdminService;
+import com.photocontest.utils.ConnectSysdba;
 import com.photocontest.utils.LoginBean;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,44 +33,32 @@ public class DbaController {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private ConnectSysdba connectSysdba;
 
 
+    @RequestMapping(value = "/dba/home", method = RequestMethod.GET)
+    public ModelAndView getDbaIndex(){
 
-    @RequestMapping(value = "/admin/dbaLogin", method = RequestMethod.POST)
-    public String daoLogin(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
-                           BindingResult result,final RedirectAttributes redirectAttributes){
-        String email = loginBean.getEmail();
-        String password = loginBean.getPassword();
-
-        if(result.hasErrors()){
-            String errorMessage = "Datele introduse nu respecta normele!";
-            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
-
-            return "redirect:/admin";
-        }
-
-        if(adminService.checkAvailable(email)){
-            String errorMessage = "Acest admin nu exista in baza de date!";
-            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
-
-            return "redirect:/admin";
-        }
-
-        Admin admin = null;
         try {
-            admin = adminService.getAdminByEmail(email);
-        } catch (EmailNotFoundException e) {
+            connectSysdba.connect();
+        } catch (Exception e) {
             logger.error(e.getMessage());
         }
 
-//        if(!passwordEncoder.matches(password,admin.getPassword())){
-//              String errorMessage = "Acest admin nu exista in baza de date!";
-//              redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
-//
-//            return "redirect:/admin";
-//        }
+        return new ModelAndView("dba/home");
+    }
 
-        return "redirect:/admin/home";
+    @RequestMapping(value = "/dba/logout", method = RequestMethod.GET)
+    public ModelAndView dbaLogout(){
+
+        try {
+            connectSysdba.disconnect();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
+        return new ModelAndView("dba/home");
     }
 
 }

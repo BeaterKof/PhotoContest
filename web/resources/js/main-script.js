@@ -4,13 +4,13 @@
 
 $(document).ready(function(){
 
-   $("#login-link").click(function(){
-    showpopup();
-   });
-   $("#form-close-button").click(function(){
-    hidepopup();
-   });
+    $(".image-cell").mouseenter(function(){
+        $(this).find(".image-toggle").fadeToggle();
+    }).mouseleave(function(){
+            $(this).find(".image-toggle").fadeToggle();
+    });
 
+    $(".fancybox").fancybox();
 });
 
 

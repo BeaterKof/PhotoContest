@@ -38,6 +38,16 @@ public class Admin implements Serializable {
         return admin_id;
     }
 
+    public Admin(){ }
+
+    public Admin(Admin a){
+        this.admin_id = a.admin_id;
+        this.email = a.email;
+        this.name = a.name;
+        this.password = a.password;
+        this.type = a.type;
+    }
+
     public void setAdmin_id(int admin_id) {
         this.admin_id = admin_id;
     }

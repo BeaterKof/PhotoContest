@@ -21,6 +21,16 @@
     <link href="<spring:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet" />
     <script type="text/javascript" src="<spring:url value='/resources/js/jquery-2.1.4.js'/>"></script>
     <script type="text/javascript" src="<spring:url value='/resources/js/main-script.js'/>"></script>
+    <!-- Fancybox -->
+    <script type="text/javascript" src="<spring:url value='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'/>"></script>
+    <script type="text/javascript" src="<spring:url value='/resources/fancybox/jquery.fancybox.pack.js'/>"></script>
+    <link href="<spring:url value='/resources/fancybox/jquery.fancybox.css'/>" rel="stylesheet" type="text/css" media="screen" />
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".fancybox").fancybox();
+        });
+    </script>
     <!-- Internet Explorer HTML5 enabling code: -->
 
     <!--[if IE]>
@@ -49,7 +59,7 @@
                     <li><a href="/guest/other" class="short-a">Other</a></li>
                 </ul>
                 <ul class="right-nav">
-                    <li><a href="#" id="login-link">Login</a></li>
+                    <li><a href="/guest/signIn" id="login-link">Login</a></li>
                     <li><a href="/guest/signUp">Sign Up</a></li>
                 </ul>
             </nav>
@@ -68,40 +78,6 @@
 
 
         <section id="content">
-            <!--login modal-->
-            <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true"
-                 style="display:${display}; <c:if test="${display=='block'}"> visibility:visible; </c:if> ">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h1 class="text-center">Login</h1>
-                        </div>
-                        <div class="modal-body">
-                            <form action="/submitSignInForm" method="post" class="form col-md-12 center-block">
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-lg" placeholder="Email" name="email">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control input-lg" placeholder="Password" name="password">
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
-                                    <span class="pull-right"><a href="#">Need help?</a></span>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="col-md-12">
-                                <button id="form-close-button" class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                            </div>
-                        </div>
-                        <c:if test="${display=='block'}">
-                            <p style="color:red; text-align: center;"> ${errorMessage}</p>
-                        </c:if>
-                    </div>
-                </div>
-            </div>
             <jsp:invoke fragment="content_area"/>
         </section>
 

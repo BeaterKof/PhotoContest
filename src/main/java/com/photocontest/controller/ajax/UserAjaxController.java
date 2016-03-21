@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.WebApplicationContext;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -104,11 +105,6 @@ public class UserAjaxController {
             return;
         }
 
-        /* Delete file from disk */
-//        String path =
-//        java.io.File diskFile = new java.io.File("");
-
-
         try {
             long fileId = Long.parseLong(fileIdString);
             File fisier = fileService.getFileById(fileId);
@@ -120,8 +116,19 @@ public class UserAjaxController {
             // sterge fisier neinscris in concurs
             user.removeFile(fisier);
             userService.updateUser(user);
-            //fileService.deleteFileById(fileId);
             user = userService.getUserById(user.getUser_id());
+
+            /* Delete file from disk */
+            ServletContext context = session.getServletContext();
+            String filePath = context.getRealPath(fisier.getPath());
+            java.io.File file = new java.io.File(filePath);
+            logger.info(file.getAbsolutePath());
+
+            if( file != null || file.exists()){
+                file.delete();
+            } else {
+                logger.error("Fisierul nu a fost gasit pe disc. Calea fisierului este: " + filePath);
+            }
 
         } catch (UserNotFoundException e) {
             logger.error(e.getMessage());

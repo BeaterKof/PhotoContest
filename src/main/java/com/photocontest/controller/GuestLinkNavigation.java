@@ -3,7 +3,12 @@ package com.photocontest.controller;
 import com.photocontest.exceptions.ContestNotFoundException;
 import com.photocontest.model.Contest;
 import com.photocontest.model.File;
+import com.photocontest.model.User;
 import com.photocontest.services.ContestService;
+import com.photocontest.services.FileService;
+import com.photocontest.services.UserService;
+import com.photocontest.utils.NewestFileComparator;
+import com.photocontest.utils.TopFileComparator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -29,6 +35,12 @@ public class GuestLinkNavigation {
     @Autowired
     ContestService contestService;
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    FileService fileService;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getIndexPage(){
         return "redirect:/guest/home";
@@ -38,7 +50,6 @@ public class GuestLinkNavigation {
          public ModelAndView getHomePage(){
         ModelAndView model = new ModelAndView("guest/home");
         String secondMenu = "allPhotos";
-
 
         Contest lastContest = contestService.getLastContest();
 
@@ -54,7 +65,7 @@ public class GuestLinkNavigation {
         String secondMenu = "topPhotos";
 
         lastContest = contestService.getLastContest();
-
+        Collections.sort(lastContest.getFileList(), new TopFileComparator());
 
         model.addObject("secondMenu", secondMenu);
         model.addObject("lastContest", lastContest);
@@ -68,6 +79,7 @@ public class GuestLinkNavigation {
         String secondMenu = "newestPhotos";
 
         lastContest = contestService.getLastContest();
+        Collections.sort(lastContest.getFileList(), new NewestFileComparator());
 
         model.addObject("secondMenu", secondMenu);
         model.addObject("lastContest", lastContest);
@@ -91,12 +103,27 @@ public class GuestLinkNavigation {
     @RequestMapping(value = "/guest/allTimeBest", method = RequestMethod.GET)
     public ModelAndView getAllTimeBestPage(){
         ModelAndView model = new ModelAndView("guest/allTimeBest");
+
+        List<File> allFiles = fileService.getAllFiles();
+        Collections.sort(allFiles, new TopFileComparator());
+
+        if(allFiles.size() <= 50){
+            model.addObject("allTimeBestList",allFiles);
+            return model;
+        }
+
+        List<File> allTimeBestList = allFiles.subList(0,50);
+        model.addObject("allTimeBestList",allTimeBestList);
         return model;
     }
 
     @RequestMapping(value = "/guest/photographers", method = RequestMethod.GET)
     public ModelAndView getPhotographersPage(){
         ModelAndView model = new ModelAndView("guest/photographers");
+
+        List<User> photographerList = userService.getAllUsers();
+        model.addObject("photographerList",photographerList);
+
         return model;
     }
 
@@ -106,9 +133,30 @@ public class GuestLinkNavigation {
         return model;
     }
 
+    @RequestMapping(value = "/guest/signIn", method = RequestMethod.GET)
+    public ModelAndView getSignInPage(){
+        ModelAndView model = new ModelAndView("guest/signIn");
+        return model;
+    }
+
     @RequestMapping(value = "/guest/other", method = RequestMethod.GET)
     public ModelAndView getOtherPage(){
         ModelAndView model = new ModelAndView("guest/other");
+        return model;
+    }
+
+    @RequestMapping(value = "/guest/singleContest", method = RequestMethod.GET)
+    public ModelAndView getOneContest(HttpServletRequest request){
+        ModelAndView model = new ModelAndView("guest/singleContest");
+        Contest contest;
+        long contestId = Long.parseLong(request.getParameter("contestId"));
+        try {
+            contest = contestService.getContestById(contestId);
+            model.addObject("contest",contest);
+        } catch (ContestNotFoundException e) {
+            logger.error(e.getMessage());
+        }
+
         return model;
     }
 

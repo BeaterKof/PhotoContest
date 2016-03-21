@@ -1,20 +1,22 @@
 package com.photocontest.controller;
 
+import com.photocontest.exceptions.ContestNotFoundException;
 import com.photocontest.model.Contest;
 import com.photocontest.model.User;
 import com.photocontest.services.ContestService;
+import com.photocontest.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -33,19 +35,28 @@ public class UserLinkNavigation {
     @Autowired
     private ContestService contestService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView getHomePage(ModelAndView model,@ModelAttribute("user")User user){
         Contest lastContest = contestService.getLastContest();
+        model.addObject("user", getPrincipal());
 
-        model.addObject("lastContest", lastContest);
-//        model.addObject("user", getPrincipal());
-        model.addObject("user",user);
         return model;
     }
 
     @RequestMapping(value = "/contests", method = RequestMethod.GET)
     public ModelAndView getContestsPage(){
-        ModelAndView model = new ModelAndView("/user/contests");
+        ModelAndView model = new ModelAndView("guest/contests");
+        List contestList = null;
+        try {
+            contestList = contestService.getAllContests();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        model.addObject(contestList);
+
         return model;
     }
 
@@ -58,6 +69,10 @@ public class UserLinkNavigation {
     @RequestMapping(value = "/photographers", method = RequestMethod.GET)
     public ModelAndView getPhotographersPage(){
         ModelAndView model = new ModelAndView("/user/photographers");
+
+        List<User> photographerList = userService.getAllUsers();
+        model.addObject("photographerList",photographerList);
+
         return model;
     }
 
@@ -79,6 +94,21 @@ public class UserLinkNavigation {
         return model;
     }
 
+    @RequestMapping(value = "/singleContest", method = RequestMethod.GET)
+    public ModelAndView getOneContest(HttpServletRequest request){
+        ModelAndView model = new ModelAndView("user/singleContest");
+        Contest contest;
+        long contestId = Long.parseLong(request.getParameter("contestId"));
+        try {
+            contest = contestService.getContestById(contestId);
+            model.addObject("contest",contest);
+        } catch (ContestNotFoundException e) {
+            logger.error(e.getMessage());
+        }
+
+        return model;
+    }
+
     private String getPrincipal(){
         String userName = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -90,5 +120,4 @@ public class UserLinkNavigation {
         }
         return userName;
     }
-
 }

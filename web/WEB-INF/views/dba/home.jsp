@@ -24,7 +24,7 @@
     <jsp:attribute name="content_area">
         <div id="nav_buttons">
             <button type="button" class="btn btn-lg btn-success rollback_btn">Rollback</button>
-            <button type="button" class="btn btn-lg btn-info menu_button">Admin Account Management</button>
+            <button type="button" class="btn btn-lg btn-info recovery_button">Recovery</button>
             <a href="/admin/logout"><button type="button" class="btn btn-lg btn-default menu_button">Logout</button></a>
         </div>
 
@@ -32,15 +32,25 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 $('.rollback_btn').click(function(){
-                    var userId = $(this).parent().attr('id');
                     $.ajax({
                         type:'GET',
                         data: {},
-                        url:'/admin/',
+                        url:'adminAjax/rollback',
                         success: function(){
-                            if(action.isEqual('delete')){
-                                $('#' + userId).closest('tr').fadeOut(700);
-                            }
+                            alert("Rollback Successful");
+                        }
+                    });
+                    return false;
+                });
+            });
+            $(document).ready(function(){
+                $('.recovery_btn').click(function(){
+                    $.ajax({
+                        type:'GET',
+                        data: {},
+                        url:'adminAjax/recovery',
+                        success: function(){
+                            alert("Recovery Successful");
                         }
                     });
                     return false;

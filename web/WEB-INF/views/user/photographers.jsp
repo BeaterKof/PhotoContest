@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:user-general-layout title="Home" last_name="${sessionScope.user.last_name}">
     <jsp:attribute name="head">
@@ -19,7 +20,39 @@
 
     <jsp:attribute name="content_area">
         <div class="wrapper">
+            <c:set var="flag" value="true"></c:set>
 
+            <c:forEach items="${photographerList}" var="photographer">
+                <c:choose>
+                    <c:when test="${flag eq true}">
+                        <c:set var="flag" value="false"></c:set>
+                        <div class="photographer-wrapper">
+                            <div class="photographer-name-left">
+                                <a href="/guest/userPage?userId=${photographer.user_id}">${photographer.first_name} ${photographer.last_name}</a>
+                                <h6>Email address: ${photographer.email}</h6>
+                                <h6>${photographer.description}</h6>
+                            </div>
+                            <div class="photographer-image-right">
+                                <img class="img-circle profile-photo" src="${pageContext.request.contextPath}/files/${photographer.files.get(0).path}">
+                            </div>
+                        </div>
+                    </c:when>
+
+                    <c:otherwise>
+                        <c:set var="flag" value="true"></c:set>
+                        <div class="photographer-wrapper">
+                            <div class="photographer-image-left" style="float: left;">
+                                <img class="img-circle profile-photo" src="${pageContext.request.contextPath}/files/${photographer.files.get(0).path}">
+                            </div>
+                            <div class="photographer-name-left" style="float: right">
+                                <a href="/guest/userPage?userId=${photographer.user_id}">${photographer.first_name} ${photographer.last_name}</a>
+                                <h6>Email address: ${photographer.email}</h6>
+                                <h6>${photographer.description}</h6>
+                            </div>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
         </div>
     </jsp:attribute>
 
@@ -27,3 +60,8 @@
     <jsp:attribute name="footer_area">
     </jsp:attribute>
 </t:user-general-layout>
+
+<!-- Remove second navigation  -->
+<script>
+    document.getElementById("sec-nav").style.display = "none";
+</script>

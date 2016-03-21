@@ -4,22 +4,22 @@ import com.photocontest.exceptions.EmailExistsException;
 import com.photocontest.exceptions.EmailNotFoundException;
 import com.photocontest.exceptions.FileExistsException;
 import com.photocontest.exceptions.UserNotFoundException;
-import com.photocontest.model.Contest;
 import com.photocontest.model.File;
 import com.photocontest.model.User;
+import com.photocontest.security.CustomUserDetails;
+import com.photocontest.security.CustomUserDetailsService;
 import com.photocontest.services.FileService;
 import com.photocontest.services.UserService;
-import com.photocontest.services.impl.FileServiceImpl;
 import com.photocontest.utils.DataValidator;
 import com.photocontest.utils.LoginBean;
 import com.photocontest.utils.UniqueValueGenerators;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -39,7 +38,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Date;
-import java.util.regex.Pattern;
 
 /**
  * Created with IntelliJ IDEA.
@@ -55,6 +53,9 @@ public class UserController implements ServletContextAware{
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -90,7 +91,7 @@ public class UserController implements ServletContextAware{
 
         /* Set user fields */
         user.setStatus(1);
-        user.setType("USER");
+        user.setType("ROLE_USER");
 
         if(userService.exists(user.getEmail())){
             return "redirect:/guest/home";
@@ -102,24 +103,17 @@ public class UserController implements ServletContextAware{
         } catch(EmailExistsException e){
             logger.error(e.getMessage());
         }
-        redirectAttributes.addFlashAttribute("user",user);
-//        session.setAttribute("user",getPrincipal());
+
+        CustomUserDetails userDetails = (CustomUserDetails)customUserDetailsService.loadUserByUsername(user.getEmail());
+
+        Authentication auth = new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
+        session.setAttribute("user",getPrincipal());
         return "redirect:/user/home";
     }
 
-    /******* Spring Security Core - Login *******/
 
-    private String getPrincipal(){
-        String userName = null;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        if (principal instanceof UserDetails) {
-            userName = ((UserDetails)principal).getUsername();
-        } else {
-            userName = principal.toString();
-        }
-        return userName;
-    }
 
     @RequestMapping(value = "/submitSignInForm", method = RequestMethod.POST)
     public String userLogin(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
@@ -128,7 +122,7 @@ public class UserController implements ServletContextAware{
         String email = loginBean.getEmail();
         String password = loginBean.getPassword();
         String display = "block";
-        User user = null;
+        CustomUserDetails userDetails = null;
 
         if(email == "" || email == null || password == "" || password == null) {
             String errorMessage = "User email or password are not valid.";
@@ -146,14 +140,9 @@ public class UserController implements ServletContextAware{
             return "redirect:/guest/home";
         }
 
-        try {
-             user = userService.getUserByEmail(email);
-        } catch (EmailNotFoundException e) {
-            logger.error(e.getMessage());
-        }
+        userDetails = (CustomUserDetails)customUserDetailsService.loadUserByUsername(email);
 
-
-        if(!passwordEncoder.matches(password,user.getPassword())){
+        if(!passwordEncoder.matches(password,userDetails.getPassword())){
             String errorMessage = "Passwords don't match!";
             redirectAttributes.addFlashAttribute("display",display);
             redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
@@ -161,7 +150,7 @@ public class UserController implements ServletContextAware{
             return "redirect:/guest/home";
         }
 
-        if(user.getStatus() == 0){
+        if(userDetails.getStatus() == 0){
             String errorMessage = "This account has been disabled!";
             redirectAttributes.addFlashAttribute("display",display);
             redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
@@ -169,15 +158,14 @@ public class UserController implements ServletContextAware{
             return "redirect:/guest/home";
         }
 
-        session.setAttribute("user",user);
-        redirectAttributes.addFlashAttribute("user",user);
-//        session.setAttribute("user",getPrincipal());
+        //Spring Security Authentication
+        Authentication auth = new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(auth);
 
+        session.setAttribute("user",getPrincipal());
 
         return "redirect:/user/home";
     }
-
-    /******************************************************/
 
     @RequestMapping(value = "/user/userSignOut")
     public String userSignOut(HttpServletRequest request, HttpServletResponse response,SessionStatus sessionStatus){
@@ -192,14 +180,18 @@ public class UserController implements ServletContextAware{
     }
 
     @RequestMapping(value = "/deleteUser")
-    public String deleteUser(@ModelAttribute User user,SessionStatus sessionStatus){
+    public String deleteUser(@ModelAttribute User user, SessionStatus sessionStatus,
+                             HttpServletRequest request, HttpServletResponse response){
 
         try {
             userService.deleteUser(user);
         } catch (UserNotFoundException e) {
             logger.error(e.getMessage());
         }
-        SecurityContextHolder.getContext().setAuthentication(null);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
         sessionStatus.setComplete();
 
         return "redirect:/guest/home";
@@ -310,9 +302,8 @@ public class UserController implements ServletContextAware{
         filePath.append(UniqueValueGenerators.generateString());
         filePath.append("." + fileExtension);
 
-
         /* Append file to server */
-        try{
+        try {
             java.io.File javaIoFile = new java.io.File(filePath.toString());
             FileUtils.writeByteArrayToFile(javaIoFile, image.getBytes());
 
@@ -325,27 +316,30 @@ public class UserController implements ServletContextAware{
             uploadedFile.setType(image.getContentType());
             uploadedFile.setDate_added(new Date());
 
-        } catch (IOException e) {
-            logger.error(e.getMessage());
-        }
-
-
-        uploadedFile.setUser(user);
-        user.addFile(uploadedFile);
-        try {
+            uploadedFile.setUser(user);
+            user.addFile(uploadedFile);
             fileService.createFile(uploadedFile);
         } catch (FileExistsException e) {
             logger.error(e.getMessage());
+        } catch (IOException e) {
+            logger.error(e.getMessage());
         }
-
-        //userService.updateUser(user);
-            //user = userService.getUserById(user.getUser_id()); //makes 2 files
-
 
         session.setAttribute("user",user);
         return "redirect:/user/userAccount";
     }
 
+    /******* Spring Security Get Principal *******/
+    private String getPrincipal(){
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails)principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+        return userName;
+    }
 
 }

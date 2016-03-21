@@ -18,7 +18,6 @@ import java.io.*;
  */
 @WebServlet("/files/*")
 public class ImageServlet extends HttpServlet{
-    static final String LOCAL_FILES_PATH = "C:\\Users\\Andrei\\IdeaProjects\\PhotoContest\\out\\artifacts\\PhotoContest_war_exploded\\user_files\\";
     static final Logger logger = Logger.getLogger(ImageServlet.class);
 
     @Override
@@ -30,6 +29,7 @@ public class ImageServlet extends HttpServlet{
 
         String filename = context.getRealPath(filePath);
         String mime = context.getMimeType(filename);
+
         if (mime == null) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             return;

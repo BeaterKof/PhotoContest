@@ -22,4 +22,5 @@ public interface FileService {
     void updateFile(File file) throws FileNotFoundException;
     void deleteFile(File file) throws FileNotFoundException;
     void deleteFileById(long id) throws FileNotFoundException;
+    List<File> getAllFiles();
 }

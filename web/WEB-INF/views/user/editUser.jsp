@@ -165,9 +165,11 @@
                 <div id="content-wrapper" class="wrapper" style="margin-top: 10px;">
                     <c:forEach items="${user.files}" var="file">
                         <div class="image-cell">
-                            <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself">
-                            <div class="image-options" id="${file.file_id}">
-                                <span class=".picture_name">${file.name}</span>
+                            <div class="image-name image-toggle"><p class="name-parag">${file.name}</p></div>
+                            <a class="fancybox" rel="group" href="${pageContext.request.contextPath}/files/${file.path}">
+                                <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself" alt="">
+                            </a>
+                            <div class="image-options image-toggle" id="${file.file_id}">
                                 <img class="img_icon toContest" src="/resources/images/green-arrow.ico" title="Enter contest">
                                 <img class="img_icon removeBtn" src="/resources/images/delete.png" title="Delete">
                             </div>
@@ -238,3 +240,8 @@
         </script>
     </jsp:attribute>
 </t:user-general-layout>
+
+<!-- Remove second navigation  -->
+<script>
+    document.getElementById("sec-nav").style.display = "none";
+</script>

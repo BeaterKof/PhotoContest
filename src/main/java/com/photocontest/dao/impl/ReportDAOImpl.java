@@ -33,9 +33,4 @@ public class ReportDAOImpl extends GenericDAOImpl<Report, Long> implements Repor
         int count = query.getResultList().size();
         return count > 0;
     }
-
-    @Override
-    public void deleteById(long id) {
-
-    }
 }

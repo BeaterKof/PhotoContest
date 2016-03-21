@@ -21,7 +21,9 @@
     <link href="<spring:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet" />
     <script type="text/javascript" src="<spring:url value='/resources/js/jquery-2.1.4.js'/>"></script>
     <script type="text/javascript" src="<spring:url value='/resources/js/main-script.js'/>"></script>
-    <!-- Internet Explorer HTML5 enabling code: -->
+    <!-- Fancybox -->
+    <script type="text/javascript" src="<spring:url value='/resources/fancybox/jquery.fancybox.pack.js'/>"></script>
+    <link href="<spring:url value='/resources/fancybox/jquery.fancybox.css'/>" rel="stylesheet" type="text/css" media="screen" />
 
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>

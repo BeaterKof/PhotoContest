@@ -96,4 +96,3 @@
     document.getElementById("sec-nav").style.display = "none";
     document.forms["contactForm"]["firstName"].focus();
 </script>
-

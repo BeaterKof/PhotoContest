@@ -53,6 +53,20 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<File> files = new ArrayList<File>();
 
+    public User(){ }
+
+    public User(User u){
+        this.user_id = u.user_id;
+        this.email = u.email;
+        this.password = u.password;
+        this.first_name = u.first_name;
+        this.last_name = u.last_name;
+        this.website = u.website;
+        this.description = u.description;
+        this.type = u.type;
+        this.status = u.status;
+    }
+
     public long getUser_id() {
         return user_id;
     }
@@ -150,4 +164,5 @@ public class User implements Serializable {
             file.setUser(null);
         }
     }
+
 }

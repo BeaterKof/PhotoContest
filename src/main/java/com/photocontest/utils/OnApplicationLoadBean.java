@@ -27,29 +27,35 @@ public class OnApplicationLoadBean {
     public void load(){
         String email = "admin@mail.com";
         String pass = "asdasdasd";
-        Admin admin = null;
 
-        String daoEmail = "dao@mail.com";
+        String daoEmail = "dba@mail.com";
         String daoPass = "asdasdasd";
-        Admin dao = null;
         String password = passwordEncoder.encode(pass);
         String daoPassword = passwordEncoder.encode(daoPass);
 
         if(adminService.checkAvailable(email)){
-            admin = new Admin();
+            Admin admin = new Admin();
             admin.setEmail(email);
             admin.setPassword(password);
             admin.setName("GeneratedAdmin");
             admin.setType("admin");
 
-            dao = new Admin();
-            dao.setEmail(daoEmail);
-            dao.setPassword(daoPassword);
-            dao.setName("GeneratedDao");
-            dao.setType("dao");
-
             try {
                 adminService.createAdmin(admin);
+            } catch (EmailExistsException e) {
+                logger.error(e.getMessage());
+            }
+        }
+
+        if(adminService.checkAvailable(daoEmail)){
+            Admin dao = new Admin();
+            dao.setEmail(daoEmail);
+            dao.setPassword(daoPassword);
+            dao.setName("GeneratedDba");
+            dao.setType("dba");
+
+            try {
+                adminService.createAdmin(dao);
             } catch (EmailExistsException e) {
                 logger.error(e.getMessage());
             }

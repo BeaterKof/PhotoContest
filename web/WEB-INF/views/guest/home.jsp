@@ -23,11 +23,11 @@
         <div id="content-wrapper" class="wrapper" style="margin-top: 10px;">
             <c:forEach items="${lastContest.fileList}" var="file">
                 <div class="image-cell">
+                    <div class="image-name image-toggle"><p class="name-parag">${file.name}</p></div>
                     <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself">
-                    <div class="image-options" id="${file.file_id}">
-                        <span class=".picture_name" style="color:white;font-size: 20px;">${file.name}</span>
+                    <div class="image-options image-toggle" id="${file.file_id}">
                         <img class="img_icon like_btn" src="/resources/images/white-heart.png" title="Like">
-                        <span class="vote_number" style="color:red; float:right;">${fn:length(file.voterList)}</span>
+                        <span class="vote_number" style="color:red; float:right;">${fn:length(file.voterList)} </span>
                     </div>
                 </div>
             </c:forEach>

@@ -24,10 +24,10 @@
 
             <c:forEach var="contest" items="${contestList}">
                 <div class="contest-wrapper">
-                    <div><a href="#"><c:out value="${contest.name}"/></a></div>
+                    <div><a href="/guest/singleContest?contestId=${contest.contest_id}"><c:out value="${contest.name}"/></a></div>
                     <c:choose>
                         <c:when test="${contest.finish_date.date < now.date}">
-                            <p style="color: #c1e2b3; text-align:right;">Ongoing</p>
+                            <p style="color: #c1e2b3; text-align:right;">Ongoing until <span color="blue">${contest.finish_date}</span></p>
                         </c:when>
                         <c:otherwise>
                             <p style="color: #d9534f; text-align:right;">Ended</p>

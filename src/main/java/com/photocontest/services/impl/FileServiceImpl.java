@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -105,4 +106,13 @@ public class FileServiceImpl implements FileService{
         return file;
     }
 
+    @Override
+    public List<File> getAllFiles() {
+        List<File> list = fileDAO.findAll();
+
+        if(list == null){
+            list = new ArrayList<File>();
+        }
+        return list;
+    }
 }

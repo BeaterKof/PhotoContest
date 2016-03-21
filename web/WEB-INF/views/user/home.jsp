@@ -23,9 +23,9 @@
         <div id="content-wrapper" class="wrapper" style="margin-top: 10px;">
             <c:forEach items="${lastContest.fileList}" var="file">
                 <div class="image-cell">
+                    <div class="image-name image-toggle"><p class="name-parag">${file.name}</p></div>
                     <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself">
-                    <div class="image-options" id="${lastContest.contest_id}">
-                        <span class=".picture_name" style="color:white;font-size: 20px;">${file.name}</span>
+                    <div class="image-options image-toggle" id="${lastContest.contest_id}">
                         <img class="img_icon report_btn" id="${file.file_id}" src="/resources/images/red-alert.ico" title="Report">
                     </div>
                 </div>
