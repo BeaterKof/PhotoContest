@@ -23,6 +23,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserService userService;
 
+    /**
+     * Load an User by email address and returns a CustomUserDetails object
+     * which contains the User and his credentials used by Spring Security
+     * @param email
+     * @return
+     * @throws UsernameNotFoundException
+     */
+
     public UserDetails loadUserByUsername(final String email)
             throws UsernameNotFoundException {
         User user = null;

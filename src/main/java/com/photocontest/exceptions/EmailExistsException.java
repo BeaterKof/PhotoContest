@@ -9,6 +9,10 @@ package com.photocontest.exceptions;
  */
 public class EmailExistsException extends Exception {
 
+    /**
+     * Constructor for the email address not found exception
+     * @param email the User/Admin email address
+     */
     public EmailExistsException(String email){
         super("The email address " + email + " already exists.");
     }

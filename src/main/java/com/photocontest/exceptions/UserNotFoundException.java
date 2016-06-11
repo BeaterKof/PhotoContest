@@ -9,6 +9,10 @@ package com.photocontest.exceptions;
  */
 public class UserNotFoundException extends Exception {
 
+    /**
+     * Constructor for the User not found exception
+     * @param email the User email address
+     */
     public UserNotFoundException(String email){
         super("User with email" + email + " not found.");
     }

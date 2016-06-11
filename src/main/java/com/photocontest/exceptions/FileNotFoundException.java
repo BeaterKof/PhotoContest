@@ -9,6 +9,10 @@ package com.photocontest.exceptions;
  */
 public class FileNotFoundException extends Exception {
 
+    /**
+     * Constructor for the File not found exception
+     * @param id the File ID
+     */
     public FileNotFoundException(long id){
         super("File with id " + id + " not found.");
     }

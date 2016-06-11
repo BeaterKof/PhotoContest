@@ -20,11 +20,26 @@ import javax.persistence.Query;
  */
 @Repository
 public class UserDAOImpl extends GenericDAOImpl<User, Long> implements UserDAO {
+
+    /**
+     * The logger instance
+     */
     static final Logger logger = Logger.getLogger(UserDAOImpl.class);
 
+    /**
+     * The User DAO constructor
+     */
     public UserDAOImpl(){
         super(User.class);
     }
+
+    /**
+     * Loads a User by its email address.
+     *
+     * @param email the email address of the User.
+     * @return the User if the email address exists in the database
+     * @return null if the email address does not exist in the database
+     */
 
     public User loadByEmail(String email){
         Assert.notNull(email);
@@ -43,6 +58,14 @@ public class UserDAOImpl extends GenericDAOImpl<User, Long> implements UserDAO {
         return user;
     }
 
+    /**
+     * Checks if an email address is available in the database.
+     *
+     * @param email the searched email address
+     * @return true if the email address is available
+     * @return false if the email address is not available
+     */
+
     public boolean checkAvailable(String email){
         Assert.notNull(email);
 
@@ -54,14 +77,17 @@ public class UserDAOImpl extends GenericDAOImpl<User, Long> implements UserDAO {
         return count < 1;
     }
 
+    /**
+     * Checks if an email address exists in the database.
+     *
+     * @param email the email address
+     * @return true if the email address exists
+     * @return false if the email address does not exist
+     */
+
     @Override
     public boolean exists(String email) {
-        Query query = this.entityManager.createQuery("select u from " +
-                this.entityClass.getSimpleName() + " u where u.email = :email")
-                .setParameter("email", email);
-
-        int count = query.getResultList().size();
-        return count > 0;
+        return !checkAvailable(email);
     }
 
 }

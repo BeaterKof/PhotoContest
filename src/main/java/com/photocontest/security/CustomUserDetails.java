@@ -28,13 +28,20 @@ import java.util.List;
 @Service("costumUserDetailsService")
 public class CustomUserDetails extends User implements UserDetails{
 
-    public CustomUserDetails(){
+    private User user;
 
+    public CustomUserDetails(){
     }
 
     public CustomUserDetails(User u){
         super(u);
+        this.user = u;
     }
+
+    /**
+     * Gets the authorities of a user.
+     * @return User authorities list
+     */
 
     public Collection getAuthorities(){
         return AuthorityUtils.createAuthorityList("ROLE_USER");
@@ -42,6 +49,10 @@ public class CustomUserDetails extends User implements UserDetails{
 
     public String getUsername(){
         return getEmail();
+    }
+
+    public User getUser(){
+        return this.user;
     }
 
     @Override

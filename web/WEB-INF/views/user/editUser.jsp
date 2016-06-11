@@ -33,9 +33,9 @@
             </div>
 
             <c:if test="${not empty errorMessage}">
-                <div id="accountEditError">
+                <div class="form-group">
                     <div class="alert alert-danger">
-                        <p>${errorMessage}</p>
+                            <strong>${errorMessage}</strong>
                     </div>
                 </div>
             </c:if>
@@ -67,8 +67,7 @@
                 <div class="form-group">
                     <label class="col-xs-3 control-label">Email</label>
                     <div class="col-xs-5">
-                        <input type="text" class="form-control" name="newEmail"
-                               value="${user.email}"/>
+                        <input type="text" class="form-control" name="newEmail" value="${user.email}"/>
                     </div>
                 </div>
 
@@ -82,7 +81,9 @@
                 <div class="form-group">
                     <label class="col-xs-3 control-label">About yourself</label>
                     <div class="col-xs-5">
-                        <textarea class="form-control" name="newDescription" rows="3" maxlength="200" >${user.description}</textarea>
+                        <label>
+                            <textarea class="form-control" name="newDescription" rows="3" maxlength="200">${user.description}</textarea>
+                        </label>
                     </div>
                 </div>
 
@@ -149,7 +150,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-9 col-xs-offset-3">
-                            <label class="col-xs-3 control-label">File</label>
+                            <label class="col-xs-3 control-label">File ( < 5MB )</label>
                             <input id="fileInput" name="image" type="file" alt="your image" onchange="readURL(this);" />
                             <img id="thumbnail-image" />
                         </div>
@@ -160,6 +161,7 @@
                             <input type="submit" class="btn btn-primary" value="Upload file!">
                         </div>
                     </div>
+
                 </form>
 
                 <div id="content-wrapper" class="wrapper" style="margin-top: 10px;">
@@ -167,7 +169,7 @@
                         <div class="image-cell">
                             <div class="image-name image-toggle"><p class="name-parag">${file.name}</p></div>
                             <a class="fancybox" rel="group" href="${pageContext.request.contextPath}/files/${file.path}">
-                                <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself" alt="">
+                                <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself" alt="${file.description}">
                             </a>
                             <div class="image-options image-toggle" id="${file.file_id}">
                                 <img class="img_icon toContest" src="/resources/images/green-arrow.ico" title="Enter contest">
@@ -178,8 +180,8 @@
 
                     <div id="chooseContest">
                         <p style="padding-top: 10px">Available contests</p>
+                        <button type="button" class="btn btn-danger buton_contest" id="0">Remove from contest</button>
                         <c:forEach items="${contestList}" var="contest">
-                            <button type="button" class="btn btn-danger buton_contest" id="0">Remove from contests</button>
                             <button type="button" class="btn buton_contest" id="${contest.contest_id}">${contest.name}</button>
                         </c:forEach>
                         <button type="button" class="btn btn-danger" id="closeContestList">Close</button>

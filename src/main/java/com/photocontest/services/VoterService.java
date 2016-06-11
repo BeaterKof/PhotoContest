@@ -14,6 +14,22 @@ import java.util.List;
  */
 public interface VoterService {
 
+    /**
+     * Creates a Voter in the database.
+     *
+     * @param voter the Voter to be created
+     * @throws VoterExistsException if the Voter does not exist in the database.
+     */
+
     void createVoter(Voter voter) throws VoterExistsException;
+
+    /**
+     * Checks if the Voter exists in the database.
+     *
+     * @param ip the IP address of the Voter
+     * @return true if the Voter exists in the database
+     * @return false if the Voter does not exist in the database
+     */
+
     boolean exists(String ip);
 }

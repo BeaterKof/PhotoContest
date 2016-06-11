@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.annotation.Resource;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Andrei
@@ -23,6 +25,18 @@ public class OnApplicationLoadBean {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Resource
+    TopThreeContests topThreeContests;
+
+    @Autowired
+    TopThreeContestsService topThreeContestsService;
+
+    /**
+     * This method is executed on the application start.
+     * It checks if the default users exist and if not it creates them.
+     * It sets the values for the top three contests that appear on each page.
+     */
 
     public void load(){
         String email = "admin@mail.com";
@@ -60,5 +74,7 @@ public class OnApplicationLoadBean {
                 logger.error(e.getMessage());
             }
         }
+
+        topThreeContests.setList(topThreeContestsService.getCurrentTopThreeContests());
     }
 }

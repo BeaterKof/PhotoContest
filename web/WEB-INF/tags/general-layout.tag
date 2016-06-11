@@ -21,8 +21,8 @@
     <link href="<spring:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet" />
     <script type="text/javascript" src="<spring:url value='/resources/js/jquery-2.1.4.js'/>"></script>
     <script type="text/javascript" src="<spring:url value='/resources/js/main-script.js'/>"></script>
+
     <!-- Fancybox -->
-    <script type="text/javascript" src="<spring:url value='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'/>"></script>
     <script type="text/javascript" src="<spring:url value='/resources/fancybox/jquery.fancybox.pack.js'/>"></script>
     <link href="<spring:url value='/resources/fancybox/jquery.fancybox.css'/>" rel="stylesheet" type="text/css" media="screen" />
 
@@ -67,10 +67,10 @@
                 <div id="sec-nav-wrapper">
                     <ul>
                         <li><a href="#" id="nav-contest-name">${lastContest.name}</a></li>
-                        <li>-</li>
-                        <li><a href="/guest/home" class="under-link" id="allPhotos">All</a></li>
-                        <li><a href="/guest/homeShowTop" class="under-link" id="topPhotos">Top</a></li>
-                        <li><a href="/guest/homeShowNewest" class="under-link" id="newestPhotos">Newest</a></li>
+                        <li class="sec-nav-opt">-</li>
+                        <li class="sec-nav-opt"><a href="/guest/home" class="under-link" id="allPhotos">All</a></li>
+                        <li class="sec-nav-opt"><a href="/guest/homeShowTop" class="under-link" id="topPhotos">Top</a></li>
+                        <li class="sec-nav-opt"><a href="/guest/homeShowNewest" class="under-link" id="newestPhotos">Newest</a></li>
                     </ul>
                 </div>
             </div>
@@ -102,9 +102,9 @@
                 <div id="right-col" class="col">
                     <p class="footer-title">Recent contests</p>
                     <br>
-                    <p><a href="#">Contest 1</a></p>
-                    <p><a href="#">Contest 2</a></p>
-                    <p><a href="#">Contest 3</a></p>
+                    <c:forEach var="contest" items="${topThree}" varStatus="status">
+                        <p><a href="/guest/singleContest?contestId=${contest.contest_id}">${contest.name}</a></p>
+                    </c:forEach>
                 </div>
 
                 <p id="rights">©2015 Aioanei Alexandru Andrei. All rights reserved.</p>

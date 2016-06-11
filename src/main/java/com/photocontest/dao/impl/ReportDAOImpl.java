@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,9 +22,20 @@ import javax.persistence.Query;
 @Repository
 public class ReportDAOImpl extends GenericDAOImpl<Report, Long> implements ReportDAO {
 
+    /**
+     * The Report DAO constructor
+     */
     public ReportDAOImpl(){
         super(Report.class);
     }
+
+    /**
+     * Checks if an report exists.
+     *
+     * @param id the ID of the report
+     * @return true if the Report exists in the database.
+     * @return false if the Report does not exist in the database.
+     */
 
     @Override
     public boolean exists(long id) {
@@ -32,5 +45,25 @@ public class ReportDAOImpl extends GenericDAOImpl<Report, Long> implements Repor
 
         int count = query.getResultList().size();
         return count > 0;
+    }
+
+    @Override
+    public List<Report> getReportsByFileId(long fileId) {
+        Query query = this.entityManager.createQuery("select u from " +
+                this.entityClass.getSimpleName() + " u where u.file_id = :file_id")
+                .setParameter("file_id", fileId);
+
+        ArrayList<Report> reportList = (ArrayList<Report>)query.getResultList();
+        return reportList;
+    }
+
+    @Override
+    public List<Report> getReportsByContestId(long contestId) {
+        Query query = this.entityManager.createQuery("select u from " +
+                this.entityClass.getSimpleName() + " u where u.contest_id = :contest_id")
+                .setParameter("contest_id", contestId);
+
+        ArrayList<Report> reportList = (ArrayList<Report>)query.getResultList();
+        return reportList;
     }
 }

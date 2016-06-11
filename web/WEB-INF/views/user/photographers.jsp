@@ -28,26 +28,30 @@
                         <c:set var="flag" value="false"></c:set>
                         <div class="photographer-wrapper">
                             <div class="photographer-name-left">
-                                <a href="/guest/userPage?userId=${photographer.user_id}">${photographer.first_name} ${photographer.last_name}</a>
+                                <a href="#">${photographer.first_name} ${photographer.last_name}</a>
                                 <h6>Email address: ${photographer.email}</h6>
-                                <h6>${photographer.description}</h6>
+                                <h6>Description: ${photographer.description}</h6>
                             </div>
-                            <div class="photographer-image-right">
-                                <img class="img-circle profile-photo" src="${pageContext.request.contextPath}/files/${photographer.files.get(0).path}">
-                            </div>
+                            <c:if test="${not empty photographer.files}">
+                                <div class="photographer-image-right">
+                                    <img class="img-circle profile-photo" src="${pageContext.request.contextPath}/files/${photographer.files.get(0).path}">
+                                </div>
+                            </c:if>
                         </div>
                     </c:when>
 
                     <c:otherwise>
                         <c:set var="flag" value="true"></c:set>
                         <div class="photographer-wrapper">
-                            <div class="photographer-image-left" style="float: left;">
-                                <img class="img-circle profile-photo" src="${pageContext.request.contextPath}/files/${photographer.files.get(0).path}">
-                            </div>
+                            <c:if test="${not empty photographer.files}">
+                                <div class="photographer-image-left" style="float: left;">
+                                    <img class="img-circle profile-photo" src="${pageContext.request.contextPath}/files/${photographer.files.get(0).path}">
+                                </div>
+                            </c:if>
                             <div class="photographer-name-left" style="float: right">
                                 <a href="/guest/userPage?userId=${photographer.user_id}">${photographer.first_name} ${photographer.last_name}</a>
                                 <h6>Email address: ${photographer.email}</h6>
-                                <h6>${photographer.description}</h6>
+                                <h6>Description: ${photographer.description}</h6>
                             </div>
                         </div>
                     </c:otherwise>
@@ -55,7 +59,6 @@
             </c:forEach>
         </div>
     </jsp:attribute>
-
 
     <jsp:attribute name="footer_area">
     </jsp:attribute>

@@ -44,15 +44,39 @@ public class UserServiceImpl implements UserService{
         return userDAO;
     }
 
+    /**
+     * Checks if an User email is available.
+     *
+     * @param email the User email
+     * @return true if the User is available
+     * @return false if the User is not available
+     */
+
     @Override
     public boolean checkAvalilable(String email) {
         return userDAO.checkAvailable(email);
     }
 
+    /**
+     * Checks if an User email exists in the database.
+     * @param email the User email
+     * @return true if the User exists
+     * @return false if the User does not exist
+     */
+
+
     @Override
     public boolean exists(String email) {
         return userDAO.exists(email);
     }
+
+    /**
+     * Create User in the database.
+     *
+     * @param user the User to be created
+     * @return the created User
+     * @throws EmailExistsException if the User does not exist in the database
+     */
 
     @Override
     public User createUser(User user) throws EmailExistsException {
@@ -70,6 +94,14 @@ public class UserServiceImpl implements UserService{
         return user;
     }
 
+    /**
+     * Gets an User by his email address.
+     *
+     * @param email the User email address
+     * @return the User
+     * @throws EmailNotFoundException if the User email does not exist in the database
+     */
+
     @Override
     public User getUserByEmail(String email) throws EmailNotFoundException{
 
@@ -82,7 +114,15 @@ public class UserServiceImpl implements UserService{
         return user;
     }
 
-    /* For authentication provider */
+    /**
+     * Gets an UserDetail object for an User with the given email address.
+     * Used for the authentication provider.
+     *
+     * @param s User email address
+     * @return an UserDetails object for the User with the given email
+     * @throws UsernameNotFoundException if the User does not exist in the Database
+     */
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         final User user = userDAO.loadByEmail(s);
@@ -100,6 +140,14 @@ public class UserServiceImpl implements UserService{
         return userDetails;
     }
 
+    /**
+     * Update User in the database.
+     *
+     * @param user the new User value
+     * @throws UserNotFoundException if the User does not exist in the database
+     */
+
+
     @Override
     public void updateUser(User user) throws UserNotFoundException {
         if(!exists(user.getEmail())){
@@ -107,6 +155,14 @@ public class UserServiceImpl implements UserService{
         }
         userDAO.update(user);
     }
+
+    /**
+     * Removes an User from the database.
+     *
+     * @param user the User to be removed
+     * @throws UserNotFoundException if the User does not exist in the database
+     */
+
 
     @Override
     public void deleteUser(User user) throws UserNotFoundException{
@@ -116,6 +172,12 @@ public class UserServiceImpl implements UserService{
         userDAO.delete(user);
     }
 
+    /**
+     * Gets the list with all the Users.
+     *
+     * @return the list of all Users that exist in the database
+     */
+
     @Override
     public List<User> getAllUsers() {
         List<User> userList = userDAO.findAll();
@@ -124,6 +186,14 @@ public class UserServiceImpl implements UserService{
         }
         return userList;
     }
+
+    /**
+     * Gets an User by his ID.
+     *
+     * @param id the User ID.
+     * @return the User with the given ID
+     * @throws UserNotFoundException if the User does not exist in the databse
+     */
 
     @Override
     public User getUserById(long id) throws UserNotFoundException {

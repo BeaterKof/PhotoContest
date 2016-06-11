@@ -24,8 +24,11 @@
             <c:forEach items="${lastContest.fileList}" var="file">
                 <div class="image-cell">
                     <div class="image-name image-toggle"><p class="name-parag">${file.name}</p></div>
-                    <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself">
+                    <a class="fancybox" href="${pageContext.request.contextPath}/files/${file.path}">
+                        <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself" alt="${file.description}">
+                    </a>
                     <div class="image-options image-toggle" id="${file.file_id}">
+                        <span id="photographer_link" class="vote_number" style="float:left;"> by <a href="/guest/singlePhotographer?photographerId=${file.user.user_id}">${file.user.first_name}</a></span>
                         <img class="img_icon like_btn" src="/resources/images/white-heart.png" title="Like">
                         <span class="vote_number" style="color:red; float:right;">${fn:length(file.voterList)} </span>
                     </div>
@@ -36,27 +39,27 @@
 
 
     <jsp:attribute name="footer_area">
-        <script type="text/javascript">
-            var clientIp;
-            $.get("http://ipinfo.io", function(response) {
-                clientIp = response.ip;
-            }, "jsonp");
-            $(document).ready(function(){
-                $('.like_btn').click(function(){
-                    var fileId = $(this).parent().attr('id');
-                    $.ajax({
-                        type:'GET',
-                        data: {fileId: fileId, clientIp: clientIp},
-                        url:'userAjax/likePhoto',
-                        success: function(){
-                            $('#' + fileId).find('img').attr("src","/resources/images/red-heart.png");
-                            $('#' + fileId).find('img').css("pointer-events","none");
-                        }
-                    });
-                    return false;
+    <script type="text/javascript">
+        var clientIp;
+        $.get("http://ipinfo.io", function(response) {
+            clientIp = response.ip;
+        }, "jsonp");
+        $(document).ready(function(){
+            $('.like_btn').click(function(){
+                var fileId = $(this).parent().attr('id');
+                $.ajax({
+                    type:'GET',
+                    data: {fileId: fileId, clientIp: clientIp},
+                    url:'/guest/userAjax/likePhoto',
+                    success: function(){
+                        $('#' + fileId).find('img').attr("src","/resources/images/red-heart.png");
+                        $('#' + fileId).find('img').css("pointer-events","none");
+                    }
                 });
+                return false;
             });
-        </script>
+        });
+    </script>
         <style type="text/css">
             #${secondMenu}{
                 text-decoration: underline;

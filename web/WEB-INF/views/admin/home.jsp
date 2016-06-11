@@ -90,6 +90,7 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Id</th>
                         <th>Prize</th>
                         <th>Starting date</th>
                         <th>Ending date</th>
@@ -101,6 +102,7 @@
                             <tr>
                                 <th>${counter.index}</th>
                                 <th>${contest.name}</th>
+                                <th>${contest.contest_id}</th>
                                 <th>${contest.prize}</th>
                                 <th>${contest.start_date}</th>
                                 <th>${contest.finish_date}</th>
@@ -122,18 +124,18 @@
                         <th>#</th>
                         <th>Message</th>
                         <th>File id</th>
+                        <th>Contest id</th>
                         <th>Reporter email</th>
-                        <th>Contest name</th>
                     </tr>
                     </thead>
                     <tbody>
                         <c:forEach items="${reportList}" var="report" varStatus="counter">
-                            <tr id="${report.report_id}" name="${report.file_id}">
+                            <tr id="${report.report_id}" name="${report.file.file_id}">
                                 <th>${counter.index}</th>
                                 <th>${report.message}</th>
-                                <th>${report.file_id}</th>
+                                <th>${report.file.file_id}</th>
+                                <th>${report.contest.contest_id}</th>
                                 <th>${report.reporter_email}</th>
-                                <th></th>
                                 <th><button type="button" name="removeFromContest" class="btn btn-danger report_btn">Remove from contest</button></th>
                                 <th><button type="button" name="delete" class="btn btn-danger report_btn">Delete report</button></th>
                             </tr>
@@ -145,6 +147,7 @@
 
         <script type="text/javascript">
             $(document).ready(function(){
+                <!-- Activate/deactivate user -->
                 $('.user_btn').click(function(){
                     var userId = $(this).parent().attr('id');
                     var action = $(this).attr('name');
@@ -153,14 +156,24 @@
                         data: {userId: userId, action: action},
                         url:'/admin/adminUserManager',
                         success: function(){
-                            if(action.isEqual('delete')){
+                            if(action === 'delete'){
                                 $('#' + userId).closest('tr').fadeOut(700);
+                            }
+                            if(action === 'deactivate'){
+                                if($('#' + userId).closest('tr').css("background-color") == "rgb(255, 255, 255)"){
+                                    $('#' + userId).closest('tr').css("background-color","#F9F9F9");
+                                    alert("deactivate true!");
+                                } else {
+                                    $('#' + userId).closest('tr').css("background-color","white");
+                                    alert("deactivate false!");
+                                }
                             }
                         }
                     });
                     return false;
                 });
 
+                <!-- Delete admin -->
                 $('.admin_btn').click(function(){
                     var adminId = $(this).parent().attr('id');
                     $.ajax({
@@ -174,6 +187,7 @@
                     return false;
                 });
 
+                <!-- Delete contest -->
                 $('.contest_btn').click(function(){
                     var contestId = $(this).parent().attr('id');
                     $.ajax({
@@ -187,13 +201,14 @@
                     return false;
                 });
 
+                <!-- Delete report -->
                 $('.report_btn').click(function(){
                     var reportId = $(this).closest('tr').attr('id');
                     var fileId = $(this).closest('tr').attr('name');
                     var action = $(this).attr('name');
                     $.ajax({
                         type:'GET',
-                        data: {reportId: reportId, action: action, fileId: fileId},
+                        data: {reportId: reportId, action: action},
                         url:'/admin/adminReportsManager',
                         success: function(){
                                 $('#' + reportId).closest('tr').fadeOut(700);

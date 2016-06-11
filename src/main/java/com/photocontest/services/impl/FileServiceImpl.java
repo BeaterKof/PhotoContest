@@ -1,6 +1,7 @@
 package com.photocontest.services.impl;
 
 import com.photocontest.dao.FileDAO;
+import com.photocontest.dao.ReportDAO;
 import com.photocontest.exceptions.EmailExistsException;
 import com.photocontest.exceptions.FileExistsException;
 import com.photocontest.exceptions.FileNotFoundException;
@@ -28,6 +29,9 @@ public class FileServiceImpl implements FileService{
     @Autowired
     private FileDAO fileDAO;
 
+    @Autowired
+    private ReportDAO reportDAO;
+
     public FileDAO getFileDAO() {
         return fileDAO;
     }
@@ -35,6 +39,35 @@ public class FileServiceImpl implements FileService{
     public void setFileDAO(FileDAO fileDAO) {
         this.fileDAO = fileDAO;
     }
+
+    public ReportDAO getReportDAO() {
+        return reportDAO;
+    }
+
+    public void setReportDAO(ReportDAO reportDAO) {
+        this.reportDAO = reportDAO;
+    }
+
+    /**
+     * Checks if an File exists in the database.
+     *
+     * @param id the File id
+     * @return true if the File exists in the database.
+     * @return false if the File does not exist in the database.
+     */
+
+    @Override
+    public boolean exists(long id) {
+        return fileDAO.exists(id);
+    }
+
+    /**
+     * Creates a File in the database.
+     *
+     * @param file the File to be created
+     * @return the created File
+     * @throws FileExistsException if the file exists in the database
+     */
 
     @Override
     public File createFile(File file) throws FileExistsException {
@@ -49,6 +82,13 @@ public class FileServiceImpl implements FileService{
         return file;
     }
 
+    /**
+     * Update a File in the database.
+     *
+     * @param file the new File data
+     * @throws FileNotFoundException if the File does not exist in the database
+     */
+
     @Override
     public void updateFile(File file) throws FileNotFoundException {
         if(!fileDAO.exists(file.getFile_id())){
@@ -61,12 +101,21 @@ public class FileServiceImpl implements FileService{
         }
     }
 
+    /**
+     * Remove a File from the database.
+     *
+     * @param file the File to be removed from the database
+     * @throws FileNotFoundException if the File does not exist in the Database
+     */
+
     @Override
     public void deleteFile(File file) throws FileNotFoundException {
         if(!fileDAO.exists(file.getFile_id())){
             throw new FileNotFoundException(file.getFile_id());
         }
         try {
+
+
             fileDAO.delete(file);
             fileDAO.flush();
         } catch(Exception e){
@@ -74,23 +123,13 @@ public class FileServiceImpl implements FileService{
         }
     }
 
-    @Override
-    public void deleteFileById(long id) throws FileNotFoundException {
-        if(!fileDAO.exists(id)){
-            throw new FileNotFoundException(id);
-        }
-        try {
-            File file = fileDAO.findById(id);
-            fileDAO.delete(file);
-        }catch(Exception e){
-            logger.error(e.getMessage());
-        }
-    }
-
-    @Override
-    public boolean exists(long id) {
-        return fileDAO.exists(id);
-    }
+    /**
+     * Checks if an File exists in the database.
+     *
+     * @param id the File id
+     * @return true if the File exists in the database.
+     * @return false if the File does not exist in the database.
+     */
 
     @Override
     public File getFileById(long id) throws FileNotFoundException {
@@ -105,6 +144,12 @@ public class FileServiceImpl implements FileService{
         }
         return file;
     }
+
+    /**
+     * Gets all the Files from the database.
+     *
+     * @return the list of all Files from the database
+     */
 
     @Override
     public List<File> getAllFiles() {

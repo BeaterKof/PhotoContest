@@ -9,6 +9,10 @@ package com.photocontest.exceptions;
  */
 public class ContestNotFoundException extends Exception {
 
+    /**
+     * Constructor for the Contest not found exception
+     * @param message the name of the Contest
+     */
     public ContestNotFoundException(String message) {
         super("Concursul cu numele: " + message + " nu a fost gasit.");
     }

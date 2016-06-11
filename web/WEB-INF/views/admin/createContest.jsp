@@ -38,9 +38,9 @@
                     <label>Description:</label>
                     <textarea class="form-control" name="description" maxlength="100" rows="2" cols="50"></textarea>
                 </div>
-                <c:if test="${not empty errorMessage}">
+                <c:if test="${not empty message}">
                     <div class="form-group alert alert-danger">
-                        <h4>${errorMessage}</h4>
+                        <h4>${message}</h4>
                     </div>
                 </c:if>
                 <button type="submit" class="btn btn-primary">Submit</button>

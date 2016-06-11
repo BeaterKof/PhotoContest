@@ -42,10 +42,27 @@ public class AdminServiceImpl implements AdminService {
         this.adminDAO = adminDAO;
     }
 
+    /**
+     * Checks if an email address is available in the database.
+     *
+     * @param email the email to be checked
+     * @return true if the email does not exist
+     * @return false if the email exists
+     */
+
     @Override
     public boolean checkAvailable(String email) {
         return adminDAO.checkAvailable(email);
     }
+
+    /**
+     * Creates an new Admin in the database.
+     *
+     * @param admin the Admin to be created
+     * @return the Admin created
+     * @throws EmailExistsException if the email of the Admin
+     * already exists in the database
+     */
 
     @Override
     public Admin createAdmin(Admin admin) throws EmailExistsException {
@@ -63,6 +80,13 @@ public class AdminServiceImpl implements AdminService {
         return admin;
     }
 
+    /**
+     * Updates an Admin in the database
+     *
+     * @param admin the new Admin value
+     * @throws AdminNotFoundException if the admin does not exist
+     */
+
     @Override
     public void updateAdmin(Admin admin) throws AdminNotFoundException {
         if(!checkAvailable(admin.getEmail())){
@@ -77,18 +101,32 @@ public class AdminServiceImpl implements AdminService {
         }
     }
 
+    /**
+     * Deletes an Admin from the database
+     *
+     * @param admin the Admin to be deleted
+     * @throws AdminNotFoundException if admin does not exist
+     */
+
     @Override
     public void deleteAdmin(Admin admin) throws AdminNotFoundException {
-        if(!checkAvailable(admin.getEmail())){
+        if(checkAvailable(admin.getEmail())){
             throw new AdminNotFoundException(admin.getEmail());
         }
-
         try{
             adminDAO.delete(admin);
         } catch(Exception e){
             logger.error(e.getMessage());
         }
     }
+
+    /**
+     * Gets an Admin by its Email address
+     *
+     * @param email the admin email address
+     * @return the Admin retrieved
+     * @throws EmailNotFoundException if the email does not exist in the database
+     */
 
     @Override
     public Admin getAdminByEmail(String email) throws EmailNotFoundException {
@@ -100,14 +138,13 @@ public class AdminServiceImpl implements AdminService {
         return admin;
     }
 
-    @Override
-    public List<Admin> getAllAdmins() {
-        List<Admin> adminList = adminDAO.findAll();
-        if(adminList == null){
-            adminList = new ArrayList<Admin>();
-        }
-        return adminList;
-    }
+    /**
+     * Gets an Admin by its ID
+     *
+     * @param id the admin ID
+     * @return the Admin retrieved
+     * @throws AdminNotFoundException if the ID does not exist in the database
+     */
 
     @Override
     public Admin getAdminById(long id) throws AdminNotFoundException {
@@ -117,4 +154,21 @@ public class AdminServiceImpl implements AdminService {
         }
         return admin;
     }
+
+    /**
+     * Gets a list with all the Admins from the database.
+     *
+     * @return the list of all Admins
+     */
+
+    @Override
+    public List<Admin> getAllAdmins() {
+        List<Admin> adminList = adminDAO.findAll();
+        if(adminList == null){
+            adminList = new ArrayList<Admin>();
+        }
+        return adminList;
+    }
+
+
 }

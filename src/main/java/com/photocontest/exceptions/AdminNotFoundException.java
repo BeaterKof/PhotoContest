@@ -9,6 +9,10 @@ package com.photocontest.exceptions;
  */
 public class AdminNotFoundException extends Exception {
 
+    /**
+     * Constructor for the Admin not found exception
+     * @param email the Admin email address
+     */
     public AdminNotFoundException(String email){
         super("Admin with email " + email + " not found.");
     }

@@ -21,9 +21,9 @@ import java.util.UUID;
 public class UniqueValueGenerators {
 
     /**
-     * Generates a 66 characters string
+     * Generates a 66 characters string containing random numbers and the current date and time.
      *
-     * @return
+     * @return a string of 66 characters
      */
     public static String generateString(){
         String filename = "";

@@ -24,7 +24,9 @@
             <c:forEach items="${lastContest.fileList}" var="file">
                 <div class="image-cell">
                     <div class="image-name image-toggle"><p class="name-parag">${file.name}</p></div>
-                    <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself">
+                    <a class="fancybox" href="${pageContext.request.contextPath}/files/${file.path}">
+                        <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself" alt="${file.description}">
+                    </a>
                     <div class="image-options image-toggle" id="${lastContest.contest_id}">
                         <img class="img_icon report_btn" id="${file.file_id}" src="/resources/images/red-alert.ico" title="Report">
                     </div>

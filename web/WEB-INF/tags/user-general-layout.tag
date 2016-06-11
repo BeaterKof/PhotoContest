@@ -9,6 +9,7 @@
 <%@attribute name="footer_area" fragment="true" %>
 <%@attribute name="content_area_login" fragment="true" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -89,9 +90,9 @@
                 <div id="right-col" class="col">
                     <p class="footer-title">Recent contests</p>
                     <br>
-                    <p><a href="#">Contest 1</a></p>
-                    <p><a href="#">Contest 2</a></p>
-                    <p><a href="#">Contest 3</a></p>
+                    <c:forEach var="contest" items="${topThree}" varStatus="status">
+                        <p><a href="/guest/singleContest?contestId=${contest.contest_id}">${contest.name}</a></p>
+                    </c:forEach>
                 </div>
 
                 <p id="rights">©2015 Aioanei Alexandru Andrei. All rights reserved.</p>

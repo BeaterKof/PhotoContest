@@ -28,37 +28,57 @@ import java.io.OutputStream;
  */
 @RestController
 public class GuestAjaxController {
+
+    /**
+     * The logger instance
+     */
     static final Logger logger = Logger.getLogger(GuestAjaxController.class);
 
+    /**
+     * The File service instance
+     */
     @Autowired
     private FileService fileService;
 
+    /**
+     * The Voter service instance
+     */
     @Autowired
     private VoterService voterService;
 
+    /**
+     * The Servlet context instance
+     */
     @Autowired
     private ServletContext context;
 
+    /**
+     * Add a new vote to a file.
+     * Create a new Voter object and append it to the database.
+     * @param request the HTTP servlet request
+     * @param response the HTTP servlet response
+     */
+
     @RequestMapping("/guest/userAjax/likePhoto")
-    public void LikePhoto(HttpServletRequest request, HttpServletResponse response){
+    public void likePhoto(HttpServletRequest request, HttpServletResponse response){
         String fileIdString = request.getParameter("fileId");
         String clientIp = request.getParameter("clientIp");
         HttpSession session = request.getSession(true);
         long fileId = Long.parseLong(fileIdString);
-        File file = null;
         Voter voter = new Voter();
+        File file = null;
 
-        if(!voterService.exists(clientIp)){
-            try {
-                file = fileService.getFileById(fileId);
-                voter.setFile(file);
-                voter.setIp_address(clientIp);
-                voterService.createVoter(voter);
-            } catch (FileNotFoundException e) {
-                logger.error(e.getMessage());
-            } catch (VoterExistsException e) {
-                logger.error(e.getMessage());
+        try {
+            file = fileService.getFileById(fileId);
+            voter.getFiles().add(file);
+            voter.setIp_address(clientIp);
+            if(!file.getVoterList().contains(voter)){
+                file.getVoterList().add(voter);
+                fileService.updateFile(file);
             }
+        } catch (FileNotFoundException e) {
+            logger.error(e.getMessage());
         }
+
     }
 }

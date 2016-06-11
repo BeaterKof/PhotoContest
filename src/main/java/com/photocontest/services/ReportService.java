@@ -16,8 +16,45 @@ import java.util.List;
  */
 public interface ReportService {
 
+    /**
+     * Creates a new report in the database.
+     *
+     * @param report the Report to be created
+     */
+
     void createReport(Report report);
+
+    /**
+     * Removes a Report from the database.
+     *
+     * @param report the Report to be deleted
+     * @throws ReportNotFoundException if Report does not exist in the database
+     */
+
     void deleteReport(Report report) throws ReportNotFoundException;
+
+    /**
+     * Get all the Reports from the database.
+     *
+     * @return a list of all the Reports from the database
+     */
+
     List<Report> getAllReports();
+
+    /**
+     * Gets an Report from the database by its ID.
+     *
+     * @param id the Report ID
+     * @return the Report with the given ID
+     * @throws ReportNotFoundException if the Report does not exist
+     */
+
     Report getReportById(long id) throws ReportNotFoundException;
+
+    void updateReport(Report report) throws ReportNotFoundException;
+
+    List<Report> getReportsByFileId(long fileId);
+    public List<Report> getReportsByContestId(long contestId);
+    public void deleteFileReports(long fileId);
+    public void deleteContestReports(long contestId);
 }

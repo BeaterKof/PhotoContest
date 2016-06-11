@@ -18,7 +18,19 @@ import java.io.*;
  */
 @WebServlet("/files/*")
 public class ImageServlet extends HttpServlet{
+
+    /**
+     * The logger instance
+     */
     static final Logger logger = Logger.getLogger(ImageServlet.class);
+
+    /**
+     * Outputs the stream for a image request.
+     *
+     * @param request the Http servlet request
+     * @param response the Http servlet response
+     * @throws IOException if something goes wrong during the file loading
+     */
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

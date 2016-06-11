@@ -20,11 +20,26 @@ import javax.persistence.Query;
  */
 @Repository
 public class AdminDAOImpl extends GenericDAOImpl<Admin, Long> implements AdminDAO {
+
+    /**
+     * The logger instance
+     */
     static final Logger logger = Logger.getLogger(FileDAOImpl.class);
 
+    /**
+     * The Admin DAO constructor
+     */
     public AdminDAOImpl(){
         super(Admin.class);
     }
+
+    /**
+     * Checks if an email address is available.
+     *
+     * @param email the email to be checked
+     * @return true if the email does not exist in the database
+     * @return false if the email exists in the databse
+     */
 
     @Override
     public boolean checkAvailable(String email) {
@@ -37,6 +52,14 @@ public class AdminDAOImpl extends GenericDAOImpl<Admin, Long> implements AdminDA
         int count = query.getResultList().size();
         return count < 1;
     }
+
+    /**
+     * Returns an admin by its email address.
+     *
+     * @param email the email address of the user
+     * @return the admin object if the email address exists in the database
+     * @return null value if the email address does not exist in the database
+     */
 
     @Override
     public Admin getAdminByEmail(String email) {

@@ -69,8 +69,8 @@
                     <div id="formErrorMessage"></div>
                 </div>
 
-                <c:if test="${not empty errorString}">
-                        <p style="text-align: center"> Server error: ${errorString} </p>
+                <c:if test="${not empty errorMessage}">
+                        <p class="alert alert-danger"> Server error: ${errorMessage} </p>
                 </c:if>
 
 

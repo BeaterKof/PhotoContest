@@ -8,6 +8,11 @@ package com.photocontest.exceptions;
  * To change this template use File | Settings | File Templates.
  */
 public class FileExistsException extends Exception {
+
+    /**
+     * Constructor for the File exists exception
+     * @param id the file id
+     */
     public FileExistsException(long id){
         super("The file with id " + id + " already exists in the database.");
     }

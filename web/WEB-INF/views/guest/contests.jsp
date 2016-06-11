@@ -18,10 +18,8 @@
     <jsp:attribute name="header_area">
     </jsp:attribute>
 
-
     <jsp:attribute name="content_area">
         <div class="wrapper">
-
             <c:forEach var="contest" items="${contestList}">
                 <div class="contest-wrapper">
                     <div><a href="/guest/singleContest?contestId=${contest.contest_id}"><c:out value="${contest.name}"/></a></div>
@@ -35,7 +33,6 @@
                     </c:choose>
                 </div>
             </c:forEach>
-
         </div>
     </jsp:attribute>
 

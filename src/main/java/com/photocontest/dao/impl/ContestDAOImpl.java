@@ -20,9 +20,21 @@ import java.util.List;
 @Repository
 public class ContestDAOImpl extends GenericDAOImpl<Contest, Long> implements ContestDAO {
 
+    /**
+     * The Contest DAO constructor
+     */
+
     public ContestDAOImpl(){
         super(Contest.class);
     }
+
+    /**
+     * Checks if an contest exists by its ID.
+     *
+     * @param id the ID of the contest
+     * @return true if the contest exists in the database
+     *  false if the contest does not exist in the database
+     */
 
     @Override
     public boolean exists(long id) {
@@ -34,11 +46,29 @@ public class ContestDAOImpl extends GenericDAOImpl<Contest, Long> implements Con
         return count > 0;
     }
 
+    /**
+     * Returns a list with all the running contests.
+     * @param currentDate the current date
+     * @return the list of current contests
+     */
+
     @Override
     public List<Contest> findRunningContests(Date currentDate) {
         return this.entityManager.createQuery("select u from " +
                 this.entityClass.getSimpleName() + " u where u.finish_date > :currentDate")
                 .setParameter("currentDate",currentDate)
+                .getResultList();
+    }
+
+    /**
+     * Gets the Contest that have no winners
+     * @return a list of all contests with no winner
+     */
+
+    @Override
+    public List<Contest> findNoWinnerContests() {
+        return this.entityManager.createQuery("select u from " +
+                this.entityClass.getSimpleName() + " u where u.finish_date IS NULL")
                 .getResultList();
     }
 

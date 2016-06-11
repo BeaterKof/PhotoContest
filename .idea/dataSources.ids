@@ -18,18 +18,18 @@
       <column name="ADMIN_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
       <column name="NAME" sqlType="VARCHAR2" length="30" precision="0" nullable="true" jdbcType="12" />
       <column name="PASSWORD" sqlType="VARCHAR2" length="60" precision="0" nullable="true" jdbcType="12" />
-      <column name="TYPE" sqlType="VARCHAR2" length="20" precision="0" nullable="true" jdbcType="12" />
+      <column name="TYPE" sqlType="VARCHAR2" length="10" precision="0" nullable="true" jdbcType="12" />
       <column name="EMAIL" sqlType="VARCHAR2" length="50" precision="0" nullable="true" jdbcType="12" />
     </table>
     <table name="CONTESTS" schema="PHOTOCONTEST" catalog="" type="TABLE">
       <column name="CONTEST_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
       <column name="ADMIN_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
-      <column name="USER_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
       <column name="NAME" sqlType="VARCHAR2" length="50" precision="0" nullable="true" jdbcType="12" />
       <column name="START_DATE" sqlType="DATE" length="7" precision="0" nullable="true" jdbcType="91" />
       <column name="FINISH_DATE" sqlType="DATE" length="7" precision="0" nullable="true" jdbcType="91" />
       <column name="PRIZE" sqlType="VARCHAR2" length="30" precision="0" nullable="true" jdbcType="12" />
       <column name="DESCRIPTION" sqlType="VARCHAR2" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="WINNER_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
     </table>
     <table name="FILES" schema="PHOTOCONTEST" catalog="" type="TABLE">
       <column name="FILE_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
@@ -37,28 +37,37 @@
       <column name="CONTEST_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
       <column name="NAME" sqlType="VARCHAR2" length="30" precision="0" nullable="true" jdbcType="12" />
       <column name="TYPE" sqlType="VARCHAR2" length="20" precision="0" nullable="true" jdbcType="12" />
-      <column name="VISIBLE" sqlType="VARCHAR2" length="20" precision="0" nullable="true" jdbcType="12" />
-      <column name="DESCRIPTION" sqlType="VARCHAR2" length="100" precision="0" nullable="true" jdbcType="12" />
+      <column name="DESCRIPTION" sqlType="VARCHAR2" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="PATH" sqlType="VARCHAR2" length="200" precision="0" nullable="true" jdbcType="12" />
+      <column name="DATE_ADDED" sqlType="DATE" length="7" precision="0" nullable="true" jdbcType="91" />
+    </table>
+    <table name="FILE_VOTER" schema="PHOTOCONTEST" catalog="" type="TABLE">
+      <column name="FILE_VOTER_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
+      <column name="VOTER_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
+      <column name="FILE_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
     </table>
     <table name="HIBERNATE_SEQUENCE" schema="PHOTOCONTEST" catalog="" type="SEQUENCE" />
     <table name="REPORTS" schema="PHOTOCONTEST" catalog="" type="TABLE">
       <column name="REPORT_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
-      <column name="ADMIN_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
       <column name="FILE_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
+      <column name="CONTEST_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
+      <column name="REPORTER_EMAIL" sqlType="VARCHAR2" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="MESSAGE" sqlType="VARCHAR2" length="100" precision="0" nullable="true" jdbcType="12" />
     </table>
     <table name="USERS" schema="PHOTOCONTEST" catalog="" type="TABLE">
       <column name="USER_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
       <column name="EMAIL" sqlType="VARCHAR2" length="50" precision="0" nullable="true" jdbcType="12" />
       <column name="PASSWORD" sqlType="VARCHAR2" length="60" precision="0" nullable="true" jdbcType="12" />
-      <column name="FIRSTNAME" sqlType="VARCHAR2" length="30" precision="0" nullable="true" jdbcType="12" />
-      <column name="LASTNAME" sqlType="VARCHAR2" length="30" precision="0" nullable="true" jdbcType="12" />
+      <column name="FIRST_NAME" sqlType="VARCHAR2" length="30" precision="0" nullable="true" jdbcType="12" />
+      <column name="LAST_NAME" sqlType="VARCHAR2" length="30" precision="0" nullable="true" jdbcType="12" />
       <column name="WEBSITE" sqlType="VARCHAR2" length="50" precision="0" nullable="true" jdbcType="12" />
       <column name="DESCRIPTION" sqlType="VARCHAR2" length="100" precision="0" nullable="true" jdbcType="12" />
+      <column name="STATUS" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
+      <column name="TYPE" sqlType="VARCHAR2" length="10" precision="0" nullable="true" jdbcType="12" />
     </table>
     <table name="VOTERS" schema="PHOTOCONTEST" catalog="" type="TABLE">
       <column name="VOTER_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
-      <column name="FILE_ID" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
-      <column name="IP_ADDRESS" sqlType="NUMBER" length="22" precision="0" nullable="true" jdbcType="3" />
+      <column name="IP_ADDRESS" sqlType="VARCHAR2" length="20" precision="0" nullable="true" jdbcType="12" />
     </table>
   </data-source>
 </component>

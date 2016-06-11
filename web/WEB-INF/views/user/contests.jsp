@@ -9,6 +9,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="now" class="java.util.Date" />
 
 <t:user-general-layout title="Home" last_name="${sessionScope.user.last_name}">
     <jsp:attribute name="head">

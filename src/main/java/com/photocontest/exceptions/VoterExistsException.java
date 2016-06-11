@@ -9,6 +9,10 @@ package com.photocontest.exceptions;
  */
 public class VoterExistsException extends Exception{
 
+    /**
+     * Constructor for the Voter exists exception
+     * @param ip the IP address of a Voter
+     */
     public VoterExistsException(String ip){
         super("Voter with ip: " + ip + " already exists in the database.");
     }

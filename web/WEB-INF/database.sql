@@ -25,7 +25,8 @@ create table contests (
   start_date date,
   finish_date date,
   prize varchar(30),
-  description varchar2(50)
+  description varchar2(50),
+  winner_id integer
 );
 
 create table files (
@@ -39,16 +40,21 @@ create table files (
   date_added date
 );
 
+create table file_voter (
+  file_voter_id integer,
+  voter_id integer,
+  file_id integer
+);
+
 create table voters (
   voter_id integer,
-  file_id integer,
-  ip_address integer
+  ip_address varchar2(20)
 );
 
 create table reports (
   report_id integer,
   file_id integer,
   contest_id integer,
-  reporter_id integer,
+  reporter_email varchar2(50),
   message varchar2(100)
 );

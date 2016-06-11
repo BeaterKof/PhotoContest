@@ -23,7 +23,7 @@
 
     <jsp:attribute name="content_area">
         <div id="nav_buttons">
-            <button type="button" class="btn btn-lg btn-success rollback_btn">Rollback</button>
+            <button type="button" class="btn btn-lg btn-success backup_btn">Backup</button>
             <button type="button" class="btn btn-lg btn-info recovery_button">Recovery</button>
             <a href="/admin/logout"><button type="button" class="btn btn-lg btn-default menu_button">Logout</button></a>
         </div>
@@ -31,11 +31,11 @@
 
         <script type="text/javascript">
             $(document).ready(function(){
-                $('.rollback_btn').click(function(){
+                $('.backup_btn').click(function(){
                     $.ajax({
                         type:'GET',
                         data: {},
-                        url:'adminAjax/rollback',
+                        url:'adminAjax/backup',
                         success: function(){
                             alert("Rollback Successful");
                         }

@@ -21,11 +21,26 @@ import javax.persistence.Query;
  */
 @Repository
 public class FileDAOImpl extends GenericDAOImpl<File, Long> implements FileDAO {
+
+    /**
+     * The logger instance
+     */
     static final Logger logger = Logger.getLogger(FileDAOImpl.class);
 
+    /**
+     * The Contest DAO constructor
+     */
     public FileDAOImpl(){
         super(File.class);
     }
+
+    /**
+     * Finds an File in the database by its ID.
+     *
+     * @param id the ID of the File
+     * @return the File if it exists in the database
+     * @return null if the File does not exist in the database
+     */
 
     @Override
     public File loadByUserId(long id) {
@@ -44,6 +59,14 @@ public class FileDAOImpl extends GenericDAOImpl<File, Long> implements FileDAO {
         }
         return file;
     }
+
+    /**
+     * Checks if an File exists in the database.
+     *
+     * @param id the File id
+     * @return true if the File exists in the database.
+     * @return false if the File does not exist in the database.
+     */
 
     @Override
     public boolean exists(long id) {

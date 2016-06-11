@@ -24,9 +24,9 @@
                     <c:forEach items="${allTimeBestList}" var="file">
                         <div class="image-cell">
                             <div class="image-name image-toggle"><p class="name-parag">${file.name}</p></div>
-                            <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself">
+                            <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself" alt="${file.description}">
                             <div class="image-options image-toggle" id="${file.file_id}">
-                                <img class="img_icon like_btn" src="/resources/images/white-heart.png" title="Like">
+                                <span id="photographer_link" class="vote_number" style="float:left;"> by <a href="/guest/singlePhotographer?photographerId=${file.user.user_id}">${file.user.first_name}</a></span>
                                 <span class="vote_number" style="color:red; float:right;">${fn:length(file.voterList)} </span>
                             </div>
                         </div>

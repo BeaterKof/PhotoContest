@@ -12,6 +12,14 @@ import java.util.regex.Pattern;
  */
 public class DataValidator {
 
+    /**
+     * Checks if a string is a valid Email address.
+     *
+     * @param email the string to be checked
+     * @return true if the string is a valid email address
+     * @return false if the string is not a valid email address
+     */
+
     public static boolean isEmailAddress(String email){
         Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
         Matcher mat = pattern.matcher(email);

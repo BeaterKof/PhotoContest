@@ -24,6 +24,15 @@ public class CustomAdminDetailsService implements UserDetailsService {
     @Autowired
     private AdminService adminService;
 
+    /**
+     * Loads an Admin and its credentials.
+     *
+     * @param email the Admin email address
+     * @return a CustomAdminDatails object containing the Admin data and
+     * the credentials used by Spring Security
+     * @throws UsernameNotFoundException
+     */
+
     public UserDetails loadUserByUsername(final String email)
             throws UsernameNotFoundException {
         Admin admin = null;

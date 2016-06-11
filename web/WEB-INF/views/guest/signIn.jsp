@@ -25,7 +25,7 @@
                     <div class="modal-header">
                         <h1 class="text-center">Login</h1>
                     </div>
-                    <div class="modal-body">
+                    <div id="modal-fix" class="modal-body">
                         <form action="/submitSignInForm" method="post" class="form col-md-12 center-block">
                             <div class="form-group">
                                 <input type="text" class="form-control input-lg" placeholder="Email" name="email">
@@ -39,12 +39,11 @@
                             </div>
                         </form>
                     </div>
-                    <c:if test="${display=='block'}">
-                        <p style="color:red; text-align: center;"> ${errorMessage}</p>
+                    <c:if test="${not empty errorMessage}">
+                        <p class="alert alert-danger"> ${errorMessage}</p>
                     </c:if>
                 </div>
             </div>
-        </div>
         </div>
     </jsp:attribute>
 

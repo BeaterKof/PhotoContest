@@ -1,5 +1,6 @@
 package com.photocontest.controller;
 
+import com.photocontest.exceptions.ContestNotFoundException;
 import com.photocontest.exceptions.EmailExistsException;
 import com.photocontest.exceptions.EmailNotFoundException;
 import com.photocontest.model.Admin;
@@ -15,6 +16,8 @@ import com.photocontest.services.ContestService;
 import com.photocontest.services.ReportService;
 import com.photocontest.services.UserService;
 import com.photocontest.utils.LoginBean;
+import com.photocontest.utils.TopThreeContests;
+import com.photocontest.utils.TopThreeContestsService;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,37 +50,84 @@ import java.util.List;
 @Controller
 @SessionAttributes({"admin"})
 public class AdminController {
+
+    /**
+     * The logger instance
+     */
     static final Logger logger = Logger.getLogger(AdminController.class);
 
+    /**
+     * The Admin service instance
+     */
     @Autowired
     private AdminService adminService;
 
+    /**
+     * The Contest service instance
+     */
     @Autowired
     private ContestService contestService;
 
+    /**
+     * The User service instance
+     */
     @Autowired
     private UserService userService;
 
+    /**
+     * The Report service instance
+     */
     @Autowired
     private ReportService reportService;
 
+    /**
+     * The Custom Admin Details service instance
+     */
     @Autowired
     private CustomAdminDetailsService customAdminDetailsService;
+
+    /**
+     * The top three contests instance
+     */
+    @Autowired
+    private TopThreeContests topThreeContests;
+
+    /**
+     * Gets the admin login page.
+     * @return the admin login page.
+     */
 
     @RequestMapping(value = "/guest/admin", method = RequestMethod.GET)
          public ModelAndView getAdminIndex(){
         return new ModelAndView("guest/adminLogin");
     }
 
+    /**
+     * Gets the form page to create a new admin.
+     * @return the form page to create a new admin.
+     */
+
     @RequestMapping(value = "/admin/getAdminForm", method = RequestMethod.GET)
     public ModelAndView getAdminForm(){
         return new ModelAndView("/admin/createAdmin");
     }
 
+    /**
+     * Gets the form page to create a new contest.
+     * @return the form page to create a new contest.
+     */
+
     @RequestMapping(value = "/admin/getContestForm", method = RequestMethod.GET)
     public ModelAndView getContestForm(){
         return new ModelAndView("/admin/createContest");
     }
+
+    /**
+     * Processes a submitted login form request and redirects the user to a certain page.
+     * @return the login admin page if the authentication fails
+     * @return the admin home page if an admin authentication succeeds
+     * @return the dba home page if an dba authentication succeeds
+     */
 
     @RequestMapping(value = "/guest/adminLogin", method = RequestMethod.POST)
     public String adminLogin(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
@@ -89,14 +139,14 @@ public class AdminController {
             String errorMessage = "Datele introduse nu respecta normale!";
             redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 
-            return "redirect:/admin";
+            return "redirect:/guest/admin";
         }
 
         if(adminService.checkAvailable(email)){
             String errorMessage = "Acest admin nu exista in baza de date!";
             redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 
-            return "redirect:/admin";
+            return "redirect:/guest/admin";
         }
 
         Admin admin = null;
@@ -106,14 +156,14 @@ public class AdminController {
             logger.error(e.getMessage());
         }
 
-        // Spring Security Authentication
+        /*  Spring Security Authentication */
         CustomAdminDetails adminDetails = (CustomAdminDetails)customAdminDetailsService.loadUserByUsername(admin.getEmail());
         Authentication auth = new UsernamePasswordAuthenticationToken(adminDetails,null,adminDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(auth);
 
-        session.setAttribute("admin",getPrincipal());
+        session.setAttribute("admin",admin);
 
-        //DBA Login
+        /* DBA Login */
         if( admin.getType().equals("dba")){
             return "redirect:/dba/home";
         }
@@ -121,7 +171,10 @@ public class AdminController {
         return "redirect:/admin/home";
     }
 
-
+    /**
+     * Populates and returns the admin home page.
+     * @return the admin home page.
+     */
 
     @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
     public ModelAndView getAdminHome(){
@@ -143,6 +196,12 @@ public class AdminController {
         return model;
     }
 
+    /**
+     * Logs out an admin.
+     * @param sessionStatus
+     * @return redirects to the admin login page
+     */
+
     @RequestMapping(value = "/admin/logout", method = RequestMethod.GET)
     public String adminLogout(SessionStatus sessionStatus){
 
@@ -152,8 +211,17 @@ public class AdminController {
         return "redirect:/guest/admin";
     }
 
+    /**
+     * Processes a submitted admin account creation form request and redirects the user to a new form page.
+     * @param admin the Admin object containing the form data
+     * @param result the result of the Admin object binding
+     * @param redirectAttributes the attributes to be passed to the response
+     * @return the admin home page if the creation of a new Admin account succeeds
+     * @return the create new admin form if the creation of a new Admin account fails
+     */
+
     @RequestMapping(value = "/admin/createNewAdmin", method = RequestMethod.POST)
-    public String createAdmin(@Valid @ModelAttribute("admin") Admin admin,
+    public String createAdmin(@Valid @ModelAttribute("adminForm") Admin admin,
                                     BindingResult result, final RedirectAttributes redirectAttributes){
 
         if(result.hasErrors()){
@@ -170,6 +238,8 @@ public class AdminController {
             return "redirect:/admin/createNewAdmin";
         }
 
+        admin.setType("admin");
+
         try {
             adminService.createAdmin(admin);
         } catch (EmailExistsException e) {
@@ -183,34 +253,41 @@ public class AdminController {
         return "redirect:/admin/home";
     }
 
+    /**
+     * Processes a submitted form request to create a new contest and redirects the user to a new form page.
+     * @param contest the Contest object containing the form data
+     * @param result the result of the Contest object binding
+     * @param redirectAttributes the attributes to be passed to the response
+     * @return the create new contest form page if the creation of a new Contest account succeeds
+     */
+
     @RequestMapping(value = "/admin/createNewContest", method = RequestMethod.POST)
     public String createContest(@Valid @ModelAttribute("contest") Contest contest,
-                                    BindingResult result, RedirectAttributes redirectAttributes){
+                                    BindingResult result, RedirectAttributes redirectAttributes, HttpSession session ){
 
         if(result.hasErrors()){
             String errorMessage = "Unul din campuri nu este valid.";
-            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
+            redirectAttributes.addFlashAttribute("message",errorMessage);
 
             return "redirect:/admin/getContestForm";
         }
 
         contestService.createContest(contest);
+        Admin admin = (Admin) session.getAttribute("admin");
+        contest.setAdmin(admin);
+
+        try {
+            contestService.updateContest(contest);
+        } catch (ContestNotFoundException e) {
+            logger.error(e.getMessage());
+        }
+
+        /* Reset top three contests on pages */
+        topThreeContests.refreshList();
 
         String message = "Concurs adaugat cu succes!!";
         redirectAttributes.addFlashAttribute("message",message);
 
         return "redirect:/admin/getContestForm";
-    }
-
-    private String getPrincipal(){
-        String userName = null;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        if (principal instanceof UserDetails) {
-            userName = ((UserDetails)principal).getUsername();
-        } else {
-            userName = principal.toString();
-        }
-        return userName;
     }
 }

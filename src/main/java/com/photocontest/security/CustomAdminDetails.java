@@ -25,6 +25,11 @@ public class CustomAdminDetails extends Admin implements UserDetails {
         super(a);
     }
 
+    /**
+     * Get the authorities for an Admin
+     * @return list of authorities
+     */
+
     public Collection getAuthorities(){
         if(this.getType().equals("admin")){
             return AuthorityUtils.createAuthorityList("ROLE_ADMIN");

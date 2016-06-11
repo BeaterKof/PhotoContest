@@ -19,9 +19,21 @@ import javax.persistence.Query;
 @Repository
 public class VoterDAOImpl extends GenericDAOImpl<Voter, Long> implements VoterDAO {
 
+    /**
+     * The Voter DAO constructor
+     */
+
     public VoterDAOImpl(){
         super(Voter.class);
     }
+
+    /**
+     * Checks if the Voter exists in the database.
+     *
+     * @param ip the IP address of the Voter
+     * @return true if the Voter exists in the database
+     * @return false if the Voter does not exist in the database
+     */
 
     @Override
     public boolean exists(String ip) {
@@ -29,7 +41,12 @@ public class VoterDAOImpl extends GenericDAOImpl<Voter, Long> implements VoterDA
                 this.entityClass.getSimpleName() + " u where u.ip_address = :ip")
                 .setParameter("ip", ip);
 
-        int count = query.getResultList().size();
+        int count = 0;
+        if(query.getResultList() != null){
+            count = query.getResultList().size();
+        }
+
         return count > 0;
     }
+
 }

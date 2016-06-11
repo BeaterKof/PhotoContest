@@ -13,5 +13,13 @@ import com.photocontest.model.Voter;
  */
 public interface VoterDAO extends GenericDAO<Voter, Long> {
 
+    /**
+     * Checks if the Voter exists in the database.
+     *
+     * @param ip the IP address of the Voter
+     * @return true if the Voter exists in the database
+     * @return false if the Voter does not exist in the database
+     */
+
     boolean exists(String ip);
 }

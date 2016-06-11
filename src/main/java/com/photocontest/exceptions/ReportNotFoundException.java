@@ -9,6 +9,10 @@ package com.photocontest.exceptions;
  */
 public class ReportNotFoundException extends Exception {
 
+    /**
+     * Constructor for the Report not found exception
+     * @param id the Report ID
+     */
     public ReportNotFoundException(long id){
         super("Raportul cu id-ul " +  id + " nu a fost gasit." );
     }

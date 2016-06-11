@@ -28,6 +28,15 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private UserService userService;
 
+    /**
+     * Checks the authority of an user and returns an Authentication object
+     * used for the authentication in Spring Security
+     * @param authentication
+     * @return User and credentials if he is an admin
+     * @return null if the user is not an admin
+     * @throws AuthenticationException
+     */
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException{
         String name = authentication.getPrincipal() + "";

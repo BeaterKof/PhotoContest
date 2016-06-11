@@ -336,15 +336,13 @@ nav a:hover{
 
 /* Login Form */
 
-#loginModal{
-    visibility:hidden;
-    margin-top: 100px;
-}
-
 .modal-footer {
     border-top: 0px;
 }
 
+#modal-fix {
+    height: 210px;
+}
 
 /* Contest page */
 
