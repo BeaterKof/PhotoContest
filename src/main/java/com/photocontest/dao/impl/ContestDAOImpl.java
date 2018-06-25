@@ -72,4 +72,10 @@ public class ContestDAOImpl extends GenericDAOImpl<Contest, Long> implements Con
                 .getResultList();
     }
 
+    @Override
+    public List<Contest> getContestsByAdmin(long adminId) {
+        return this.entityManager.createQuery("select u from " +
+                this.entityClass.getSimpleName() + " u where u.admin.admin_id = :admin_id")
+                .setParameter("admin_id", adminId).getResultList();
+    }
 }

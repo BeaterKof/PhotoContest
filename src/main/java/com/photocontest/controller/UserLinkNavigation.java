@@ -187,7 +187,7 @@ public class UserLinkNavigation {
         long contestId = Long.parseLong(request.getParameter("contestId"));
         try {
             contest = contestService.getContestById(contestId);
-            model.addObject("contest",contest);
+            model.addObject("lastContest",contest);
             if(contest.getWinner() != null ){
                 model.addObject("winner",contest.getWinner());
             }
@@ -196,6 +196,24 @@ public class UserLinkNavigation {
         }
         model.addObject("topThree", topThreeContests.getList());
 
+        return model;
+    }
+
+    @RequestMapping(value = "/singlePhotographer", method = RequestMethod.GET)
+    public ModelAndView getOnePhotographer(HttpServletRequest request){
+        ModelAndView model = new ModelAndView("user/singlePhotographer");
+
+        User photographer;
+        long photographerId = Long.parseLong(request.getParameter("photographerId"));
+
+        try {
+            photographer = userService.getUserById(photographerId);
+            model.addObject("photographer",photographer);
+        } catch (UserNotFoundException e) {
+            logger.error(e);
+        }
+
+        model.addObject("topThree", topThreeContests.getList());
         return model;
     }
 

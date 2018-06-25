@@ -10,7 +10,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:general-layout title="${photographer.first_name}">
+<t:user-general-layout title="Contest ${lastContest.name}" last_name="${sessionScope.user.last_name}">
     <jsp:attribute name="head">
     </jsp:attribute>
 
@@ -39,7 +39,7 @@
 
     <jsp:attribute name="footer_area">
     </jsp:attribute>
-</t:general-layout>
+</t:user-general-layout>
 
 <!-- Remove second navigation  -->
 <script>

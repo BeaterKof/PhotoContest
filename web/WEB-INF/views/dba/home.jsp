@@ -37,7 +37,7 @@
                         data: {},
                         url:'adminAjax/backup',
                         success: function(){
-                            alert("Rollback Successful");
+                            alert("Backup Successful");
                         }
                     });
                     return false;

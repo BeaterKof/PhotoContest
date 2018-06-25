@@ -2,15 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <import resource="datasource-config.xml" />
+    <import resource="spring-security-config.xml" />
 
+    <context:annotation-config/>
     <context:component-scan base-package="com.photocontest.controller"/>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -27,7 +30,12 @@
     <mvc:annotation-driven/>
 
     <!-- DAO Declarations -->
-    <bean id="userDAO" class="com.photocontest.dao.impl.UserDAOImpl"/>
+    <bean id="userDAO" class="com.photocontest.dao.impl.UserDAOImpl" />
+    <bean id="adminDAO" class="com.photocontest.dao.impl.AdminDAOImpl" />
+    <bean id="fileDAO" class="com.photocontest.dao.impl.FileDAOImpl" />
+    <bean id="contestDAO" class="com.photocontest.dao.impl.ContestDAOImpl" />
+    <bean id="reportDAO" class="com.photocontest.dao.impl.ReportDAOImpl" />
+    <bean id="voterDAO" class="com.photocontest.dao.impl.VoterDAOImpl" />
 
 
     <!-- Services declarations -->
@@ -35,4 +43,45 @@
         <property name="userDAO" ref="userDAO"/>
     </bean>
 
+    <bean id="adminService" class="com.photocontest.services.impl.AdminServiceImpl" >
+        <property name="adminDAO" ref="adminDAO"/>
+    </bean>
+
+    <bean id="fileService" class="com.photocontest.services.impl.FileServiceImpl" >
+        <property name="fileDAO" ref="fileDAO" />
+    </bean>
+
+    <bean id="contestService" class="com.photocontest.services.impl.ContestServiceImpl" >
+        <property name="contestDAO" ref="contestDAO" />
+    </bean>
+
+    <bean id="reportService" class="com.photocontest.services.impl.ReportServiceImpl" >
+        <property name="reportDAO" ref="reportDAO" />
+    </bean>
+
+    <bean id="voterService" class="com.photocontest.services.impl.VoterServiceImpl" >
+        <property name="voterDAO" ref="voterDAO" />
+    </bean>
+
+    <!-- File upload - MultiPartResolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10485760" />
+    </bean>
+
+    <!-- List of top 3 contests -->
+    <bean id="topThreeContests" class="com.photocontest.utils.TopThreeContests"/>
+
+    <bean id="topThreeContestsService" class="com.photocontest.utils.TopThreeContestsService">
+        <property name="contestDAO" ref="contestDAO"/>
+    </bean>
+
+    <!-- Enable scheduling annotations -->
+    <task:annotation-driven scheduler="scheduler"/>
+    <task:scheduler id="scheduler" pool-size="15"/>
+
+    <!-- Register spring beans -->
+    <context:component-scan base-package="com.photocontest.utils" />
+
+    <!-- On Application Load Bean-->
+    <bean name="onLoadBean" init-method="load" class="com.photocontest.utils.OnApplicationLoadBean" lazy-init="false" />
 </beans>

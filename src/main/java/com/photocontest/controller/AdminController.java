@@ -1,5 +1,6 @@
 package com.photocontest.controller;
 
+import com.photocontest.exceptions.ContestExistsException;
 import com.photocontest.exceptions.ContestNotFoundException;
 import com.photocontest.exceptions.EmailExistsException;
 import com.photocontest.exceptions.EmailNotFoundException;
@@ -100,6 +101,11 @@ public class AdminController {
     @RequestMapping(value = "/guest/admin", method = RequestMethod.GET)
          public ModelAndView getAdminIndex(){
         return new ModelAndView("guest/adminLogin");
+    }
+
+    @RequestMapping(value = "/dba/home", method = RequestMethod.GET)
+    public ModelAndView getDbaIndex(){
+        return new ModelAndView("/dba/home");
     }
 
     /**
@@ -272,13 +278,14 @@ public class AdminController {
             return "redirect:/admin/getContestForm";
         }
 
-        contestService.createContest(contest);
-        Admin admin = (Admin) session.getAttribute("admin");
-        contest.setAdmin(admin);
-
         try {
+            contestService.createContest(contest);
+            Admin admin = (Admin) session.getAttribute("admin");
+            contest.setAdmin(admin);
             contestService.updateContest(contest);
         } catch (ContestNotFoundException e) {
+            logger.error(e.getMessage());
+        } catch (ContestExistsException e) {
             logger.error(e.getMessage());
         }
 

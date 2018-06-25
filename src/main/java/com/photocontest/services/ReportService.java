@@ -22,7 +22,7 @@ public interface ReportService {
      * @param report the Report to be created
      */
 
-    void createReport(Report report);
+    void createReport(Report report) throws ReportNotFoundException;
 
     /**
      * Removes a Report from the database.
@@ -51,10 +51,41 @@ public interface ReportService {
 
     Report getReportById(long id) throws ReportNotFoundException;
 
+    /**
+     * Updates a Report entity.
+     * @param report the new report value
+     * @throws ReportNotFoundException if report could not be found
+     */
+
     void updateReport(Report report) throws ReportNotFoundException;
 
+    /**
+     * Gets all the Reports with a File ID.
+     * @param fileId the ID of the File
+     * @return the Reports list
+     */
+
     List<Report> getReportsByFileId(long fileId);
+
+    /**
+     * Gets all the Reports with a Contest ID.
+     * @param contestId the ID of the Contest
+     * @return the Reports list
+     */
+
     public List<Report> getReportsByContestId(long contestId);
+
+    /**
+     * Delete all Reports for a File by the File ID.
+     * @param fileId the File ID
+     */
+
     public void deleteFileReports(long fileId);
+
+    /**
+     * Delete all Reports for a Contest by the Contest ID.
+     * @param contestId the Contest ID
+     */
+
     public void deleteContestReports(long contestId);
 }

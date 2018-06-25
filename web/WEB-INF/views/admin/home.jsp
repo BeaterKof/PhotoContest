@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:admin-layout title="Home">
@@ -123,9 +123,11 @@
                     <tr>
                         <th>#</th>
                         <th>Message</th>
-                        <th>File id</th>
-                        <th>Contest id</th>
+                        <th>File name</th>
+                        <th>Contest name</th>
                         <th>Reporter email</th>
+                        <th>Reported email</th>
+                        <th>Links</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -133,10 +135,17 @@
                             <tr id="${report.report_id}" name="${report.file.file_id}">
                                 <th>${counter.index}</th>
                                 <th>${report.message}</th>
-                                <th>${report.file.file_id}</th>
-                                <th>${report.contest.contest_id}</th>
+                                <th>${report.file.name}</th>
+                                <th>${report.contest.name}</th>
                                 <th>${report.reporter_email}</th>
+                                <th>${report.file.user.email}</th>
+                                <th>
+                                    <a class="fancybox" href="${pageContext.request.contextPath}/files/${report.file.path}">
+                                        <span>link</span>
+                                    </a>
+                                </th>
                                 <th><button type="button" name="removeFromContest" class="btn btn-danger report_btn">Remove from contest</button></th>
+                                <th><button type="button" name="removeFile" class="btn btn-danger report_btn">Remove file</button></th>
                                 <th><button type="button" name="delete" class="btn btn-danger report_btn">Delete report</button></th>
                             </tr>
                         </c:forEach>
@@ -162,10 +171,8 @@
                             if(action === 'deactivate'){
                                 if($('#' + userId).closest('tr').css("background-color") == "rgb(255, 255, 255)"){
                                     $('#' + userId).closest('tr').css("background-color","#F9F9F9");
-                                    alert("deactivate true!");
                                 } else {
                                     $('#' + userId).closest('tr').css("background-color","white");
-                                    alert("deactivate false!");
                                 }
                             }
                         }
@@ -208,7 +215,7 @@
                     var action = $(this).attr('name');
                     $.ajax({
                         type:'GET',
-                        data: {reportId: reportId, action: action},
+                        data: {reportId: reportId, fileId: fileId, action: action},
                         url:'/admin/adminReportsManager',
                         success: function(){
                                 $('#' + reportId).closest('tr').fadeOut(700);

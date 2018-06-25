@@ -67,16 +67,14 @@
                         data: {reportContent: reportContent},
                         url:'userAjax/submitReport',
                         success: function(){
-                            $('#reportWindow').focusout(function(){
                                 $('#reportWindow').fadeOut(500);
-                            });
                         }
                     });
                     return false;
                 });
 
                 $('#closeReportWindow').click(function(){
-                    $(this).fadeOut(500);
+                    $('#reportWindow').fadeOut(500);
                 });
             });
         </script>

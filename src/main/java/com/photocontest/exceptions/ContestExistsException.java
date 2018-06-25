@@ -2,18 +2,17 @@ package com.photocontest.exceptions;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Andrei
- * Date: 1/21/16
- * Time: 2:22 AM
+ * User: Aioanei Andrei
+ * Date: 6/11/16
+ * Time: 2:02 PM
  * To change this template use File | Settings | File Templates.
  */
-public class FileExistsException extends Exception {
-
+public class ContestExistsException extends Exception {
     /**
-     * Constructor for the File exists exception
+     * Constructor for the Contest exists exception
      * @param id the file id
      */
-    public FileExistsException(long id){
+    public ContestExistsException(long id){
         super("The file with id " + id + " already exists in the database.");
     }
 }

@@ -36,7 +36,7 @@ public class TopThreeContestsService {
      */
 
     public ArrayList<Contest> getCurrentTopThreeContests(){
-        List<Contest> contestList = contestDAO.findAll();
+         List<Contest> contestList = contestDAO.findAll();
         Collections.sort(contestList, new ContestComparator());
         if(contestList.isEmpty()){
             return new ArrayList<Contest>();

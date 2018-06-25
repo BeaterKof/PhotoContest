@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -61,8 +62,8 @@ public class GuestAjaxController {
 
     @RequestMapping("/guest/userAjax/likePhoto")
     public void likePhoto(HttpServletRequest request, HttpServletResponse response){
-        String fileIdString = request.getParameter("fileId");
-        String clientIp = request.getParameter("clientIp");
+        final String fileIdString = request.getParameter("fileId");
+        final String clientIp = request.getParameter("clientIp");
         HttpSession session = request.getSession(true);
         long fileId = Long.parseLong(fileIdString);
         Voter voter = new Voter();
@@ -72,7 +73,16 @@ public class GuestAjaxController {
             file = fileService.getFileById(fileId);
             voter.getFiles().add(file);
             voter.setIp_address(clientIp);
-            if(!file.getVoterList().contains(voter)){
+            List<Voter> voterList = file.getVoterList();
+            boolean exists = false;
+
+            for(Voter v : voterList){
+                if(v.getIp_address().equals(clientIp)){
+                    exists = true;
+                }
+            }
+
+            if(! exists){
                 file.getVoterList().add(voter);
                 fileService.updateFile(file);
             }

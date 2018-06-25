@@ -4,11 +4,10 @@ import com.photocontest.exceptions.*;
 import com.photocontest.model.Contest;
 import com.photocontest.model.File;
 import com.photocontest.model.User;
+import com.photocontest.model.Voter;
 import com.photocontest.security.CustomUserDetails;
 import com.photocontest.security.CustomUserDetailsService;
-import com.photocontest.services.ContestService;
-import com.photocontest.services.FileService;
-import com.photocontest.services.UserService;
+import com.photocontest.services.*;
 import com.photocontest.utils.DataValidator;
 import com.photocontest.utils.LoginBean;
 import com.photocontest.utils.UniqueValueGenerators;
@@ -85,6 +84,11 @@ public class UserController implements ServletContextAware{
      */
     private ServletContext servletContext;
 
+    @Autowired
+    private ReportService reportService;
+
+    @Autowired
+    private VoterService voterService;
     /**
      * The Servlet context setter
      */
@@ -179,7 +183,7 @@ public class UserController implements ServletContextAware{
         String password = loginBean.getPassword();
         CustomUserDetails userDetails = null;
 
-        if(email == "" || email == null || password == "" || password == null) {
+        if(email.equals("") || email == null || password == "" || password == null) {
             String errorMessage = "User email or password are not valid.";
             redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 
@@ -259,9 +263,14 @@ public class UserController implements ServletContextAware{
         try {
             List<File> fileList = user.getFiles();
             for(File fisier : fileList){
-                fisier.getVoterList().clear();
-                /* Remove from contest in order to delete the file */
+
+                /* Remove voters for photo */
                 fisier.setContest(null);
+                fisier.getVoterList().clear();
+
+                /* Delete file reports */
+                reportService.deleteFileReports(fisier.getFile_id());
+
                 /* Delete file from disk */
                 com.photocontest.utils.FileUtils.deleteFileFromDisk(session.getServletContext(), fisier);
                 fileService.updateFile(fisier);
@@ -313,7 +322,7 @@ public class UserController implements ServletContextAware{
                 !DataValidator.isEmailAddress(newEmail)) {
 
             String errorMessage = "The data you inserted is not valid. No changes were made in the account info.";
-            redirectAttributes.addFlashAttribute("formErrorMessage",errorMessage);
+            redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 
             return "redirect:/user/userAccount";
         }
@@ -436,9 +445,10 @@ public class UserController implements ServletContextAware{
             /* Prepare file object for persist */
             String pathName = javaIoFile.getPath();
             String[] s = pathName.split("PhotoContest_war_exploded");
-            String realName = s[1].substring(1);
+            String realName = s[1].substring(12);
+            fileFolder += realName;
 
-            uploadedFile.setPath(realName);
+            uploadedFile.setPath(fileFolder);
             uploadedFile.setType(image.getContentType());
             uploadedFile.setDate_added(new Date());
 
@@ -454,5 +464,7 @@ public class UserController implements ServletContextAware{
         session.setAttribute("user",user);
         return "redirect:/user/userAccount";
     }
+
+
 
 }

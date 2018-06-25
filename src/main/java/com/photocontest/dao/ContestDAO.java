@@ -39,4 +39,6 @@ public interface ContestDAO extends GenericDAO<Contest, Long> {
      */
 
     public List<Contest> findNoWinnerContests();
+
+    public List<Contest> getContestsByAdmin(long adminId);
 }

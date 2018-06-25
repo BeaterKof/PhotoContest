@@ -58,4 +58,8 @@ public class VoterServiceImpl implements VoterService {
         return voterDAO.exists(ip);
     }
 
+    @Override
+    public void removeVoter(Voter voter) {
+        voterDAO.delete(voter);
+    }
 }

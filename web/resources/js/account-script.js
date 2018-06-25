@@ -1,20 +1,20 @@
 
 function validateForm() {
-    var firstName = document.forms["accountForm"]["firstName"].value;
-    var lastName = document.forms["accountForm"]["lastName"].value;
-    var email =  document.forms["accountForm"]["email"].value;
+    var newFirstName = document.forms["accountForm"]["newFirstName"].value;
+    var newLastName = document.forms["accountForm"]["newLastName"].value;
+    var newEmail =  document.forms["accountForm"]["newEmail"].value;
     var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
-    if (firstName == null || lastName == null || firstName == "" || lastName == "" ) {
+    if (newFirstName == null || newLastName == null || newFirstName == "" || newLastName == "" ) {
         document.getElementById("formErrorMessage").innerHTML = "Numele nu a fost scris corect.";
         document.getElementById("formErrorMessageContainer").style.visibility = "visible";
-        document.forms["accountForm"]["firstName"].focus();
+        document.forms["accountForm"]["newFirstName"].focus();
         return false;
     }
-    if(email == null || email == "" || !pattern.test(email) ) {
+    if(newEmail == null || newEmail == "" || !pattern.test(newEmail) ) {
         document.getElementById("formErrorMessage").innerHTML = "Adresa email nu este valida.";
         document.getElementById("formErrorMessageContainer").style.visibility = "visible";
-        document.forms["accountForm"]["email"].focus();
+        document.forms["accountForm"]["newEmail"].focus();
         return false;
     }
     return true;

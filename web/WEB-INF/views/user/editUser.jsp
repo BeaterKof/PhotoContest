@@ -11,8 +11,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+
+
 <t:user-general-layout title="Home" last_name="${sessionScope.user.last_name}">
     <jsp:attribute name="head">
+        <script type="text/javascript" src="<spring:url value='/resources/js/account-script.js'/>"></script>
     </jsp:attribute>
 
     <jsp:attribute name="header_area">
@@ -25,6 +28,20 @@
                 Account
             </div>
 
+            <!-- For JS -->
+            <div class="alert alert-danger" role="alert" id="formErrorMessageContainer" style="visibility:hidden">
+                <span class="sr-only">Error:</span>
+                <div id="formErrorMessage"></div>
+            </div>
+
+            <c:if test="${not empty errorMessage}">
+                <div class="form-group">
+                    <div class="alert alert-danger">
+                        <strong>${errorMessage}</strong>
+                    </div>
+                </div>
+            </c:if>
+
             <div id="account-edit-buttons">
                 <button onclick="displayPhotos()" type="button" class="btn btn-lg btn-success">My Photos</button>
                 <button onclick="displayForm()" id="changeAccountButton" type="button" class="btn btn-lg btn-warning">Change account</button>
@@ -32,13 +49,7 @@
                 <button onclick="displayDeletionPrompt()" id="deleteAccountButton"  type="button" class="btn btn-lg btn-danger">Delete Account</button>
             </div>
 
-            <c:if test="${not empty errorMessage}">
-                <div class="form-group">
-                    <div class="alert alert-danger">
-                            <strong>${errorMessage}</strong>
-                    </div>
-                </div>
-            </c:if>
+
 
             <div id="deletionPrompt">
                 <div class="alert alert-danger">
@@ -85,11 +96,6 @@
                             <textarea class="form-control" name="newDescription" rows="3" maxlength="200">${user.description}</textarea>
                         </label>
                     </div>
-                </div>
-
-                <div class="alert alert-danger" role="alert" id="formErrorMessageContainer" style="visibility:hidden">
-                    <span class="sr-only">Error:</span>
-                    <div id="formErrorMessage"></div>
                 </div>
 
                 <div class="form-group">

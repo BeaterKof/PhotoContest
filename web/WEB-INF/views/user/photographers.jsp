@@ -28,7 +28,7 @@
                         <c:set var="flag" value="false"></c:set>
                         <div class="photographer-wrapper">
                             <div class="photographer-name-left">
-                                <a href="#">${photographer.first_name} ${photographer.last_name}</a>
+                                <a href="/user/singlePhotographer?photographerId=${photographer.user_id}">${photographer.first_name} ${photographer.last_name}</a>
                                 <h6>Email address: ${photographer.email}</h6>
                                 <h6>Description: ${photographer.description}</h6>
                             </div>
@@ -49,7 +49,7 @@
                                 </div>
                             </c:if>
                             <div class="photographer-name-left" style="float: right">
-                                <a href="/guest/userPage?userId=${photographer.user_id}">${photographer.first_name} ${photographer.last_name}</a>
+                                <a href="/user/singlePhotographer?photographerId=${photographer.user_id}">${photographer.first_name} ${photographer.last_name}</a>
                                 <h6>Email address: ${photographer.email}</h6>
                                 <h6>Description: ${photographer.description}</h6>
                             </div>

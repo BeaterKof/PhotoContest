@@ -36,8 +36,8 @@ public class ContestEndedChecker {
         List<Contest> contestList = contestService.getNoWinnerContests();
         for(Contest contest : contestList){
             if(contest.getFinish_date().before(new Date()) || contest.getFinish_date().equals(new Date())){
-                if(contestService.getContestWinnerId(contest)!= null){
-                    contest.setWinner(contestService.getContestWinnerId(contest));
+                if(contestService.getContestWinner(contest)!= null){
+                    contest.setWinner(contestService.getContestWinner(contest));
                 }
             }
         }

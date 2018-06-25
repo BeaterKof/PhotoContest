@@ -19,43 +19,63 @@
 
 
     <jsp:attribute name="content_area">
-        <div id="content-wrapper" class="wrapper" style="margin-top: 10px;">
-            <c:if test="${not empty winner}"><div class="alert alert-success">The winner is: ${winner.first_name} ${winner.last_name}</div></c:if>
-            <c:forEach items="${lastContest.fileList}" var="file">
-                <div class="image-cell">
-                    <div class="image-name image-toggle"><p class="name-parag">${file.name}</p></div>
-                    <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself" alt="${file.description}">
-                    <div class="image-options image-toggle" id="${file.file_id}">
-                        <img class="img_icon report_btn" id="${file.file_id}" src="/resources/images/red-alert.ico" title="Report">
+                <div id="content-wrapper" class="wrapper" style="margin-top: 10px;">
+                    <c:forEach items="${lastContest.fileList}" var="file">
+                        <div class="image-cell">
+                            <div class="image-name image-toggle"><p class="name-parag">${file.name}</p></div>
+                            <a class="fancybox" href="${pageContext.request.contextPath}/files/${file.path}">
+                                <img src="${pageContext.request.contextPath}/files/${file.path}" class="image-itself" alt="${file.description}">
+                            </a>
+                            <div class="image-options image-toggle" id="${lastContest.contest_id}">
+                                <img class="img_icon report_btn" id="${file.file_id}" src="/resources/images/red-alert.ico" title="Report">
+                            </div>
+                        </div>
+                    </c:forEach>
+
+                    <div id="reportWindow" class="form-group">
+                        <textarea id="reportText" class="form-control" name="description" cols="50" rows="2" maxlength="100">Insert report reason</textarea>
+                        <button id="submitReport" type="button" class="btn btn-lg">Submit Report</button>
+                        <button id="closeReportWindow" type="button" class="btn btn-lg btn-danger">Close</button>
                     </div>
                 </div>
-            </c:forEach>
-        </div>
     </jsp:attribute>
 
 
     <jsp:attribute name="footer_area">
-                <script type="text/javascript">
-                    var clientIp;
-                    $.get("http://ipinfo.io", function(response) {
-                        clientIp = response.ip;
-                    }, "jsonp");
-                    $(document).ready(function(){
-                        $('.like_btn').click(function(){
-                            var fileId = $(this).parent().attr('id');
-                            $.ajax({
-                                type:'GET',
-                                data: {fileId: fileId, clientIp: clientIp},
-                                url:'/guest/userAjax/likePhoto',
-                                success: function(){
-                                    $('#' + fileId).find('img').attr("src","/resources/images/red-heart.png");
-                                    $('#' + fileId).find('img').css("pointer-events","none");
-                                }
-                            });
-                            return false;
-                        });
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.report_btn').click(function(){
+                    $('#reportWindow').css('display','block');
+                    $('#reportWindow').css('visibility','visible');
+                    $('#reportText').focus();
+                    var fileId =  $(this).attr('id');
+                    var contestId =  $(this).parent().attr('id');
+                    $.ajax({
+                        type:'GET',
+                        data: {fileId: fileId, contestId: contestId},
+                        url:'userAjax/loadFileId'
                     });
-                </script>
+                    return false;
+                });
+
+                $('#submitReport').click(function(){
+                    var reportContent =  $('#reportText').val();
+                    $.ajax({
+                        type:'GET',
+                        data: {reportContent: reportContent},
+                        url:'userAjax/submitReport',
+                        success: function(){
+                            $('#reportWindow').fadeOut(500);
+                        }
+                    });
+                    return false;
+                });
+
+                $('#closeReportWindow').click(function(){
+                    $(this).fadeOut(500);
+                });
+            });
+        </script>
     </jsp:attribute>
 </t:user-general-layout>
 

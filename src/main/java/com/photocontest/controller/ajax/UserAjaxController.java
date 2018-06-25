@@ -153,7 +153,10 @@ public class UserAjaxController {
             fisier.getVoterList().clear();
             fileService.updateFile(fisier);
 
-            /* Delete file not in a contest */
+            /* Delete file reports */
+            reportService.deleteFileReports(fisier.getFile_id());
+
+            /* Delete file */
             user.removeFile(fisier);
             userService.updateUser(user);
             user = userService.getUserById(user.getUser_id());
@@ -210,23 +213,21 @@ public class UserAjaxController {
         try {
             file = fileService.getFileById(fileId);
             contest = contestService.getContestById(contestId);
+            User user = (User)session.getAttribute("user");
+            Report report = new Report();
+            report.setMessage(reportContent);
+            report.setReporter_email(user.getEmail());
+            reportService.createReport(report);
+            report.setFile(file);
+            report.setContest(contest);
+            reportService.updateReport(report);
         } catch (FileNotFoundException e) {
             logger.error(e.getMessage());
         } catch (ContestNotFoundException e) {
             logger.error(e.getMessage());
-        }
-        User user = (User)session.getAttribute("user");
-        Report report = new Report();
-        report.setMessage(reportContent);
-        report.setReporter_email(user.getEmail());
-        reportService.createReport(report);
-
-        report.setFile(file);
-        report.setContest(contest);
-        try {
-            reportService.updateReport(report);
         } catch (ReportNotFoundException e) {
             logger.error(e.getMessage());
         }
+
     }
 }

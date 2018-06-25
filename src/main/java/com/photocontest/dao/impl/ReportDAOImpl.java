@@ -50,7 +50,7 @@ public class ReportDAOImpl extends GenericDAOImpl<Report, Long> implements Repor
     @Override
     public List<Report> getReportsByFileId(long fileId) {
         Query query = this.entityManager.createQuery("select u from " +
-                this.entityClass.getSimpleName() + " u where u.file_id = :file_id")
+                this.entityClass.getSimpleName() + " u where u.file.id = :file_id")
                 .setParameter("file_id", fileId);
 
         ArrayList<Report> reportList = (ArrayList<Report>)query.getResultList();
@@ -60,7 +60,7 @@ public class ReportDAOImpl extends GenericDAOImpl<Report, Long> implements Repor
     @Override
     public List<Report> getReportsByContestId(long contestId) {
         Query query = this.entityManager.createQuery("select u from " +
-                this.entityClass.getSimpleName() + " u where u.contest_id = :contest_id")
+                this.entityClass.getSimpleName() + " u where u.contest.id = :contest_id")
                 .setParameter("contest_id", contestId);
 
         ArrayList<Report> reportList = (ArrayList<Report>)query.getResultList();

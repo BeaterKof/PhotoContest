@@ -38,7 +38,10 @@ public class ReportServiceImpl implements ReportService {
      */
 
     @Override
-    public void createReport(Report report) {
+    public void createReport(Report report) throws ReportNotFoundException {
+        if(reportDAO.exists(report.getReport_id())){
+            throw new ReportNotFoundException(report.getReport_id());
+        }
         reportDAO.save(report);
     }
 

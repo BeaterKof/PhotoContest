@@ -8,6 +8,7 @@
 <%@attribute name="footer_area" fragment="true" %>
 <%@attribute name="content_area_login" fragment="true" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
@@ -20,6 +21,16 @@
     <link href="<spring:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet" />
     <script type="text/javascript" src="<spring:url value='/resources/js/jquery-2.1.4.js'/>"></script>
     <script type="text/javascript" src="<spring:url value='/resources/js/main-script.js'/>"></script>
+
+    <!-- Fancybox -->
+    <script type="text/javascript" src="<spring:url value='/resources/fancybox/jquery.fancybox.pack.js'/>"></script>
+    <link href="<spring:url value='/resources/fancybox/jquery.fancybox.css'/>" rel="stylesheet" type="text/css" media="screen" />
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".fancybox").fancybox();
+        });
+    </script>
     <!-- Internet Explorer HTML5 enabling code: -->
 
     <!--[if IE]>
@@ -37,65 +48,36 @@
 
 <body>
     <section id="page">
-        <jsp:invoke fragment="header_area"/>
         <header>
             <nav>
+                <jsp:invoke fragment="header_area"/>
                 <ul>
-                    <li><a class="short-a" href="/home">Home</a></li>
-                    <li><a class="short-a" href="/contests">Contests</a></li>
-                    <li><a href="/allTimeBest">AllTimeBest</a></li>
-                    <li><a href="/photographers">Photographers</a></li>
-                    <li><a class="short-a" href="#">Other</a></li>
+                    <li><a class="short-a" href="/guest/home">Home</a></li>
+                    <li><a class="short-a" href="/guest/contests">Contests</a></li>
+                    <li><a href="/guest/allTimeBest">AllTimeBest</a></li>
+                    <li><a href="/guest/photographers">Photographers</a></li>
+                    <li><a href="/guest/other" class="short-a">Other</a></li>
                 </ul>
                 <ul class="right-nav">
-                    <li><a href="#" id="login-link">Login</a></li>
-                    <li><a href="/signUp">Sign Up</a></li>
+                    <li><a href="/guest/signIn" id="login-link">Login</a></li>
+                    <li><a href="/guest/signUp">Sign Up</a></li>
                 </ul>
             </nav>
             <div id="sec-nav">
                 <div id="sec-nav-wrapper">
                     <ul>
-                        <li><a href="#" id="nav-contest-name">Contest name</a></li>
-                        <li>-</li>
-                        <li><a href="#" class="under-link">All</a></li>
-                        <li><a href="#" class="under-link">Top</a></li>
-                        <li><a href="#" class="under-link">Newest</a></li>
+                        <li><a href="#" id="nav-contest-name">${lastContest.name}</a></li>
+                        <li class="sec-nav-opt">-</li>
+                        <li class="sec-nav-opt"><a href="/guest/home" class="under-link" id="allPhotos">All</a></li>
+                        <li class="sec-nav-opt"><a href="/guest/homeShowTop" class="under-link" id="topPhotos">Top</a></li>
+                        <li class="sec-nav-opt"><a href="/guest/homeShowNewest" class="under-link" id="newestPhotos">Newest</a></li>
                     </ul>
                 </div>
             </div>
         </header>
 
+
         <section id="content">
-            <!--login modal-->
-            <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h1 class="text-center">Login</h1>
-                        </div>
-                        <div class="modal-body">
-                            <form class="form col-md-12 center-block">
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-lg" placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control input-lg" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-lg btn-block">Login</button>
-                                    <span class="pull-right"><a href="#">Need help?</a></span>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="col-md-12">
-                                <button id="form-close-button" class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <jsp:invoke fragment="content_area"/>
         </section>
 
@@ -111,18 +93,18 @@
                     <p><a href="#">Privacy policy</a></p>
                 </div>
                 <div id="center-col" class="col">
-                    <div id="logoG" class="social"><a href="#"></a></div>
-                    <div id="logoF" class="social"><a href="#"></a></div>
-                    <div id="logoY" class="social"><a href="#"></a></div>
-                    <div id="logoI" class="social"><a href="#"></a></div>
-                    <div id="logoT" class="social"><a href="#"></a></div>
+                    <div id="logoG" class="social"><a href="https://plus.google.com"></a></div>
+                    <div id="logoF" class="social"><a href="www.facebook.com"></a></div>
+                    <div id="logoY" class="social"><a href="www.youtube.com"></a></div>
+                    <div id="logoI" class="social"><a href="www.linkedin.com"></a></div>
+                    <div id="logoT" class="social"><a href="https://twitter.com"></a></div>
                 </div>
                 <div id="right-col" class="col">
                     <p class="footer-title">Recent contests</p>
                     <br>
-                    <p><a href="#">Contest 1</a></p>
-                    <p><a href="#">Contest 2</a></p>
-                    <p><a href="#">Contest 3</a></p>
+                    <c:forEach var="contest" items="${topThree}" varStatus="status">
+                        <p><a href="/guest/singleContest?contestId=${contest.contest_id}">${contest.name}</a></p>
+                    </c:forEach>
                 </div>
 
                 <p id="rights">©2015 Aioanei Alexandru Andrei. All rights reserved.</p>

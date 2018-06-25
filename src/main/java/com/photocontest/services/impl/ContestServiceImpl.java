@@ -1,7 +1,6 @@
 package com.photocontest.services.impl;
 
 import com.photocontest.dao.ContestDAO;
-import com.photocontest.dao.impl.ContestDAOImpl;
 import com.photocontest.exceptions.ContestNotFoundException;
 import com.photocontest.model.Contest;
 import com.photocontest.model.File;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -60,8 +58,12 @@ public class ContestServiceImpl implements ContestService {
 
 
     @Override
-    public void createContest(Contest contest) {
-        contestDAO.save(contest);
+    public void createContest(Contest contest) throws ContestNotFoundException {
+        if(contestDAO.exists(contest.getContest_id())){
+            throw new ContestNotFoundException(contest.getName());
+        } else {
+            contestDAO.save(contest);
+        }
     }
 
     /**
@@ -75,8 +77,9 @@ public class ContestServiceImpl implements ContestService {
     public void updateContest(Contest contest) throws ContestNotFoundException {
         if(!contestDAO.exists(contest.getContest_id())){
             throw new ContestNotFoundException(contest.getName());
+        } else {
+            contestDAO.update(contest);
         }
-        contestDAO.update(contest);
     }
 
     /**
@@ -90,8 +93,9 @@ public class ContestServiceImpl implements ContestService {
     public void deleteContest(Contest contest) throws ContestNotFoundException {
         if(!contestDAO.exists(contest.getContest_id())){
             throw new ContestNotFoundException(contest.getName());
+        } else {
+            contestDAO.delete(contest);
         }
-        contestDAO.delete(contest);
     }
 
     /**
@@ -182,12 +186,13 @@ public class ContestServiceImpl implements ContestService {
 
     /**
      * Get a Contest winner ID
+     *
      * @param contest the Contest from which the winner ID is returned
      * @return Contest winner ID
      */
 
     @Override
-    public User getContestWinnerId(Contest contest) {
+    public User getContestWinner(Contest contest) {
         List<File> fileList = contest.getFileList();
         File maxVotersFile = fileList.get(0);
 
@@ -204,5 +209,23 @@ public class ContestServiceImpl implements ContestService {
         }
 
         return maxVotersFile.getUser();
+    }
+
+    @Override
+    public List<Contest> getContestsByAdmin(long adminId) {
+        List<Contest> list = contestDAO.getContestsByAdmin(adminId);
+        if(list == null){
+            return new ArrayList<Contest>();
+        } else {
+            return list;
+        }
+    }
+
+    @Override
+    public void removeAdminFromAllContests(long adminId){
+        List<Contest> list = getContestsByAdmin(adminId);
+        for(Contest c : list){
+            c.setAdmin(null);
+        }
     }
 }

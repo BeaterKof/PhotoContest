@@ -1,5 +1,6 @@
 package com.photocontest.services;
 
+import com.photocontest.exceptions.ContestExistsException;
 import com.photocontest.exceptions.ContestNotFoundException;
 import com.photocontest.model.Contest;
 import com.photocontest.model.User;
@@ -31,7 +32,7 @@ public interface ContestService {
      * @param contest the Contest to be created
      */
 
-    void createContest(Contest contest);
+    void createContest(Contest contest) throws ContestExistsException, ContestNotFoundException;
 
     /**
      * Updates a contest.
@@ -95,9 +96,14 @@ public interface ContestService {
 
     /**
      * Get a Contest winner ID
+     *
      * @param contest the Contest from which the winner ID is returned
      * @return Contest winner ID
      */
 
-    User getContestWinnerId(Contest contest);
+    User getContestWinner(Contest contest);
+
+    public List<Contest> getContestsByAdmin(long id);
+
+    public void removeAdminFromAllContests(long adminId);
 }

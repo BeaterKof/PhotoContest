@@ -32,4 +32,6 @@ public interface VoterService {
      */
 
     boolean exists(String ip);
+
+    void removeVoter(Voter voter);
 }

@@ -143,6 +143,7 @@ public class AdminAjaxController {
 
         try {
             Admin admin = adminService.getAdminById(adminId);
+            contestService.removeAdminFromAllContests(adminId);
             adminService.deleteAdmin(admin);
         } catch (AdminNotFoundException e) {
             logger.error(e.getMessage());
@@ -176,6 +177,7 @@ public class AdminAjaxController {
                 }
             }
             contestService.updateContest(contest);
+            contest.setAdmin(null);
             contestService.deleteContest(contest);
         } catch (ContestNotFoundException e) {
             logger.error(e.getMessage());
@@ -207,22 +209,24 @@ public class AdminAjaxController {
 
         try {
             Report report = reportService.getReportById(reportId);
-            File fisier = report.getFile();
+            File fisier = fileService.getFileById(report.getFile().getFile_id());
 
-            if(action.equals("delete")){
-                /* Delete file from disk */
+            if(action.equals("removeFile")){
                 ServletContext context = session.getServletContext();
-                String filePath = context.getRealPath(fisier.getPath());
-                java.io.File file = new java.io.File(filePath);
+                report.setFile(null);
+                reportService.updateReport(report);
 
-                if( file != null || file.exists()){
-                    file.delete();
-                } else {
-                    logger.error("Fisierul nu a fost gasit pe disc. Calea fisierului este: " + filePath);
-                }
+                /* Remove voters for photo */
+                fisier.setContest(null);
+                fisier.getVoterList().clear();
+                fileService.updateFile(fisier);
 
+                User user = fisier.getUser();
+                user.removeFile(fisier);
+                userService.updateUser(user);
                 fileService.deleteFile(fisier);
-            } else {
+                FileUtils.deleteFileFromDisk(context,fisier);
+            } else if(action.equals("removeFromContest")){
                 fisier.setContest(null);
                 fileService.updateFile(fisier);
             }
@@ -231,6 +235,8 @@ public class AdminAjaxController {
         } catch (ReportNotFoundException e) {
             logger.error(e.getMessage());
         } catch (FileNotFoundException e) {
+            logger.error(e.getMessage());
+        } catch (UserNotFoundException e) {
             logger.error(e.getMessage());
         }
     }
